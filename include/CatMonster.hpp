@@ -1,6 +1,7 @@
 #include <string>
 
 class CatMonster{
+    private:
     // Attributs
     string m_typeCat;
     int m_life;
@@ -8,8 +9,9 @@ class CatMonster{
     int m_gainDeath;
     int m_speed;
 
+    public:
     // Méthodes
-    void beDamaged(){
+    void beDamaged(int nbDamages){
 
     }
 
