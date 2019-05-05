@@ -1,4 +1,7 @@
-#include Cat_monster.hpp
+#include <string>
+#include "Cat_monster.hpp"
+
+using namespace std;
 
 Cat_monster {
     

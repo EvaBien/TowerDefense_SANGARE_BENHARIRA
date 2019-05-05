@@ -1,9 +1,12 @@
+#ifndef DEF_PERSONNAGE
+#define DEF_PERSONNAGE
+
 #include <string>
 
 class CatMonster{
     private:
     // Attributs
-    string m_typeCat;
+    std::string m_typeCat;
     int m_life;
     int m_defense;
     int m_gainDeath;
@@ -22,4 +25,6 @@ class CatMonster{
     bool isAlive(){
 
     }
-}
+};
+
+#endif
