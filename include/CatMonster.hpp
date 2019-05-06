@@ -7,13 +7,21 @@ class CatMonster{
     private:
     // Attributs
     std::string m_typeCat;
-    int m_life;
-    int m_defense;
-    int m_gainDeath;
-    int m_speed;
+    int m_life; //nb point de vie
+    int m_gainDeath; //nb piece reçu par joueur qd monstre meurt
+    int m_speed; //vitesse à laquelle monstre se déplace
 
     public:
     // Méthodes
+
+    int getLife();
+    int getGainDeath();
+    int getSpeed();
+
+    void setLife(int newLife);
+    void setGainDeath(int gain);
+    void setSpeed(int speed);
+
     void beDamaged(int nbDamages){
 
     }
@@ -24,6 +32,10 @@ class CatMonster{
 
     bool isAlive(){
 
+    }
+
+    void destroy(){
+        
     }
 };
 
