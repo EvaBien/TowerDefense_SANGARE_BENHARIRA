@@ -3,8 +3,20 @@
 
 using namespace std;
 
-CatMonster {
-    
+CatMonster(CatMonsterType type) {
+    if (type == kitten){
+        m_life = 60;
+        m_speed = 150;
+        m_gainDeath = 5;
+    } else if (type == fatcat) {
+        m_life = 140;
+        m_speed = 60;
+        m_gainDeath = 5;
+    } else {
+        m_life = 100;
+        m_speed = 100;
+        m_gainDeath =5 ;
+    }
 }
 
 //////////GETTERS//////////
