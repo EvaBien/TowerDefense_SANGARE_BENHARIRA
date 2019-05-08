@@ -6,7 +6,6 @@
 class CatMonster{
     private:
     // Attributs
-    std::string m_typeCat;
     int m_life; //nb point de vie
     int m_gainDeath; //nb piece reçu par joueur qd monstre meurt
     int m_speed; //vitesse à laquelle monstre se déplace
