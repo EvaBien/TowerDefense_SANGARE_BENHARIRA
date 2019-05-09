@@ -3,6 +3,13 @@
 
 #include <string>
 
+enum TowerType{
+    RED_LASER,
+    GREEN_GRASS,
+    YELLOW_GAMMELLE,
+    BLUE_MILK,
+};
+
 class Tower{
     private:
     // Attributs
@@ -21,11 +28,13 @@ class Tower{
     int getPortee();
     int getCadence();
     int getPrice();
+    int getTowerType();
 
     void setDamages(int newDamages);
     void setPortee(int portee);
     void setCadence(int cadence);
     void setPrice(int price);
+    void setTowerType(TowerType type);
 
     //void Damaged(int nbDamages){} à voir si on a besoin de cette fonction
 
