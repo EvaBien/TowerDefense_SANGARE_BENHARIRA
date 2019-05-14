@@ -1,5 +1,5 @@
-#ifndef DEF_PERSONNAGE
-#define DEF_PERSONNAGE
+#ifndef DEF_CATMONSTER
+#define DEF_CATMONSTER
 
 #include <string>
 

@@ -1,5 +1,5 @@
-#ifndef DEF_PERSONNAGE
-#define DEF_PERSONNAGE
+#ifndef DEF_TOWER
+#define DEF_TOWER
 
 #include <string>
 
