@@ -16,29 +16,24 @@ class CatMonster{
 
     CatMonster(); //constructeur
 
+    //////GETTERS/////
     int getLife();
     int getGainDeath();
     int getSpeed();
 
+    //////SETTERS/////
     void setLife(int newLife);
     void setGainDeath(int gain);
     void setSpeed(int speed);
 
-    void beDamaged(int nbDamages){
+    //////OTHERS//////
+    void beDamaged(int nbDamages);
 
-    }
+    void move();
 
-    void move(){
-        
-    }
+    bool isAlive();
 
-    bool isAlive(){
-
-    }
-
-    void destroy(){
-        
-    }
+    void destroy();
 };
 
 #endif

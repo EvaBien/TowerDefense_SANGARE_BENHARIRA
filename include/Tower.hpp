@@ -24,28 +24,28 @@ class Tower{
 
     Tower(); //constructeur
 
+    /////GETTERS/////
     int getDamages();
     int getPortee();
     int getCadence();
     int getPrice();
     int getTowerType();
 
+    /////SETTERS/////
     void setDamages(int newDamages);
     void setPortee(int portee);
     void setCadence(int cadence);
     void setPrice(int price);
     void setTowerType(TowerType type);
 
-    //void Damaged(int nbDamages){} à voir si on a besoin de cette fonction
+    //////OTHERS//////
 
-
-    bool isBuildable(){
-
-    }
+    //void Damaged(int nbDamages); à voir si on a besoin de cette fonction
+    bool isBuildable();
 
     //BESOIN FONCTION POUR CHOIX CIBLE DU TIR
 
-    //void destroy(){}   à voir si on a besoin de cette fonction
+    //void destroy();   à voir si on a besoin de cette fonction
 
 };
 
