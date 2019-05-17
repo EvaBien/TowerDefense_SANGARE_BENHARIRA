@@ -49,8 +49,6 @@ class Tower{
     void attack();
     bool isBuildable();
 
-    //BESOIN FONCTION POUR CHOIX CIBLE DU TIR
-
 };
 
 #endif

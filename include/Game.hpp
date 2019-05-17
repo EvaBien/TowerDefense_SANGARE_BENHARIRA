@@ -13,6 +13,7 @@ class Game{
     // Attributs
     int m_cagnotte;
     int m_nbVague;
+    bool m_finished;
     // Attribut vecteurs monstres
     // Attribut vecteur tower
     // Attribut vecteur batiment
@@ -37,10 +38,11 @@ class Game{
 
     //////OTHERS//////
 
-    void starGame();
-    void lancerVague();
+    void startGame();
+    void lancerVague(int numVague);
+    bool canBuyTower(TowerType type);
+    bool canBuyBuilding(BuildingType type);
     void gameOver();
-
 
 };
 
