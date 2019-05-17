@@ -4,14 +4,14 @@
 using namespace std;
 
 CatMonster(CatMonsterType type) {
-    if (type == kitten){
+    if (type == KITTEN){
         m_life = 60;
         m_speed = 150;
-        m_gainDeath = 5;
-    } else if (type == fatcat) {
+        m_gainDeath = 2;
+    } else if (type == FATCAT) {
         m_life = 140;
         m_speed = 60;
-        m_gainDeath = 5;
+        m_gainDeath = 10;
     } else {
         m_life = 100;
         m_speed = 100;
@@ -22,18 +22,19 @@ CatMonster(CatMonsterType type) {
 //////////GETTERS//////////
 
 int getLife(){
-    int m_life = this->m_life;
-    return m_life;
+    return this->m_life;
 }
 
 int getGainDeath(){
-    int m_gainDeath = this->m_gainDeath;
-    return m_gainDeath;
+    return this->m_gainDeath;
 }
 
 int getSpeed(){
-    int m_speed = this->m_speed;
-    return m_speed;
+    return this->m_speed;
+}
+
+int getType(){
+  return this->type;
 }
 
 /////////SETTERS//////////
@@ -43,30 +44,34 @@ void setLife(int newLife){
 }
 
 void setGainDeath(int gain){
-    //à implémenter
+    this->m_gainDeath=gain;
 }
 
 void setSpeed(int speed){
-    //à implémenter
+    this->m_speed=speed;
 }
 
 //////////OTHER METHODS//////////
 
 void CatMonster::beDamaged(int nbDamages){
     setLife(this->getLife()-nbDamages); //retire nbdégats reçus à nbPV possédés
-    if (!isAlive()){
+    if (!this->isAlive()){
         this->destroy(); //détruit monstre si n'a plus de vie
     }
 }
 
 bool isAlive(){
-    return m_life > 0; //renvoie true si m_vie > 0, false sinon
+    return this->m_life > 0; //renvoie true si m_vie > 0, false sinon
 }
 
 void move(){
-    //à implémenter    
+    while (this->isAlive()){
+      setX(/**/);
+      setY(/**/);
+    }
 }
 
 void destroy(){
-    //à implémenter
+    // Récupérer le gain pour la cagnotte
+    // Retirer de la liste de vecteurs
 }

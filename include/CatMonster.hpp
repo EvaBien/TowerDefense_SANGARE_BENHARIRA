@@ -2,8 +2,17 @@
 #define DEF_CATMONSTER
 
 #include <string>
+#include "Entity.hpp"
 
-class CatMonster{
+
+enum CatMonsterType{
+    KITTEN,
+    FATCAT,
+    JUSTCAT,
+};
+
+
+class CatMonster : public Entity{
     private:
     // Attributs
     int m_life; //nb point de vie
@@ -12,14 +21,14 @@ class CatMonster{
     CatMonsterType type; //type de chat mutant
 
     public:
-    // Méthodes
 
-    CatMonster(); //constructeur
+    CatMonster(CatMonsterType type); //constructeur
 
     //////GETTERS/////
     int getLife();
     int getGainDeath();
     int getSpeed();
+    int getType();
 
     //////SETTERS/////
     void setLife(int newLife);
@@ -27,13 +36,14 @@ class CatMonster{
     void setSpeed(int speed);
 
     //////OTHERS//////
+
+    void afficher();
     void beDamaged(int nbDamages);
-
     void move();
-
     bool isAlive();
-
     void destroy();
+
+
 };
 
 #endif

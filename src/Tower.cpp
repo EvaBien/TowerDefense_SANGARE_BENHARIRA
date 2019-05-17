@@ -20,7 +20,7 @@ Tower (TowerType type){ //on considère 100 comme valeur neutre
         m_portee = 50; //portée très limitée
         m_cadence = 125; //bonne cadence de tir
         m_price = 100;
-    } else { // ie BLUE_MILK 
+    } else { // ie BLUE_MILK
         m_damages = 50; //peu de dégâts
         m_portee =150 ; //bonne portée
         m_cadence = 150; //bonne cadence de tir
@@ -30,28 +30,27 @@ Tower (TowerType type){ //on considère 100 comme valeur neutre
 
 //////////GETTERS//////////
 int getDamages(){
-    int m_damages = this->m_damages;
-    return m_damages;
+    return this->m_damages;
 }
 
 int getPortee(){
-    int m_portee = this->m_gportee;
-    return m_portee;
+    return this->m_gportee;
 }
 
 int getCadence(){
-    int m_cadence = this->m_cadence;
-    return m_cadence;
+    return this->m_cadence;
 }
 
 int getPrice(){
-    int m_price = this->m_price;
-    return m_price;
+    return this->m_price;
 }
 
-int getTowerType(){
-    TowerType type = this->type;
-    return type;
+TowerType getTowerType(){
+    return this->type;
+}
+
+CatMonster getTarget(){
+  return this->target;
 }
 
 /////////SETTERS//////////
@@ -75,13 +74,25 @@ void setTowerType(towerType){
     this->type = towerType;
 }
 
+void setTarget(CatMonster &target){
+  this->target=target;
+}
+
 //////////OTHER METHODS//////////
 
-//void Tower::Damaged(int nbDamages){}
+void afficher(){
+
+}
+
+void searchTarget(){
+
+}
+
+void attack(){
+    this->target.beDamaged(this.getDamages());
+}
 
 bool isBuildable(){
     //à implémenter telle que renvoie true si constructible, false sinon
     //le tout en fonction d'une position déterminée grâce à entité ?
 }
-
-//void destroy(){}

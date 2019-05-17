@@ -2,6 +2,9 @@
 #define DEF_TOWER
 
 #include <string>
+#include "Entity.hpp"
+#include "CatMonster.hpp"
+
 
 enum TowerType{
     RED_LASER,
@@ -18,11 +21,12 @@ class Tower{
     int m_cadence; //vitesse à laquelle tour peut tirer
     int m_price; //prix de la tour
     TowerType type; //type de tour en fonction couleur
+    CatMonster *target;
 
     public:
     // Méthodes
 
-    Tower(); //constructeur
+    Tower(TowerType type); //constructeur
 
     /////GETTERS/////
     int getDamages();
@@ -40,12 +44,12 @@ class Tower{
 
     //////OTHERS//////
 
-    //void Damaged(int nbDamages); à voir si on a besoin de cette fonction
+    void afficher();
+    void searchTarget();
+    void attack();
     bool isBuildable();
 
     //BESOIN FONCTION POUR CHOIX CIBLE DU TIR
-
-    //void destroy();   à voir si on a besoin de cette fonction
 
 };
 
