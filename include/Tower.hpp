@@ -45,7 +45,6 @@ class Tower{
     //////OTHERS//////
 
     void afficher();
-    void searchTarget();
     void attack();
     bool isBuildable();
 

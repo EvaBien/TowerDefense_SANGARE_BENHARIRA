@@ -1,5 +1,5 @@
 #include <string>
-#include "Entity.hpp"
+#include "../include/Entity.hpp"
 
 using namespace std;
 

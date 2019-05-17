@@ -1,5 +1,5 @@
 #include <string>
-#include "CatMonster.hpp"
+#include "../include/CatMonster.hpp"
 
 using namespace std;
 
@@ -74,4 +74,5 @@ void move(){
 void destroy(){
     // Récupérer le gain pour la cagnotte
     // Retirer de la liste de vecteurs
+    // Se retirer de la tour qui ciblait
 }

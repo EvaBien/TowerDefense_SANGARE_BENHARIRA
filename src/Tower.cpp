@@ -1,5 +1,5 @@
 #include <string>
-#include "Tower.hpp"
+#include "../include/Tower.hpp"
 
 
 using namespace std;
@@ -75,7 +75,7 @@ void setTowerType(towerType){
 }
 
 void setTarget(CatMonster &target){
-  this->target=target;
+    this->target=target;
 }
 
 //////////OTHER METHODS//////////
@@ -84,11 +84,14 @@ void afficher(){
 
 }
 
-void searchTarget(){
-
-}
-
 void attack(){
+
+    // Cherche target
+    // Si this->target !=NULL
+        // Shoot monster
+            // Si touché gagne argent
+      // Cherche nouvelle target si morte ou plus dans porté
+
     this->target.beDamaged(this.getDamages());
 }
 
