@@ -12,39 +12,39 @@ Game() {
 
 //////////GETTERS//////////
 
-int getCagnotte(){
+int Game::getCagnotte(){
     return this->m_cagnotte;
 }
 
-int getVague(){
+int Game::getVague(){
     return this->m_nbVague;
 }
 
-int getFinish(){
+int Game::getFinish(){
     return this->m_finished;
 }
 
-// ?? getVecCat(){
+// ?? Game::getVecCat(){
 // }
 //
-// ?? getVecTower(){
+// ??Game:: getVecTower(){
 // }
 //
-// ?? getVecBuilding(){
+// ??Game:: getVecBuilding(){
 // }
 
 /////////SETTERS//////////
 
 
-void SetCagnotte(int money){
+void Game::setCagnotte(int money){
   this->m_cagnotte=money;
 }
 
-void SetVague(int nbVague){
+void Game::setVague(int nbVague){
     this->m_nbVague=nbVague;
 }
 
-int setFinish(){
+int Game::setFinish(){
     this->m_finished = !this->m_finished;
 }
 
@@ -59,11 +59,11 @@ int setFinish(){
 
 //////////OTHER METHODS//////////
 
-void startGame(){
+void Game::startGame(){
   this.setFinish();
 }
 
-void lancerVague(int numVague){
+void Game::lancerVague(int numVague){
   // faire un pourcentage d'apparition des monstres en fonction du num Vague !
   int nbKitten = 0; // A modifier --> Décroissant en fonction du num Vague
   int nbJustCat = 0; // A modifier --> Croissant " "
@@ -72,7 +72,7 @@ void lancerVague(int numVague){
 
 }
 
-bool canBuyTower(TowerType type){
+bool Game::canBuyTower(TowerType type){
   if (type== RED_LASER){
     int price = 100;
   } else if (type==GREEN_GRASS){
@@ -89,7 +89,7 @@ bool canBuyTower(TowerType type){
     return false;
 }
 
-bool canBuyBuilding(BuildingType type){ // A modifier avec les noms des type de building
+bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des type de building
   if (type== ???){
     int price = 100;
   } else if (type==???){
@@ -107,7 +107,7 @@ bool canBuyBuilding(BuildingType type){ // A modifier avec les noms des type de 
 }
     // Récupérer le gain pour la cagnotte
     // Retirer de la liste de vecteurs
-void gameOver(){
+void Game::gameOver(){
     // Destroy toutes les entités
     // Fin de partie
     this.setFinish();

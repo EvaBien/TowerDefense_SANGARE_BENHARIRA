@@ -46,7 +46,7 @@ class Tower{
 
     void afficher();
     void attack();
-    bool isBuildable();
+    bool isBuildable(Position p);
 
 };
 

@@ -4,8 +4,8 @@
 
 using namespace std;
 
-Tower (TowerType type){ //on considère 100 comme valeur neutre
-    if (type == RED_LASER){
+Tower::Tower (TowerType type){ //on considère 100 comme valeur neutre
+    if (this->type == RED_LASER){
         m_damages = 150; //bcp de dégâts
         m_portee = 100;
         m_cadence = 50; //cadence faible
@@ -29,62 +29,62 @@ Tower (TowerType type){ //on considère 100 comme valeur neutre
 }
 
 //////////GETTERS//////////
-int getDamages(){
+int Tower::getDamages(){
     return this->m_damages;
 }
 
-int getPortee(){
+int Tower::getPortee(){
     return this->m_gportee;
 }
 
-int getCadence(){
+int Tower::getCadence(){
     return this->m_cadence;
 }
 
-int getPrice(){
+int Tower::getPrice(){
     return this->m_price;
 }
 
-TowerType getTowerType(){
+TowerType Tower::getTowerType(){
     return this->type;
 }
 
-CatMonster getTarget(){
+CatMonster Tower::getTarget(){
   return this->target;
 }
 
 /////////SETTERS//////////
-void setDamages(int damages){
+void Tower::setDamages(int damages){
     this->m_damages =  damages; //Remplace valeur damages par une nouvelle
 }
 
-void setPortee(int portee){
+void Tower::setPortee(int portee){
     this->m_portee =  portee;
 }
 
-void setCadence(int cadence){
+void Tower::setCadence(int cadence){
     this->m_cadence =  cadence;
 }
 
-void setPrice(int price){
+void Tower::setPrice(int price){
     this->m_price =  price;
 }
 
-void setTowerType(towerType){
+void Tower::setTowerType(towerType){
     this->type = towerType;
 }
 
-void setTarget(CatMonster &target){
+void Tower::setTarget(CatMonster &target){
     this->target=target;
 }
 
 //////////OTHER METHODS//////////
 
-void afficher(){
+void Tower::afficher(){
 
 }
 
-void attack(){
+void Tower::attack(){
 
     // Cherche target
     // Si this->target !=NULL
@@ -95,7 +95,7 @@ void attack(){
     this->target.beDamaged(this.getDamages());
 }
 
-bool isBuildable(){
+bool Tower::isBuildable(Position p){
     //à implémenter telle que renvoie true si constructible, false sinon
     //le tout en fonction d'une position déterminée grâce à entité ?
 }
