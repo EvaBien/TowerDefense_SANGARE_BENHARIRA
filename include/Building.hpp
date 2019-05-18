@@ -7,10 +7,9 @@
 
 
 enum BuildingType{
-    A,
-    B,
-    C,
-    D,
+    RADAR,
+    WEAPON,
+    STOCK,
 };
 
 class Building{
@@ -41,8 +40,8 @@ class Building{
     //////OTHERS//////
 
     void afficher();
-    bool isBuildable();
-    void upgradeTower();
+    bool isBuildable(Position p);
+    void upgradeTower(Tower t);
 
 };
 
