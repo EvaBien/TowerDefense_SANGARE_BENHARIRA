@@ -107,6 +107,10 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
 }
     // Récupérer le gain pour la cagnotte
     // Retirer de la liste de vecteurs
+
+
+    // AJOUTER UNE FONCTION KILL MONSTER ?
+
 void Game::gameOver(){
     // Destroy toutes les entités
     // Fin de partie
