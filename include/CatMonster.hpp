@@ -23,6 +23,7 @@ class CatMonster : public Entity{
     public:
 
     CatMonster(CatMonsterType type); //constructeur
+    ~CatMonster(); // Desctructeur
 
     //////GETTERS/////
     int getLife();

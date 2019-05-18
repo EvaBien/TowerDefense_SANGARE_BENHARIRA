@@ -3,12 +3,12 @@
 
 using namespace std;
 
-CatMonster(CatMonsterType type) {
-    if (type == KITTEN){
+CatMonster::CatMonster(CatMonsterType type) {
+    if (this->type == KITTEN){
         m_life = 60;
         m_speed = 150;
         m_gainDeath = 2;
-    } else if (type == FATCAT) {
+    } else if (this->type == FATCAT) {
         m_life = 140;
         m_speed = 60;
         m_gainDeath = 10;
@@ -19,35 +19,37 @@ CatMonster(CatMonsterType type) {
     }
 }
 
+CatMonster::~CatMonster(){};
+
 //////////GETTERS//////////
 
-int getLife(){
+int CatMonster::getLife(){
     return this->m_life;
 }
 
-int getGainDeath(){
+int CatMonster::getGainDeath(){
     return this->m_gainDeath;
 }
 
-int getSpeed(){
+int CatMonster::getSpeed(){
     return this->m_speed;
 }
 
-int getType(){
+int CatMonster::getType(){
   return this->type;
 }
 
 /////////SETTERS//////////
 
-void setLife(int newLife){
+void CatMonster::setLife(int newLife){
     this->m_life = newLife; //Remplace valeur life par une nouvelle
 }
 
-void setGainDeath(int gain){
+void CatMonster::setGainDeath(int gain){
     this->m_gainDeath=gain;
 }
 
-void setSpeed(int speed){
+void CatMonster::setSpeed(int speed){
     this->m_speed=speed;
 }
 
@@ -60,18 +62,19 @@ void CatMonster::beDamaged(int nbDamages){
     }
 }
 
-bool isAlive(){
+bool CatMonster::isAlive(){
     return this->m_life > 0; //renvoie true si m_vie > 0, false sinon
 }
 
-void move(){
+void CatMonster::move(){
     while (this->isAlive()){
-      setX(/**/);
-      setY(/**/);
+      float newX = ; //??
+      float newY = ; //??
+      this->Position.setPosition(newX, newY); // Completer avec nouveau calcul
     }
 }
 
-void destroy(){
+void CatMonster::destroy(){
     // Récupérer le gain pour la cagnotte
     // Retirer de la liste de vecteurs
     // Se retirer de la tour qui ciblait

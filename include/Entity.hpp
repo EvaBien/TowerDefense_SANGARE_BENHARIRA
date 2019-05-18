@@ -13,6 +13,7 @@ class Entity{
     public:
 
     Entity(Position position,string path); //constructeur
+     ~Entity();
 
 
 //////////GETTERS/////////

@@ -3,38 +3,31 @@
 
 using namespace std;
 
-Entity(float X,float Y,string path) {
-  m_X=X;
-  m_Y=Y;
-  m_string=path;
+ Entity::Entity(Position position,string path) {
+  this->m_position=position;
+  this->m_string=path;
 }
+
+ Entity::~Entity(){0;}
 
 //////////GETTERS/////////
 
-  float getX(){
-    return this->m_X;
+  Position  Entity::getPosition(){
+    return this->m_position;
   }
-  float getY(){
-    return this->m_Y;
-  }
-  string getAffichage(){
+  string  Entity::getAffichage(){
     return this->m_affichage;
   }
 
 ///////////SETTERS////////
 
-  void setX(float X){
-    this->m_X=X;
+  void  Entity::setPosition(Position p){
+    this->m_position=p;
   }
-  void setY(float Y){
-    this->m_Y=Y;
-  }
-  void setAffichage(std::string path){
+  void  Entity::setAffichage(std::string path){
     this->m_affichage=path;
   }
 
 
   ////// OTHER ///////
-  void afficher(){
-
-  }
+  void  Entity::afficher(){}

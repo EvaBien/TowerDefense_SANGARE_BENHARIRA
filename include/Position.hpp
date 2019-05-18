@@ -25,6 +25,7 @@ class Position{
 
       void setX(float X);
       void setY(float Y);
+      void setPosition(float X, float Y);
   //////////OTHERS/////////////
 
       float distance(Position p);

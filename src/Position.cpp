@@ -8,6 +8,7 @@ using namespace stp;
       this->m_Y=Y;
     } //constructeur
 
+    Position::~Position(){}; // destructeur
 
 //////////GETTERS/////////
 
@@ -26,6 +27,11 @@ using namespace stp;
       }
 
       void Position::setY(float Y){
+        this->m_Y=Y;
+      }
+
+      void Position::setPosition(float X, float Y){
+        this->m_X=X;
         this->m_Y=Y;
       }
   //////////OTHERS/////////////
