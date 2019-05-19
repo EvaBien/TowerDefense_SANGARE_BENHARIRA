@@ -22,7 +22,7 @@ class Building{
     public:
     // Méthodes
 
-    Building(BuildingType type); //constructeur
+    Building(BuildingType type, Position p); //constructeur
 
     /////GETTERS/////
     int getGain();

@@ -26,7 +26,7 @@ class Tower{
     public:
     // Méthodes
 
-    Tower(TowerType type); //constructeur
+    Tower(TowerType type, Position p); //constructeur
 
     /////GETTERS/////
     int getDamages();

@@ -4,28 +4,35 @@
 
 using namespace std;
 
-Tower::Tower (TowerType type){ //on considère 100 comme valeur neutre
+Tower::Tower (TowerType type, Position p){ //on considère 100 comme valeur neutre
     if (this->type == RED_LASER){
-        m_damages = 150; //bcp de dégâts
-        m_portee = 100;
-        m_cadence = 50; //cadence faible
-        m_price = 100;
-    } else if (type == GREEN_GRASS) {
-        m_damages = 100; // dégâts moyens
-        m_portee = 50; //faible portée
-        m_cadence = 150; //tirent très rapidement
-        m_price = 100;
+        this->m_damages = 150; //bcp de dégâts
+        this->m_portee = 100;
+        this->m_cadence = 50; //cadence faible
+        this->m_price = 100;
+        this->m_affichage = "../images/towerRed.png";
+    } else if (this->type == GREEN_GRASS) {
+        this->m_damages = 100; // dégâts moyens
+        this->m_portee = 50; //faible portée
+        this->m_cadence = 150; //tirent très rapidement
+        this->m_price = 100;
+        this->m_affichage = "../images/towerGreen.png";
+
     } else if (type == YELLOW_GAMMELLE) { //tirents sur tous les ennemis à leur portée
-        m_damages = 50; //peu de dégâts
-        m_portee = 50; //portée très limitée
-        m_cadence = 125; //bonne cadence de tir
-        m_price = 100;
+        this->m_damages = 50; //peu de dégâts
+        this->m_portee = 50; //portée très limitée
+        this->m_cadence = 125; //bonne cadence de tir
+        this->m_price = 100;
+        this->m_affichage = "../images/towerYellow.png";
+
     } else { // ie BLUE_MILK
-        m_damages = 50; //peu de dégâts
-        m_portee =150 ; //bonne portée
-        m_cadence = 150; //bonne cadence de tir
-        m_price = 100;
+      this->m_damages = 50; //peu de dégâts
+      this->m_portee =150 ; //bonne portée
+      this->m_cadence = 150; //bonne cadence de tir
+      this->m_price = 100;
+        this->m_affichage = "../images/towerBlue.png";
     }
+    this->m_position= p; // Position de l'entrée de la map
 }
 
 //////////GETTERS//////////

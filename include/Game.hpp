@@ -15,7 +15,6 @@ class Game{
     int m_cagnotte;
     int m_nbWave;
     bool m_finished;
-    bool m_doWave
 
     /*Creation des tableaux d'entité*/
     vector<CatMonster*> m_monsters;
@@ -31,7 +30,6 @@ class Game{
     int getCagnotte();
     int getWave();
     bool getFinish();
-    bool getDoWave();
     vector<CatMonster*> getVecCat();
     vector<Tower*> getVecTower();
     vector<Building*> getVecBuilding();
@@ -40,7 +38,6 @@ class Game{
     void setCagnotte(int money);
     void setWave(int vague);
     void setFinish(bool value);
-    void setDoWave(bool value);
     // SET vecteurs monstres
     // SET vecteur tower
     // SET vecteur batiment

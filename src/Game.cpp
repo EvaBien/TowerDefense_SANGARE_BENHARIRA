@@ -7,7 +7,6 @@ Game() {
     this->m_cagnotte = 0;
     this->m_nbWave = 0;
     this->m_finished = false;
-    this->m_doWave = false;
     // Initialiser 3 vecteurs
 
     this->m_monsters = std::vector<CatMonster*> monsters;
@@ -27,9 +26,6 @@ int Game::getWave(){
 
 bool Game::getFinish(){
     return this->m_finished;
-}
-bool Game::getdoWave(){
-    return this->m_doWave;
 }
 
 std::vector<CatMonster*> Game::getVecCat(){
@@ -59,10 +55,6 @@ void Game::setFinish(bool value){
     this->m_finished = value;
 }
 
-void Game::setDoWave(bool value){
-  this->m_doWave = value;
-}
-
 // void setVecCat(){
 // }
 //
@@ -76,8 +68,13 @@ void Game::setDoWave(bool value){
 
 void Game::startGame(){
   this.setFinish(false);
+  int timeWave = 0;
   while (this->getFinish()==false){
-
+      timeWave++;
+      if ((loopCount==60*90)){ // SI ca fait 1min30sec
+        prepareWave(this->getWave());
+        loopCount = 0;
+      }
   }
 }
 
@@ -87,6 +84,10 @@ void Game::prepareWave(int numWave){
   int nbJustCat = 0; // A modifier --> Croissant " "
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
 // Avec un random ?
+
+  for (int i=1; i<=nbKitten, i++){
+    CatMonster* newKitten = new CatMonster(KITTEN);
+  }
 // tab.push_back(entity)
 }
 

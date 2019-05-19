@@ -5,18 +5,23 @@ using namespace std;
 
 CatMonster::CatMonster(CatMonsterType type) {
     if (this->type == KITTEN){
-        m_life = 60;
-        m_speed = 150;
-        m_gainDeath = 2;
+        this->m_life = 60;
+        this->m_speed = 150;
+        this->m_gainDeath = 2;
+        this->m_affichage = "../images/kitten.png";
     } else if (this->type == FATCAT) {
-        m_life = 140;
-        m_speed = 60;
-        m_gainDeath = 10;
+        this->m_life = 140;
+        this->m_speed = 60;
+        this->m_gainDeath = 10;
+        this->m_affichage = "../images/fatcat.png";
     } else {
-        m_life = 100;
-        m_speed = 100;
-        m_gainDeath =5 ;
-    }
+        this->m_life = 100;
+        this->m_speed = 100;
+        this->m_gainDeath =5;
+        this->m_affichage = "../images/justcat.png";
+      }
+      this->m_position= new Position(0,0); // Position de l'entrée de la map
+    // Faire un random si plusieurs entrées
 }
 
 CatMonster::~CatMonster(){};
