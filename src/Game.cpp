@@ -112,8 +112,7 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
     }
     return false;
 }
-    // Récupérer le gain pour la cagnotte
-    // Retirer de la liste de vecteurs
+
 
 
 void Game::constructTower(TowerType type, Position p){
@@ -136,7 +135,22 @@ void Game::constructTower(BuildingType type, Position p){
 }
 
 void Game::gameOver(){
-    // Destroy toutes les entités
-    // Fin de partie
+  if (this->getVague()<20){
+    spdlog::critical("GAME OVER");
+  } else {
+      spdlog::critical("YOU WIN !! ");
+  }
+    // CLEAN //
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    for (CatMonster* cat : this->getVecCat()){
+      delete cat;
+    }
+    for (Tower* tower : this->getVecTower()){
+      delete tower;
+    }
+    for (Building* building : this->getVecBuilding()){
+      delete building;
+    }
     this.setFinish();
 }
