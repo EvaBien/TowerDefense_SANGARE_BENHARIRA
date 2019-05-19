@@ -1,13 +1,11 @@
 #ifndef DEF_GAME
 #define DEF_GAME
 
-#include <string>
 #include "Tower.hpp"
 #include "Building.hpp"
 #include "CatMonster.hpp"
 #include "Windows.hpp"
 #include "Position.hpp"
-
 
 
 
@@ -18,7 +16,7 @@ class Game{
     int m_nbWave;
     bool m_finished;
 
-    /*Creation des tableaux d'entité*/
+    /*Creation des tableaux d'entités*/
     vector<CatMonster*> m_monsters;
     vector<Tower*> m_towers;
     vector<Building*> m_buildings;

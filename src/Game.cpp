@@ -174,21 +174,25 @@ void Game::gameOver(){
   this.setFinish(true);
 
   if (this->getWave()<20){
-    spdlog::critical("GAME OVER");
+    printf("GAME OVER");
   } else {
-      spdlog::critical("YOU WIN !! ");
+      printf("YOU WIN !! ");
   }
     // CLEAN //
     SDL_DestroyWindow(window);
     SDL_Quit();
+
     for (CatMonster* cat : this->getVecCat()){
-      delete cat;
+        this->getVecCat().erase(cat);
+        cat->destroy();
     }
     for (Tower* tower : this->getVecTower()){
-      delete tower;
+        this->getVecTower().erase(tower);
+        tower->destroy();
     }
     for (Building* building : this->getVecBuilding()){
-      delete building;
+          this->getVecBuilding().erase(building);
+          building->destroy();
     }
 
 }

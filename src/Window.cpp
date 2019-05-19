@@ -24,11 +24,9 @@ SDL_Window* init(){
   SDL_GLContext context =  SDL_GL_CreateCONTEXT(window);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0,WINDOW_WIDTH,WINDOW_HEIGHT,0,-1,1);
-  glMatrixMode(GL_MODELVIEW);
-
-  // OU 
-  // gluOrtho2D(0, SDL_GetWindowSurface(window)->w, SDL_GetWindowSurface(window)->h, 0);
+  // glOrtho(0,WINDOW_WIDTH,WINDOW_HEIGHT,0,-1,1);
+  // glMatrixMode(GL_MODELVIEW);
+ gluOrtho2D(0, SDL_GetWindowSurface(window)->w, SDL_GetWindowSurface(window)->h, 0);
 
 
   // Blending
@@ -37,7 +35,6 @@ SDL_Window* init(){
 
   return window;
 }
-
 
 void reshape(SDL_Surface** surface, unsigned int width, unsigned int height)
 {
