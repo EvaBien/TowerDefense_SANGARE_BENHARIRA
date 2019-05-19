@@ -37,10 +37,6 @@ TowerType Building::getBuildingType(){
     return this->type;
 }
 
-string Building::getAffichage(){
-  return this->m_affichage;
-}
-
 /////////SETTERS//////////
 
 void Building::setPortee(int portee){
@@ -54,10 +50,6 @@ void Building::setPrice(int price){
 
 void Building::setBuildingType(towerType type){
     this->type = type;
-}
-
-void Building::setAffichage(string path){
-  this->m_affichage=path;
 }
 
 

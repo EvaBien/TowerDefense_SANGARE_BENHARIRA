@@ -60,10 +60,6 @@ CatMonster Tower::getTarget(){
   return this->target;
 }
 
-string Tower::getAffichage(){
-  return this->m_affichage;
-}
-
 /////////SETTERS//////////
 void Tower::setDamages(int damages){
     this->m_damages =  damages; //Remplace valeur damages par une nouvelle
@@ -89,15 +85,17 @@ void Tower::setTarget(CatMonster &target){
     this->target=target;
 }
 
-void Tower::setAffichage(string path){
-  this->m_affichage=path;
-}
-
 //////////OTHER METHODS//////////
 
 void Tower::afficher(){
     GLuint towerTexture = 0;
     string pathTower = this->getAffichage();
+    towerTexture=loadTexture(pathTower);
+
+    glPushMatrix();
+    glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+    drawPicture(towerTexture, 10, 10); // Taille tower
+    glPopMatrix();
 }
 
 void Tower::attack(){

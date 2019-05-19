@@ -22,7 +22,6 @@ class Tower{
     int m_price; //prix de la tour
     TowerType type; //type de tour en fonction couleur
     CatMonster *target;
-    string m_affichage;
 
     public:
     // Méthodes
@@ -35,7 +34,6 @@ class Tower{
     int getCadence();
     int getPrice();
     int getTowerType();
-    string getAffichage();
 
 
     /////SETTERS/////
@@ -44,7 +42,6 @@ class Tower{
     void setCadence(int cadence);
     void setPrice(int price);
     void setTowerType(TowerType type);
-    void setAffichage(string path);
 
 
     //////OTHERS//////

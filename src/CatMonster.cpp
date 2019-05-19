@@ -43,11 +43,6 @@ int CatMonster::getSpeed(){
 int CatMonster::getType(){
   return this->type;
 }
-
-string CatMonster::getAffichage(){
-  return this->m_affichage;
-}
-
 /////////SETTERS//////////
 
 void CatMonster::setLife(int newLife){
@@ -60,10 +55,6 @@ void CatMonster::setGainDeath(int gain){
 
 void CatMonster::setSpeed(int speed){
     this->m_speed=speed;
-}
-
-void CatMonster::setAffichage(string path){
-  this->m_affichage=path;
 }
 //////////OTHER METHODS//////////
 
