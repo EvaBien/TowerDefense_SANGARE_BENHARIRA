@@ -13,11 +13,11 @@ class Game{
     private:
     // Attributs
     int m_cagnotte;
-    int m_nbVague;
+    int m_nbWave;
     bool m_finished;
+    bool m_doWave
 
     /*Creation des tableaux d'entité*/
-    // Add entité dans tableau --> tab.push_back(entity)
     vector<CatMonster*> m_monsters;
     vector<Tower*> m_towers;
     vector<Building*> m_buildings;
@@ -29,14 +29,18 @@ class Game{
 
     //////GETTERS/////
     int getCagnotte();
-    int getVague();
+    int getWave();
+    bool getFinish();
+    bool getDoWave();
     vector<CatMonster*> getVecCat();
     vector<Tower*> getVecTower();
     vector<Building*> getVecBuilding();
 
     //////SETTERS/////
     void setCagnotte(int money);
-    void setVague(int vague);
+    void setWave(int vague);
+    void setFinish(bool value);
+    void setDoWave(bool value);
     // SET vecteurs monstres
     // SET vecteur tower
     // SET vecteur batiment
@@ -44,7 +48,7 @@ class Game{
     //////OTHERS//////
 
     void startGame();
-    void lancerVague(int numVague);
+    void prepareWave(int numWave);
     bool canBuyTower(TowerType type);
     bool canBuyBuilding(BuildingType type);
     void construcTower(TowerType type, Position p);

@@ -5,8 +5,9 @@ using namespace std;
 
 Game() {
     this->m_cagnotte = 0;
-    this->m_nbVague = 0;
+    this->m_nbWave = 0;
     this->m_finished = false;
+    this->m_doWave = false;
     // Initialiser 3 vecteurs
 
     this->m_monsters = std::vector<CatMonster*> monsters;
@@ -20,12 +21,15 @@ int Game::getCagnotte(){
     return this->m_cagnotte;
 }
 
-int Game::getVague(){
-    return this->m_nbVague;
+int Game::getWave(){
+    return this->m_nbWave;
 }
 
-int Game::getFinish(){
+bool Game::getFinish(){
     return this->m_finished;
+}
+bool Game::getdoWave(){
+    return this->m_doWave;
 }
 
 std::vector<CatMonster*> Game::getVecCat(){
@@ -47,12 +51,16 @@ void Game::setCagnotte(int money){
   this->m_cagnotte=money;
 }
 
-void Game::setVague(int nbVague){
-    this->m_nbVague=nbVague;
+void Game::setWave(int nbWave){
+    this->m_nbWave=nbWave;
 }
 
-int Game::setFinish(){
-    this->m_finished = !this->m_finished;
+void Game::setFinish(bool value){
+    this->m_finished = value;
+}
+
+void Game::setDoWave(bool value){
+  this->m_doWave = value;
 }
 
 // void setVecCat(){
@@ -67,16 +75,19 @@ int Game::setFinish(){
 //////////OTHER METHODS//////////
 
 void Game::startGame(){
-  this.setFinish();
+  this.setFinish(false);
+  while (this->getFinish()==false){
+
+  }
 }
 
-void Game::lancerVague(int numVague){
-  // faire un pourcentage d'apparition des monstres en fonction du num Vague !
-  int nbKitten = 0; // A modifier --> Décroissant en fonction du num Vague
+void Game::prepareWave(int numWave){
+  // faire un pourcentage d'apparition des monstres en fonction du num Wave !
+  int nbKitten = 0; // A modifier --> Décroissant en fonction du num Wave
   int nbJustCat = 0; // A modifier --> Croissant " "
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
 // Avec un random ?
-
+// tab.push_back(entity)
 }
 
 bool Game::canBuyTower(TowerType type){
@@ -135,7 +146,10 @@ void Game::constructTower(BuildingType type, Position p){
 }
 
 void Game::gameOver(){
-  if (this->getVague()<20){
+
+  this.setFinish(true);
+
+  if (this->getWave()<20){
     spdlog::critical("GAME OVER");
   } else {
       spdlog::critical("YOU WIN !! ");
@@ -152,5 +166,5 @@ void Game::gameOver(){
     for (Building* building : this->getVecBuilding()){
       delete building;
     }
-    this.setFinish();
+
 }
