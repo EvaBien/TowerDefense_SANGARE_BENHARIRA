@@ -95,22 +95,25 @@ void Game::startGame(){
 
 void Game::prepareWave(int numWave){
   // faire un pourcentage d'apparition des monstres en fonction du num Wave !
-  int nbKitten = 0; // A modifier --> Décroissant en fonction du num Wave
-  int nbJustCat = 0; // A modifier --> Croissant " "
+  int nbKitten = 2; // A modifier --> Décroissant en fonction du num Wave
+  int nbJustCat = 6; // A modifier --> Croissant " "
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
 // Avec un random ?
 
   for (int i=1; i<=nbKitten, i++){
     CatMonster* newKitten = new CatMonster(KITTEN);
     this->setAddVecCat(newKitten);
+    newKitten->afficher();
   }
   for (int i=1; i<=nbJustCat, i++){
     CatMonster* newJustCat = new CatMonster(JUSTCAT);
     this->setAddVecCat(newJustCat);
+    newJustCat->afficher();
   }
   for (int i=1; i<=nbFatCat, i++){
     CatMonster* newFatCat = new CatMonster(FATCAT);
     this->setAddVecCat(newFatCat);
+    newFatCat->afficher();
   }
 }
 

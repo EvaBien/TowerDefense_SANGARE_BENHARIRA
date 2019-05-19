@@ -24,48 +24,55 @@ Building (BuildingType type, Position p){ // A COMPLETER NE FONCTION DU SUJET
 
 //////////GETTERS//////////
 
-int getPortee(){
+int Building::getPortee(){
     return this->m_gportee;
 }
 
 
-int getPrice(){
+int Building::getPrice(){
     return this->m_price;
 }
 
-TowerType getBuildingType(){
+TowerType Building::getBuildingType(){
     return this->type;
 }
 
+string Building::getAffichage(){
+  return this->m_affichage;
+}
 
 /////////SETTERS//////////
 
-void setPortee(int portee){
+void Building::setPortee(int portee){
     this->m_portee =  portee;
 }
 
 
-void setPrice(int price){
+void Building::setPrice(int price){
     this->m_price =  price;
 }
 
-void setBuildingType(towerType){
-    this->type = towerType;
+void Building::setBuildingType(towerType type){
+    this->type = type;
+}
+
+void Building::setAffichage(string path){
+  this->m_affichage=path;
 }
 
 
 //////////OTHER METHODS//////////
 
-void afficher(){
+void Building::afficher(){
 
 }
 
-bool isBuildable(){
+bool Building::isBuildable(){
     //à implémenter telle que renvoie true si constructible, false sinon
     //le tout en fonction d'une position déterminée grâce à entité ?
 }
 
-void upgradeTower(Tower t){
+void Building::upgradeTower(Tower t){
   if (this->getType()==RADAR){
     t.setPortee(t->getPortee()*(1,25));
   } else   if (this->getType()==WEAPON){

@@ -19,6 +19,7 @@ class CatMonster : public Entity{
     int m_gainDeath; //nb piece reçu par joueur qd monstre meurt
     int m_speed; //vitesse à laquelle monstre se déplace
     CatMonsterType type; //type de chat mutant
+    string m_affichage;
 
     public:
 
@@ -30,18 +31,22 @@ class CatMonster : public Entity{
     int getGainDeath();
     int getSpeed();
     int getType();
+    string getAffichage();
 
     //////SETTERS/////
     void setLife(int newLife);
     void setGainDeath(int gain);
     void setSpeed(int speed);
+    void setAffichage(string path);
+
 
     //////OTHERS//////
 
     void afficher();
     void beDamaged(int nbDamages);
     void move();
-    bool isAlive();
+    bool isAlive();    string m_affichage;
+
     void destroy();
 
 
