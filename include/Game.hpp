@@ -4,7 +4,8 @@
 #include <string>
 #include "Tower.hpp"
 #include "Building.hpp"
-
+#include "CatMonster.hpp"
+#include "Windows.hpp"
 
 
 
@@ -14,9 +15,13 @@ class Game{
     int m_cagnotte;
     int m_nbVague;
     bool m_finished;
-    // Attribut vecteurs monstres
-    // Attribut vecteur tower
-    // Attribut vecteur batiment
+
+    /*Creation des tableaux d'entité*/
+    // Add entité dans tableau --> tab.push_back(entity)
+    vector<CatMonster*> m_monsters;
+    vector<Tower*> m_towers;
+    vector<Building*> m_buildings;
+
 
     public:
 
@@ -25,9 +30,9 @@ class Game{
     //////GETTERS/////
     int getCagnotte();
     int getVague();
-    //GET vecteurs monstres
-    //GET vecteur tower
-    //GET vecteur batiment
+    vector<CatMonster*> getVecCat();
+    vector<Tower*> getVecTower();
+    vector<Building*> getVecBuilding();
 
     //////SETTERS/////
     void setCagnotte(int money);

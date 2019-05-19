@@ -4,10 +4,14 @@
 using namespace std;
 
 Game() {
-    m_cagnotte = 0;
-    m_nbVague = 0;
-    m_finished = false;
+    this->m_cagnotte = 0;
+    this->m_nbVague = 0;
+    this->m_finished = false;
     // Initialiser 3 vecteurs
+
+    this->m_monsters = std::vector<CatMonster*> monsters;
+    this->m_towers = std::vector<Tower*> towers;
+    this->m_buildings = std::vector<Building*> buildings;
 }
 
 //////////GETTERS//////////
@@ -24,14 +28,17 @@ int Game::getFinish(){
     return this->m_finished;
 }
 
-// ?? Game::getVecCat(){
-// }
-//
-// ??Game:: getVecTower(){
-// }
-//
-// ??Game:: getVecBuilding(){
-// }
+std::vector<CatMonster*> Game::getVecCat(){
+  return this->m_monsters;
+}
+
+std::vector<Tower*> Game::getVecTower(){
+  return this->m_towers;
+}
+
+std::vector<Building*> Game::getVecBuilding(){
+  return this->m_buildings;
+}
 
 /////////SETTERS//////////
 
