@@ -55,14 +55,25 @@ void Game::setFinish(bool value){
     this->m_finished = value;
 }
 
-// void setVecCat(){
-// }
-//
-// void setVecTower(){
-// }
-//
-// void setVecBuilding(){
-// }
+void Game::setAddVecCat(CatMonster* cat){
+  this->m_monsters.push_back(cat);
+}
+void Game::setAddVecTower(Tower* tower){
+  this->m_towers.push_back(tower);
+}
+void Game::setAddVecBuilding(Building* building){
+  this->m_buildings.push_back(building);
+}
+
+void Game::setDeleteVecCat(CatMonster* cat){
+  this->m_monsters.push_back(cat);
+}
+void Game::setDeleteVecTower(Tower* tower){
+  this->m_towers.push_back(tower);
+}
+void Game::setDeleteVecBuilding(Building* building){
+  this->m_buildings.push_back(building);
+}
 
 //////////OTHER METHODS//////////
 
@@ -87,8 +98,16 @@ void Game::prepareWave(int numWave){
 
   for (int i=1; i<=nbKitten, i++){
     CatMonster* newKitten = new CatMonster(KITTEN);
+    this->setAddVecCat(newKitten);
   }
-// tab.push_back(entity)
+  for (int i=1; i<=nbJustCat, i++){
+    CatMonster* newJustCat = new CatMonster(JUSTCAT);
+    this->setAddVecCat(newJustCat);
+  }
+  for (int i=1; i<=nbFatCat, i++){
+    CatMonster* newFatCat = new CatMonster(FATCAT);
+    this->setAddVecCat(newFatCat);
+  }
 }
 
 bool Game::canBuyTower(TowerType type){

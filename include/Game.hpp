@@ -38,9 +38,12 @@ class Game{
     void setCagnotte(int money);
     void setWave(int vague);
     void setFinish(bool value);
-    // SET vecteurs monstres
-    // SET vecteur tower
-    // SET vecteur batiment
+    void setAddVecCat(CatMonster* cat);
+    void setAddVecTower(Tower* tower);
+    void setAddVecBuilding(Building* building);
+    void setDeleteVecCat(CatMonster* cat);
+    void setDeleteVecTower(Tower* tower);
+    void setDeleteVecBuilding(Building* building);
 
     //////OTHERS//////
 
