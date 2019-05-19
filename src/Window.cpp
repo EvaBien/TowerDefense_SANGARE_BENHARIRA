@@ -1,0 +1,55 @@
+#include "../include/Window.hpp"
+
+
+SDL_Window* init(){
+  /* Initialisation + Nom fenêtre*/
+  static const unsigned int WINDOW_WIDTH = 1000;
+  static const unsigned int WINDOW_HEIGHT = 700;
+  static const char WINDOW_TITLE[] = "Jeudicat";
+  SDL_Window* window = SDL_CreateWindow(WINDOW_TITLE,SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,WINDOW_WIDTH,WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
+
+  /* Espace fenetre virtuelle */
+  // static const float GL_VIEW_WIDTH = 1200;
+  // static const float GL_VIEW_HEIGHT = 800;
+  static const float GL_VIEW_SIZE = 150.;
+
+  /* Nombre de bits par pixel de la fenetre */
+  static const unsigned int BIT_PER_PIXEL = 32;
+
+  /* Nombre minimal de millisecondes separant le rendu de deux images */
+  static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
+
+  //// Contexte OpenGL ////
+  SDL_GLContext context =  SDL_GL_CreateCONTEXT(window);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrtho(0,WINDOW_WIDTH,WINDOW_HEIGHT,0,-1,1);
+  glMatricMode(GL_MODELVIEW);
+
+  // Blending
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+  return window;
+}
+
+
+void reshape(SDL_Surface** surface, unsigned int width, unsigned int height)
+{
+    SDL_Surface* surface_temp = SDL_SetVideoMode(
+        width, height, BIT_PER_PIXEL,
+        SDL_OPENGL | SDL_GL_DOUBLEBUFFER | SDL_RESIZABLE);
+    if(NULL == surface_temp)
+    {
+        fprintf(
+            stderr,
+            "Erreur lors du redimensionnement de la fenetre.\n");
+        exit(EXIT_FAILURE);
+    }
+    *surface = surface_temp;
+
+    glViewport(0, 0, (*surface)->w, (*surface)->h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+}
