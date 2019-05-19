@@ -42,6 +42,8 @@ class Game{
     void lancerVague(int numVague);
     bool canBuyTower(TowerType type);
     bool canBuyBuilding(BuildingType type);
+    void construcTower(TowerType type, Position p);
+    void construcBuilding(BuildingType type, Position p);
     void gameOver();
 
 };

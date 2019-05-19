@@ -15,7 +15,6 @@ enum BuildingType{
 class Building{
     private:
     // Attributs
-    int m_gain; //nb point de dégat
     int m_portee; //jusqu'à quelle case peut tirer
     int m_price; //prix de la tour
     BuildingType type; //type de tour en fonction couleur
@@ -38,6 +37,7 @@ class Building{
     void setBuildingType(BuildingType type);
 
     //////OTHERS//////
+
 
     void afficher();
     bool isBuildable(Position p);

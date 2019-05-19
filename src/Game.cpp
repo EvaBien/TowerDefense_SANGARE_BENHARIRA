@@ -109,7 +109,24 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
     // Retirer de la liste de vecteurs
 
 
-    // AJOUTER UNE FONCTION KILL MONSTER ?
+void Game::constructTower(TowerType type, Position p){
+  if(canBuyTower()){
+    // Verifier si on peut construire à cet endroit
+    // Si oui construire
+    // Verifier si y'a un building autour
+    // Si oui appeler fonction upgrade tower
+  }
+}
+
+
+void Game::constructTower(BuildingType type, Position p){
+  if(canBuyBuilding()){
+    // Verifier si on peut construire à cet endroit
+    // Si oui construire
+    // Verifier si y'a une tour autour
+    // Si oui appeler fonction upgrade tower
+  }
+}
 
 void Game::gameOver(){
     // Destroy toutes les entités

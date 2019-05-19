@@ -5,21 +5,20 @@
 using namespace std;
 
 Building (BuildingType type){ // A COMPLETER NE FONCTION DU SUJET
-    if (type == ???){
-        m_gain = ; //bcp de dégâts
-    } else if ((type == ???){
-        m_gain = ; //bcp de dégâts
-    } else if (type == ???){
-        m_gain = ; //bcp de dégâts
-    } else { // ie BLUE_MILK
-        m_gain = ; //bcp de dégâts
+    this->type=type;
+    if (type==RADAR){
+      this->m_portee=100;
+      this->p_price=100;
+    } else if (type==WEAPON){
+      this->m_portee=75;
+      this->p_price=75;
+    } else{
+      this->m_portee=50;
+      this->p_price=50;
     }
 }
 
 //////////GETTERS//////////
-int getGain(){
-    return this->m_gain;
-}
 
 int getPortee(){
     return this->m_gportee;
@@ -36,10 +35,6 @@ TowerType getBuildingType(){
 
 
 /////////SETTERS//////////
-
-void setGain(int gain){
-  this->m_gain = gain;
-}
 
 void setPortee(int portee){
     this->m_portee =  portee;
@@ -66,6 +61,12 @@ bool isBuildable(){
     //le tout en fonction d'une position déterminée grâce à entité ?
 }
 
-void upgradeTower(){
-  // Parcourir vecteur des tours, if distance < à jsp quoi, upgrade en fonction du type
+void upgradeTower(Tower t){
+  if (this->getType()==RADAR){
+    t.setPortee(t->getPortee()*(1,25));
+  } else   if (this->getType()==WEAPON){
+      t.setDamages(t->getDamages()*(1,25));
+    } else {
+        t.setCadence(t->getCadence()*(1,25));
+    }
 }
