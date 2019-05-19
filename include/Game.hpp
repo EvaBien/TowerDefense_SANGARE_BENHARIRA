@@ -6,6 +6,8 @@
 #include "Building.hpp"
 #include "CatMonster.hpp"
 #include "Windows.hpp"
+#include "Position.hpp"
+
 
 
 
@@ -41,9 +43,9 @@ class Game{
     void setAddVecCat(CatMonster* cat);
     void setAddVecTower(Tower* tower);
     void setAddVecBuilding(Building* building);
-    void setDeleteVecCat(CatMonster* cat);
-    void setDeleteVecTower(Tower* tower);
-    void setDeleteVecBuilding(Building* building);
+    // void setDeleteVecCat(CatMonster* cat);
+    // void setDeleteVecTower(Tower* tower);
+    // void setDeleteVecBuilding(Building* building);
 
     //////OTHERS//////
 

@@ -19,12 +19,17 @@ SDL_Window* init(){
   /* Nombre minimal de millisecondes separant le rendu de deux images */
   static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 
+
   //// Contexte OpenGL ////
   SDL_GLContext context =  SDL_GL_CreateCONTEXT(window);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glOrtho(0,WINDOW_WIDTH,WINDOW_HEIGHT,0,-1,1);
-  glMatricMode(GL_MODELVIEW);
+  glMatrixMode(GL_MODELVIEW);
+
+  // OU 
+  // gluOrtho2D(0, SDL_GetWindowSurface(window)->w, SDL_GetWindowSurface(window)->h, 0);
+
 
   // Blending
   glEnable(GL_BLEND);

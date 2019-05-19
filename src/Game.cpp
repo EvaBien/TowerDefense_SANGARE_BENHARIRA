@@ -65,15 +65,19 @@ void Game::setAddVecBuilding(Building* building){
   this->m_buildings.push_back(building);
 }
 
-void Game::setDeleteVecCat(CatMonster* cat){
-  this->m_monsters.push_back(cat);
-}
-void Game::setDeleteVecTower(Tower* tower){
-  this->m_towers.push_back(tower);
-}
-void Game::setDeleteVecBuilding(Building* building){
-  this->m_buildings.push_back(building);
-}
+// void Game::setDeleteVecCat(CatMonster* cat){
+//  for (CatMonster* current : this->getVecCat()){
+//    if (current === cat) {
+//      delete cat;
+//    }
+//  }
+// }
+// void Game::setDeleteVecTower(Tower* tower){
+//   this->m_towers.push_back(tower);
+// }
+// void Game::setDeleteVecBuilding(Building* building){
+//   this->m_buildings.push_back(building);
+// }
 
 //////////OTHER METHODS//////////
 
