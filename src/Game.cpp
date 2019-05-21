@@ -4,7 +4,7 @@
 using namespace std;
 
 Game() {
-    this->m_cagnotte = 0;
+    this->m_cagnotte = 100;
     this->m_nbWave = 0;
     this->m_finished = false;
     // Initialiser 3 vecteurs
@@ -85,10 +85,14 @@ void Game::startGame(){
   this.setFinish(false);
   int timeWave = 0;
   while (this->getFinish()==false){
-      timeWave++;
+      this->setWave(timeWave++);
       if ((loopCount==60*90)){ // SI ca fait 1min30sec
         prepareWave(this->getWave());
         loopCount = 0;
+
+        if(this->getWave()>=20){
+          this->gameOver();
+        }
       }
   }
 }
@@ -135,11 +139,9 @@ bool Game::canBuyTower(TowerType type){
 }
 
 bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des type de building
-  if (type== ???){
+  if (type== RADAR){
     int price = 100;
-  } else if (type==???){
-    int price = 100;
-  } else if (type==???){
+  } else if (type==WEAPON){
     int price = 100;
   } else {
     int price = 100;
@@ -155,7 +157,7 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
 
 void Game::constructTower(TowerType type, Position p){
   if(canBuyTower()){
-    // Verifier si on peut construire à cet endroit
+    // Verifier si on peut construire à cet endroit + prix
     // Si oui construire
     // Verifier si y'a un building autour
     // Si oui appeler fonction upgrade tower
@@ -165,7 +167,7 @@ void Game::constructTower(TowerType type, Position p){
 
 void Game::constructTower(BuildingType type, Position p){
   if(canBuyBuilding()){
-    // Verifier si on peut construire à cet endroit
+    // Verifier si on peut construire à cet endroit + prix
     // Si oui construire
     // Verifier si y'a une tour autour
     // Si oui appeler fonction upgrade tower

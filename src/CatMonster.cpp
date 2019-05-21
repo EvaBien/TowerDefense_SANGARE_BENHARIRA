@@ -81,4 +81,5 @@ void CatMonster::destroy(){
     // Récupérer le gain pour la cagnotte
     // Retirer de la liste de vecteurs
     // Se retirer de la tour qui ciblait
+    //ajout pointeur vers game ==> cf constructeur à modif aussi &this dans game à appel constructeur
 }

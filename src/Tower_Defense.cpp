@@ -34,7 +34,8 @@ pour savoir à quel "jeu" le monstre appartient (même s'il n'y en a qu'un à la
 
 => On pourra ainsi accéder à son vecteur pour le supprimer et à la cagnotte quand il meurt
 
-
+==> ajouter entity.hpp
+read ITD à faire
 
 
 */
