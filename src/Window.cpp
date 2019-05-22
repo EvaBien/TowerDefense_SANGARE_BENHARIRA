@@ -1,4 +1,7 @@
 #include "../include/Window.hpp"
+#include <fstream>
+ 
+using namespace std;
 
 
 SDL_Window* init(){
@@ -54,4 +57,8 @@ void reshape(SDL_Surface** surface, unsigned int width, unsigned int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+}
+
+void readITD(){
+
 }
