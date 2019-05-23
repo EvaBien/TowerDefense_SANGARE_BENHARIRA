@@ -60,5 +60,7 @@ void reshape(SDL_Surface** surface, unsigned int width, unsigned int height)
 }
 
 void readITD(){
-
+    /* ifstream pour ouvrir fichier
+    parcourir ligne par ligne
+    en fonction info contenu dans ligne imbrication de if et différente action*/
 }
