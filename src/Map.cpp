@@ -37,3 +37,10 @@ void Map::Scale(int heightPPM, int widthPPM){
     }
 }
 
+void readPPM(){
+    //lire le fichier ppm
+    //ignorer ligne 1
+    // récupérer largeur et hauteur sur ligne 2
+    //ignorer ligne 3
+    //commencer à parcourir et rentrer valeur dans tableau à partir de ligne 4
+}
