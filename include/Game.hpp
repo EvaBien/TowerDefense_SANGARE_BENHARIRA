@@ -53,6 +53,7 @@ class Game{
     bool canBuyBuilding(BuildingType type);
     void construcTower(TowerType type, Position p);
     void construcBuilding(BuildingType type, Position p);
+    void buildable(float x , float y , string typeBuild);
     void gameOver();
 
 };

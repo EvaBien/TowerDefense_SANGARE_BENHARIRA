@@ -2,32 +2,39 @@
 #define DEF_ENTITY
 
 #include <string>
-#include "Position.hpp"
+#include <cmath>
 
 class Entity{
     protected:
 
-      Position position;
+      // Position position;
+      float m_x;
+      float m_y;
       string m_affichage;
 
     public:
 
-    Entity(Position position,string path); //constructeur
+    Entity();
+    Entity(float x, float y);
+    Entity(string path); //constructeur
      ~Entity();
 
 
 //////////GETTERS/////////
 
-      Position getPosition()
+      float getX();
+      float getY();
       string getAffichage();
 
 ///////////SETTERS////////
 
-      void setPosition(Position p;)
+      void setX(float X);
+      void setY(float Y);
       void setAffichage(std::string path);
 
   //////////OTHERS/////////////
 
+    float distance(float xA, float yA, float xB, float yB);
     virtual void afficher()=0;
 
     };

@@ -41,7 +41,6 @@ class Building{
 
 
     void afficher();
-    bool isBuildable(Position p);
     void upgradeTower(Tower t);
 
 };

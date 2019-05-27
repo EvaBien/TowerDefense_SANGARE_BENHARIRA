@@ -67,11 +67,6 @@ void Building::afficher(){
 }
 
 
-bool Building::isBuildable(){
-    //à implémenter telle que renvoie true si constructible, false sinon
-    //le tout en fonction d'une position déterminée grâce à entité ?
-}
-
 void Building::upgradeTower(Tower t){
   if (this->getType()==RADAR){
     t.setPortee(t->getPortee()*(1,25));

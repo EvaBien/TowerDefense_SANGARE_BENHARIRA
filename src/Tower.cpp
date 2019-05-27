@@ -94,7 +94,7 @@ void Tower::afficher(){
 
     glPushMatrix();
     glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
-    drawPicture(towerTexture, 10, 10); // Taille tower
+    drawPicture(towerTexture, 20, 20); // Taille tower
     glPopMatrix();
 }
 
@@ -107,9 +107,4 @@ void Tower::attack(){
       // Cherche nouvelle target si morte ou plus dans porté
 
     this->target.beDamaged(this.getDamages());
-}
-
-bool Tower::isBuildable(Position p){
-    //à implémenter telle que renvoie true si constructible, false sinon
-    //le tout en fonction d'une position déterminée grâce à entité ?
 }
