@@ -1,35 +1,16 @@
-#ifndef DEF_ENFITY
-#define DEF_ENTITY
+#ifndef DEF_TEXTURECONTROLLER
+#define DEF_TEXTURECONTROLLER
 
-#include <string>
-#include "Position.hpp"
+using namespace std;
 
-class Entity{
-    protected:
+bool isLoaded (SDL_Surface* image);
 
-      Position position;
-      string m_affichage;
+void loadTexture(const char* filename);
 
-    public:
+void drawTexture(GLuint textureId, float x, float y); // AL
 
-    Entity(Position position,string path); //constructeur
-     ~Entity();
-
-
-//////////GETTERS/////////
-
-      Position getPosition()
-      string getAffichage();
-
-///////////SETTERS////////
-
-      void setPosition(Position p;)
-      void setAffichage(std::string path);
-
-  //////////OTHERS/////////////
-
-    virtual void afficher()=0;
-
-    };
-
+void free_image(GLuint textureId, SDL_Surface* img); //CL
 #endif
+
+
+//LoadTexture // DrawPicture
