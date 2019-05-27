@@ -18,6 +18,13 @@ int Map::getWidth(){
     return this->m_width;
 }
 
+Case Map::getCase(int position){
+  return this->mCaseMap[position];
+}
+Case* Map::getAllCases(){
+  return this->m_CaseMap;
+}
+
 /////////SETTERS//////////
 
 void Map::setHeight(int newHeight){
@@ -31,6 +38,8 @@ void Map::setWidth(int newWidth){
 void Map::setCaseMap(int position, Case *case){
    this->m_CaseMap[position] = &case;
 }
+
+
 
 //////////OTHER METHODS//////////
 
@@ -56,11 +65,35 @@ void Map::Scale(int heightPPM, int widthPPM){
     }
 }
 
-void readPPM(){
-    //lire le fichier ppm
-    //ignorer ligne 1
-    // récupérer largeur et hauteur sur ligne 2
-    //ignorer ligne 3
+void Map::readPPMHeader(char filename){
+  int width;
+  int height;
+  int current;
+  char version[10];
+  int size;
+
+
+  // open the file to read just the header reading
+	FILE* file = fopen(filename, "r");
+
+    if(!file){
+      printf("ERROR READING PPM \n");
+    } else {
+	// read the rest of header
+	fscanf(file, "%d\n %d\n", width, height);
+
+    // check to see if they were stored properly
+    printf("Width: %d\n", width);
+    printf("Height: %d\n", height);
+
+    //int size = width * height;
+    int size = width*height;
+
+    this->setHeight(height);
+    this->setWidth(width);
+
+}
+
     //commencer à parcourir et rentrer valeur dans tableau à partir de ligne 4
 
     //plutôt tout ranger dans un tableau entre chaque espace
@@ -68,11 +101,16 @@ void readPPM(){
     //puis read tab[2] pour get widthPPM et tab[3] pour get heightPPM
 }
 
-void drawMap(){
+void Map::readPPMMap(){
 
     //puis for i = 4 à i<taille.tab
     //read tab[i] tab[i+1] tab[i+2] pour obtenir RVB de chaque pixel
     // avec cette info on trace en open-gl un carré de 30 par 30 pixel de la couleur souhaité au bon emplacement
     //comment gérer coordonnées ? ==> avec un compte de carré
     //on sait qu'on veut widthPPM carrés de large et heightPPM carrés de haut ==> permets de réaliser des boucles
+}
+
+void Map::initMap(){
+this->readPPMHeader;
+this->readPPMMap
 }
