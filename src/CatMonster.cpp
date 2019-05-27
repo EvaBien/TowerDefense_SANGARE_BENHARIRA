@@ -43,6 +43,10 @@ int CatMonster::getSpeed(){
 int CatMonster::getType(){
   return this->type;
 }
+
+int CatMonster::getGame(){
+  return this->game;
+}
 /////////SETTERS//////////
 
 void CatMonster::setLife(int newLife){
@@ -55,6 +59,10 @@ void CatMonster::setGainDeath(int gain){
 
 void CatMonster::setSpeed(int speed){
     this->m_speed=speed;
+}
+
+void CatMonster::setGame(int &game){
+  this->game=game;
 }
 //////////OTHER METHODS//////////
 
