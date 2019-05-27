@@ -3,9 +3,8 @@
 
 using namespace std;
 
-Map::Map(){
+Map::Map(){}
 
-}
 Map::~Map(){};
 
 //////////GETTERS//////////
@@ -25,6 +24,9 @@ Case* Map::getAllCases(){
   return this->m_CaseMap;
 }
 
+int Map::getSizeCases(){
+  return this->getHeight()*this->getWidth();
+}
 /////////SETTERS//////////
 
 void Map::setHeight(int newHeight){
@@ -39,6 +41,15 @@ void Map::setCaseMap(int position, Case *case){
    this->m_CaseMap[position] = &case;
 }
 
+void Map::setAllCases(Case *tab){
+  this->m_CaseMap=tab;
+}
+
+void Map::setParams(int height, int width){
+  this->m_height=height;
+  this->m_width=width;
+  this->m_CaseMap= new Case[height*width];
+}
 
 
 //////////OTHER METHODS//////////
@@ -65,22 +76,21 @@ void Map::Scale(int heightPPM, int widthPPM){
     }
 }
 
-void Map::readPPMHeader(char filename){
+void Map::readPPM(char* filename){
   int width;
   int height;
   int current;
   char version[10];
   int size;
 
-
   // open the file to read just the header reading
-	FILE* file = fopen(filename, "r");
+	FILE* file = fopen(filename, "rb");
 
     if(!file){
       printf("ERROR READING PPM \n");
     } else {
-	// read the rest of header
-	fscanf(file, "%d\n %d\n", width, height);
+  	// read the rest of header
+  	fscanf(file, "%d\n %d\n", width, height);
 
     // check to see if they were stored properly
     printf("Width: %d\n", width);
@@ -89,28 +99,32 @@ void Map::readPPMHeader(char filename){
     //int size = width * height;
     int size = width*height;
 
-    this->setHeight(height);
-    this->setWidth(width);
+    this->setParams(height, width);
 
-}
-
-    //commencer à parcourir et rentrer valeur dans tableau à partir de ligne 4
-
-    //plutôt tout ranger dans un tableau entre chaque espace
-
-    //puis read tab[2] pour get widthPPM et tab[3] pour get heightPPM
-}
-
-void Map::readPPMMap(){
-
+  }
     //puis for i = 4 à i<taille.tab
     //read tab[i] tab[i+1] tab[i+2] pour obtenir RVB de chaque pixel
     // avec cette info on trace en open-gl un carré de 30 par 30 pixel de la couleur souhaité au bon emplacement
     //comment gérer coordonnées ? ==> avec un compte de carré
     //on sait qu'on veut widthPPM carrés de large et heightPPM carrés de haut ==> permets de réaliser des boucles
+
+
+    fclose(file);
 }
 
 void Map::initMap(){
-this->readPPMHeader;
-this->readPPMMap
+this->readPPM;
+}
+
+
+ColorCase verifColor(int r, int v, int b){ // A compléter en fonction des couleurs
+  if (r==? && v==? && b==?){
+    return OUT;
+  } else if (r==? && v==? && b==?){
+    return IN;
+  } else if (r==? && v==? && b==?){
+    return BUILD ;
+  } else {
+    return PATH;
+  }
 }
