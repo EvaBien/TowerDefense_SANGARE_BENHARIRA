@@ -56,8 +56,16 @@ void Building::setBuildingType(towerType type){
 //////////OTHER METHODS//////////
 
 void Building::afficher(){
+    GLuint buildingTexture = 0;
+    string pathBuilding = this->getAffichage();
+    buildingTexture=loadTexture(pathBuilding);
 
+    glPushMatrix();
+    glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+    drawPicture(buildingTexture, 10, 10); // Taille tower
+    glPopMatrix();
 }
+
 
 bool Building::isBuildable(){
     //à implémenter telle que renvoie true si constructible, false sinon

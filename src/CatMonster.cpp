@@ -58,6 +58,19 @@ void CatMonster::setSpeed(int speed){
 }
 //////////OTHER METHODS//////////
 
+void CatMonster::afficher(){
+    GLuint catTexture = 0;
+    string pathCat = this->getAffichage();
+  catTexture=loadTexture(pathCat);
+
+    glPushMatrix();
+    glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+    drawPicture(catTexture, 10, 10); // Taille tower
+    glPopMatrix();
+}
+
+
+
 void CatMonster::beDamaged(int nbDamages){
     setLife(this->getLife()-nbDamages); //retire nbdégats reçus à nbPV possédés
     if (!this->isAlive()){
