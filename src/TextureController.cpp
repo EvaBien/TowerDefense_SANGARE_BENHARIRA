@@ -27,7 +27,7 @@ GLuint setTexture(const char* filename){
   glBindTexture(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
 
-  glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image->w,imaage->h,0,GL_RGBA,GL_UNSIGNED_BYTE,image->pixels);
+  glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image->w,image->h,0,GL_RGBA,GL_UNSIGNED_BYTE,image->pixels);
 
   glBinTexture(GL_TEXTURE_2D,0);
   SDL_FreeSurface(image);
@@ -54,3 +54,9 @@ void drawPicture(GLuint textureId, float x, float y){
         glDisable(GL_TEXTURE_2D);
       glBindTexture(GL_TEXTURE_2D,0);
 }
+
+
+// void freePicture(GLuint texture, SDL_Surface* picture){
+//   SDL_FreeSurface(picture);
+//   glBindTexture(GL_TEXTURE_2D,0);
+// }

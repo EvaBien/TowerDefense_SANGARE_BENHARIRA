@@ -5,12 +5,9 @@ using namespace std;
 
 bool isLoaded (SDL_Surface* image);
 
-void loadTexture(const char* filename);
+GLuint loadTexture(const char* filename);
 
-void drawTexture(GLuint textureId, float x, float y); // AL
+void drawPicture(GLuint textureId, float x, float y); // AL
 
-void free_image(GLuint textureId, SDL_Surface* img); //CL
+// void free_image(GLuint textureId, SDL_Surface* img); //CL
 #endif
-
-
-//LoadTexture // DrawPicture

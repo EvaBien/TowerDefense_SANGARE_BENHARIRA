@@ -94,7 +94,7 @@ void Tower::afficher(){
 
     glPushMatrix();
     glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
-    drawTexture(towerTexture, 10, 10); // Taille tower
+    drawPicture(towerTexture, 10, 10); // Taille tower
     glPopMatrix();
 }
 
