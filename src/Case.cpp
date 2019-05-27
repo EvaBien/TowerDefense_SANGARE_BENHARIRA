@@ -3,10 +3,14 @@
 using namespace std;
 
 
-  Case::Case(float x , float y){
+  Case::Case(float x , float y, ColorCase color){
     this->m_x=x;
     this->m_y=y;
     this->m_side = 30;
+    this->m_color=color;
+if (this->m_color!=BUILD){
+    this->m_buildable=false;
+  } else {
     this->m_buildable=true;
   }
 

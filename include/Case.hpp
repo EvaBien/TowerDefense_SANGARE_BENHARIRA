@@ -3,6 +3,13 @@
 
 #include <string>
 
+enum ColorCase{
+    OUT,
+    IN,
+    BUILD,
+    PATH,  // Intersection aussi ? 
+};
+
 
 class Case{
     private:
@@ -11,11 +18,12 @@ class Case{
     float m_y; //prix de la tour
     int m_side;
     bool m_buildable;
+    ColorCase m_color;
 
     public:
     // Méthodes
 
-    Case(float x, float y);
+    Case(float x, float y, ColorCase color);
     ~Case();
 
     /////GETTERS/////
