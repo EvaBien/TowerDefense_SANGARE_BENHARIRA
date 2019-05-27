@@ -1,4 +1,4 @@
-#ifndef DEF_CATMONSTER
+  #ifndef DEF_CATMONSTER
 #define DEF_CATMONSTER
 
 #include <string>

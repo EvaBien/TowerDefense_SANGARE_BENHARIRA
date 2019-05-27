@@ -5,8 +5,7 @@
 #include "Building.hpp"
 #include "CatMonster.hpp"
 #include "Windows.hpp"
-#include "Position.hpp"
-
+#include "Map.hpp"
 
 
 class Game{
@@ -51,8 +50,8 @@ class Game{
     void prepareWave(int numWave);
     bool canBuyTower(TowerType type);
     bool canBuyBuilding(BuildingType type);
-    void construcTower(TowerType type, Position p);
-    void construcBuilding(BuildingType type, Position p);
+    void construcTower(TowerType type, Case c);
+    void construcBuilding(BuildingType type, Case c);
     void buildable(float x , float y , string typeBuild);
     void gameOver();
 

@@ -16,7 +16,6 @@ class Entity{
 
     Entity();
     Entity(float x, float y);
-    Entity(string path); //constructeur
      ~Entity();
 
 

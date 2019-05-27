@@ -15,6 +15,7 @@ enum BuildingType{
 class Building{
     private:
     // Attributs
+    Case *m_case;
     int m_portee; //jusqu'à quelle case peut tirer
     int m_price; //prix de la tour
     BuildingType type; //type de tour en fonction couleur
@@ -22,9 +23,10 @@ class Building{
     public:
     // Méthodes
 
-    Building(BuildingType type, Position p); //constructeur
+    Building(BuildingType type, Case &case); //constructeur
 
     /////GETTERS/////
+    Case getCase();
     int getGain();
     int getPortee();
     int getPrice();
@@ -32,6 +34,7 @@ class Building{
 
 
     /////SETTERS/////
+    void setCase(Case &case);
     void setGain(int newGain);
     void setPortee(int portee);
     void setPrice(int price);

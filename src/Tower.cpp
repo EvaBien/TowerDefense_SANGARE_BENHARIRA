@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Tower::Tower (TowerType type, Position p){ //on considère 100 comme valeur neutre
+Tower::Tower (TowerType type, Case &case){ //on considère 100 comme valeur neutre
     if (this->type == RED_LASER){
         this->m_damages = 150; //bcp de dégâts
         this->m_portee = 100;
@@ -30,12 +30,19 @@ Tower::Tower (TowerType type, Position p){ //on considère 100 comme valeur neut
       this->m_portee =150 ; //bonne portée
       this->m_cadence = 150; //bonne cadence de tir
       this->m_price = 100;
-        this->m_affichage = "../images/towerBlue.png";
+      this->m_affichage = "../images/towerBlue.png";
     }
-    this->m_position= p; // Position de l'entrée de la map
+    this->m_case=&case;
+    this->m_x = case->getX(); // Position de l'entrée de la map
+    this->m_y = case->getY(); // Position de l'entrée de la map
 }
 
 //////////GETTERS//////////
+
+Case Tower::getCase(){
+  return this->m_case;
+}
+
 int Tower::getDamages(){
     return this->m_damages;
 }
@@ -61,6 +68,13 @@ CatMonster Tower::getTarget(){
 }
 
 /////////SETTERS//////////
+
+void Tower::setCase(Case &case){
+  this->m_case=case;
+  this->setX(case->getX());
+  this->setY(case->getY());
+}
+
 void Tower::setDamages(int damages){
     this->m_damages =  damages; //Remplace valeur damages par une nouvelle
 }

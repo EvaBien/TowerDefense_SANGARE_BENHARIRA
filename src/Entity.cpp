@@ -3,11 +3,11 @@
 
 using namespace std;
 
- Entity::Entity(string path) {
-  this->m_position=position;
-  this->m_string=path;
-  this->m_x=X;
-  this->m_y=Y;
+
+  Entity::Entity(){}
+  Entity::Entity(float x, float y) {
+  this->m_x=x;
+  this->m_y=y;
 }
 
  Entity::~Entity(){0;}
@@ -15,11 +15,11 @@ using namespace std;
 //////////GETTERS/////////
 
   float Entity::getX(){
-    return this->m_X;
+    return this->m_x;
   }
 
   float Entity::getY(){
-    return this->m_Y;
+    return this->m_y;
   }
   string  Entity::getAffichage(){
     return this->m_affichage;
@@ -27,12 +27,12 @@ using namespace std;
 
 ///////////SETTERS////////
 
-  void Entity::setX(float X){
-    this->m_X=X;
+  void Entity::setX(float x){
+    this->m_x=x;
   }
 
-  void Entity::setY(float Y){
-    this->m_Y=Y;
+  void Entity::setY(float y){
+    this->m_y=y;
   }
   void  Entity::setAffichage(std::string path){
     this->m_affichage=path;
