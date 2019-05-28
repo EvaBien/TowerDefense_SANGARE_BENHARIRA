@@ -43,6 +43,10 @@ int CatMonster::getSpeed(){
 int CatMonster::getType(){
   return this->type;
 }
+
+int CatMonster::getGame(){
+  return this->game;
+}
 /////////SETTERS//////////
 
 void CatMonster::setLife(int newLife){
@@ -56,7 +60,24 @@ void CatMonster::setGainDeath(int gain){
 void CatMonster::setSpeed(int speed){
     this->m_speed=speed;
 }
+
+void CatMonster::setGame(int &game){
+  this->game=game;
+}
 //////////OTHER METHODS//////////
+
+void CatMonster::afficher(){
+    GLuint catTexture = 0;
+    string pathCat = this->getAffichage();
+  catTexture=loadTexture(pathCat);
+
+    glPushMatrix();
+    glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+    drawPicture(catTexture, 10, 10); // Taille tower
+    glPopMatrix();
+}
+
+
 
 void CatMonster::beDamaged(int nbDamages){
     setLife(this->getLife()-nbDamages); //retire nbdégats reçus à nbPV possédés

@@ -121,6 +121,10 @@ void Game::prepareWave(int numWave){
   }
 }
 
+bool Game::Buildable(float x , float y , string typeConstruc){
+  // Verifier la map à la position (float x, float y)
+}
+
 bool Game::canBuyTower(TowerType type){
   if (type== RED_LASER){
     int price = 100;

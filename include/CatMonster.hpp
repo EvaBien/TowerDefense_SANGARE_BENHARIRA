@@ -1,4 +1,4 @@
-#ifndef DEF_CATMONSTER
+  #ifndef DEF_CATMONSTER
 #define DEF_CATMONSTER
 
 #include <string>
@@ -19,6 +19,7 @@ class CatMonster : public Entity{
     int m_gainDeath; //nb piece reçu par joueur qd monstre meurt
     int m_speed; //vitesse à laquelle monstre se déplace
     CatMonsterType type; //type de chat mutant
+    int *game;
 
     public:
 
@@ -30,11 +31,13 @@ class CatMonster : public Entity{
     int getGainDeath();
     int getSpeed();
     int getType();
+    int getGame();
 
     //////SETTERS/////
     void setLife(int newLife);
     void setGainDeath(int gain);
     void setSpeed(int speed);
+    void setGame(int &game);
 
 
     //////OTHERS//////
@@ -42,7 +45,7 @@ class CatMonster : public Entity{
     void afficher();
     void beDamaged(int nbDamages);
     void move();
-    bool isAlive();  
+    bool isAlive();
     void destroy();
 
 
