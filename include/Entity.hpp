@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cmath>
+#include "Case.hpp";
 
 class Entity{
     protected:

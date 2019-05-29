@@ -187,6 +187,7 @@ void Game::constructTower(TowerType type, Case *c){
       tower = new Tower(type, c, &this);
       this->setAddVecTower(tower);
       tower->checkBuilding();
+      tower->afficher();
     } else {
       printf("NOT BUILDABLE ZONE");
     }
@@ -201,6 +202,7 @@ void Game::constructBuilding(BuildingType type, Case *c){
       building = new Building(type, c, &this);
       this->setAddVecBuilding(building);
       building->checkTower();
+      building->afficher();
     } else {
       printf("NOT BUILDABLE ZONE");
     }

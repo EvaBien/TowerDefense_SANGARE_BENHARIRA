@@ -35,6 +35,7 @@ Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme
     this->m_case= case;
     this->m_x = case->getX(); // Position de l'entrée de la map
     this->m_y = case->getY(); // Position de l'entrée de la map
+    case->setBuildable(false);
     this->target=nullptr;
 }
 
