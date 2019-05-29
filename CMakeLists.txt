@@ -6,11 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 # ---------------------------------------- PROJECT FILES
 # récupère tous les fichiers sources
 project(itd_eva)
-file(
-    GLOB_RECURSE
-    MY_SOURCES
-    src
-)
+set(MY_SOURCES src/Building.cpp src/Case.cpp src/CatMonster.cpp src/Entity.cpp src/Game.cpp src/Graph.cpp src/Map.cpp src/TextureController.cpp src/Tower.cpp src/Tower_Defense_Main.cpp src/Window.cpp)
 
 # ---------------------------------------- FIND DEPENDENCIES
 
@@ -26,7 +22,8 @@ endif()
 
 # ----------------------------------------- INCLUDE DIRECTORIES
 # récupère toutes les librairies
-include_directories( # Search directories for .h files
+# Search directories for .h files
+include_directories( 
     ${OPENGL_INCLUDE_DIR}
     ${SDL2_INCLUDE_DIRS}
     include
