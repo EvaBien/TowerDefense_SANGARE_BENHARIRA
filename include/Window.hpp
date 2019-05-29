@@ -13,16 +13,8 @@
 
 
 
-void init();
+void initWindow();
 void reshape(SDL_Surface** surface, unsigned int width, unsigned int height);
 
-/*****************************/
-/********* COULEURS **********/
-/*****************************/
-typedef enum { // Va surement bouger
-    RED,
-    GREEN,
-    BLUE,
-} Couleur;
 
 #endif

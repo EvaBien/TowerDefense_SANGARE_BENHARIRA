@@ -14,6 +14,7 @@ class Game{
     int m_cagnotte;
     int m_nbWave;
     bool m_finished;
+    Map m_map;
 
     /*Creation des tableaux d'entités*/
     vector<CatMonster*> m_monsters;
@@ -29,6 +30,7 @@ class Game{
     int getCagnotte();
     int getWave();
     bool getFinish();
+    Map getMap();
     vector<CatMonster*> getVecCat();
     vector<Tower*> getVecTower();
     vector<Building*> getVecBuilding();
@@ -37,6 +39,7 @@ class Game{
     void setCagnotte(int money);
     void setWave(int vague);
     void setFinish(bool value);
+    void setMap(Map map);
     void setAddVecCat(CatMonster* cat);
     void setAddVecTower(Tower* tower);
     void setAddVecBuilding(Building* building);
