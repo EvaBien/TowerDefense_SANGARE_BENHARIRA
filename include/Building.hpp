@@ -47,7 +47,8 @@ class Building{
 
 
     void afficher();
-    void upgradeTower(Tower t);
+    void upgradeTower(Tower *t);
+    void checkTower();
 
 };
 

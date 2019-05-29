@@ -86,7 +86,7 @@ void Building::afficher(){
 }
 
 
-void Building::upgradeTower(Tower t){
+void Building::upgradeTower(Tower *t){
   if (this->getType()==RADAR){
     t.setPortee(t->getPortee()*(1,25));
   } else   if (this->getType()==WEAPON){
@@ -94,4 +94,8 @@ void Building::upgradeTower(Tower t){
     } else {
         t.setCadence(t->getCadence()*(1,25));
     }
+}
+
+void checkTower(){
+  
 }

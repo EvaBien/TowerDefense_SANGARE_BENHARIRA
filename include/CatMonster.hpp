@@ -31,13 +31,12 @@ class CatMonster : public Entity{
     int getGainDeath();
     int getSpeed();
     int getType();
-    int getGame();
+    Game getGame();
 
     //////SETTERS/////
     void setLife(int newLife);
     void setGainDeath(int gain);
     void setSpeed(int speed);
-    void setGame(Game *game);
 
 
     //////OTHERS//////

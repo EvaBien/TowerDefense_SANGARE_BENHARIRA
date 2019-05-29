@@ -130,3 +130,8 @@ void Tower::attack(){
 
     this->target.beDamaged(this.getDamages(), &this);
 }
+
+
+void Tower::checkBuildings(){
+
+}

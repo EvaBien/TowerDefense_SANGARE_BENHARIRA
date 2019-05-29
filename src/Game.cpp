@@ -172,26 +172,40 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
     return false;
 }
 
+bool Game::canBuildBuilding(BuildingType type, Case *c){
 
+}
 
-void Game::constructTower(TowerType type, Case c){
-  if(canBuyTower()){
-    // Verifier si on peut construire à cet endroit + prix
-    // Si oui construire
-    // Verifier si y'a un building autour
-    // Si oui appeler fonction upgrade tower
-  }
+bool Game::canBuildTower(TowerType type, Case *c){
+
 }
 
 
+void Game::constructTower(TowerType type, Case *c){
+  if(this->canBuyTower()){
+    if (this->canBuildTower(type, c)){
+      tower = new Tower(type, c, &this);
+      this->setAddVecTower(tower);
+      tower->checkBuilding();
+    } else {
+      printf("NOT BUILDABLE ZONE");
+    }
+  } else {
+    printf("NO ENOUGH MONEY");
+  }
+}
 
-
-void Game::constructTower(BuildingType type, Case c){
-  if(canBuyBuilding()){
-    // Verifier si on peut construire à cet endroit + prix
-    // Si oui construire
-    // Verifier si y'a une tour autour
-    // Si oui appeler fonction upgrade tower
+void Game::constructBuilding(BuildingType type, Case *c){
+  if(this->canBuyBuilding()){
+    if (this->canBuildBuildable(type, c)){
+      building = new Building(type, c, &this);
+      this->setAddVecBuilding(building);
+      building->checkTower();
+    } else {
+      printf("NOT BUILDABLE ZONE");
+    }
+  } else {
+    printf("NO ENOUGH MONEY");
   }
 }
 

@@ -149,7 +149,7 @@ void Map::readPPM(char* filename){
 }
 
 void Map::initMap(){
-this->readPPM("./images/ITD");
+this->readPPM("../images/map1.ppm");
 }
 
 
