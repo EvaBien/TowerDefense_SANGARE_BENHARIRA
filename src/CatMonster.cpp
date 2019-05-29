@@ -3,7 +3,7 @@
 
 using namespace std;
 
-CatMonster::CatMonster(CatMonsterType type) {
+CatMonster::CatMonster(CatMonsterType type, Game* game) {
     if (this->type == KITTEN){
         this->m_life = 60;
         this->m_speed = 150;
@@ -20,7 +20,8 @@ CatMonster::CatMonster(CatMonsterType type) {
         this->m_gainDeath =5;
         this->m_affichage = "../images/justcat.png";
       }
-      this->m_position= new Position(0,0); // Position de l'entrée de la map
+      this->m_position= new Position(0,0);
+      this->game=game; // Position de l'entrée de la map
     // Faire un random si plusieurs entrées
 }
 

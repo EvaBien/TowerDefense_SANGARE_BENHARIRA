@@ -14,8 +14,8 @@ int main(int argc, char **argv) {
   if (window == nullptr) {
     cout << "Error window init" << endl;
   }
-  startGame();
-
+  Game myGame = new Game();
+  myGame->startGame();
 
 
   /* Echange du front et du back buffer : mise a jour de la fenetre */

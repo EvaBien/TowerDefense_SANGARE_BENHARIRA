@@ -120,17 +120,17 @@ void Game::prepareWave(int numWave){
 // Avec un random ?
 
   for (int i=1; i<=nbKitten, i++){
-    CatMonster* newKitten = new CatMonster(KITTEN);
+    CatMonster* newKitten = new CatMonster(KITTEN,&this);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
   }
   for (int i=1; i<=nbJustCat, i++){
-    CatMonster* newJustCat = new CatMonster(JUSTCAT);
+    CatMonster* newJustCat = new CatMonster(JUSTCAT,&this);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
   }
   for (int i=1; i<=nbFatCat, i++){
-    CatMonster* newFatCat = new CatMonster(FATCAT);
+    CatMonster* newFatCat = new CatMonster(FATCAT,&this);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
   }

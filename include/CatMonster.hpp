@@ -19,7 +19,7 @@ class CatMonster : public Entity{
     int m_gainDeath; //nb piece reçu par joueur qd monstre meurt
     int m_speed; //vitesse à laquelle monstre se déplace
     CatMonsterType type; //type de chat mutant
-    int *game;
+    Game *game;
 
     public:
 
