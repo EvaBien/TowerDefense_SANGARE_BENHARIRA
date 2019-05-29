@@ -17,7 +17,7 @@ LDFLAGS	= -lSDL -lSDL_image -lGLU -lGL -lglut -lm
 SRC = $(shell find . -name "*.cpp")
 
 #liste des includes, fichiers architecture du projet
-INC = $(shell find . -name "*.h")
+INC = $(shell find . -name "*.hpp")
 
 #liste des fichiers objet du projet
 #substitue les .o aux .cpp pour ts les fichiers dans SRC lors de la recopie
