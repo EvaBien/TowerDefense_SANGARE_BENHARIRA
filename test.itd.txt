@@ -1,8 +1,7 @@
 @ITD 1
 #Il faudra commenter pour expliquer je suppose, là je fais selon le modèle
-#inclure carte_fichier.ppm
-energie 100
-#les lignes suivantes assigne une couleur à chaque type selon RVBcode
+carte map1.ppm
+#les lignes suivantes assignent une couleur à chaque type selon RVBcode
 chemin 255 255 255
 noeud 0 0 0
 construct 255 200 80
@@ -10,9 +9,21 @@ in 0 200 0
 out 200 0 0
 
 #lignes suivantes à ajuster en fonction de notre carte
-5
-0 1 10 20 3 2 4
-1 2 454 103 2 4
-2 4 300 103 3 1 0
-3 3 200 103 0 2
-4 4 200 206 0 2 1
+#nb de noeud sur la carte
+9
+#indice du noeud, sa nature 
+#(1=in) (2=out)(3=coude)(4=intersection)
+#coordonnées x,y (largeur, hauteur)
+#indice des noeuds qui succèdent
+#noeud d'entrée
+0 1 1 2 2
+#noeud de sortie
+1 2 12 10 
+#noeud des chemins
+2 3 6 2 3
+3 3 6 5 4
+4 3 7 5 5
+5 3 7 7 6
+6 3 7 10 7
+7 3 4 10 8
+8 3 4 12 1
