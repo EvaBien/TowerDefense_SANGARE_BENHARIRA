@@ -7,7 +7,7 @@ enum ColorCase{
     OUT,
     IN,
     BUILD,
-    PATH,  // Intersection aussi ? 
+    PATH,  // Intersection aussi ?
 };
 
 
@@ -40,6 +40,7 @@ class Case{
 
     //////OTHERS//////
 
+    float distance(Case c);
 
     // bool idBuildable();
 

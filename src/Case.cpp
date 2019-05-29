@@ -32,7 +32,7 @@ if (this->m_color!=BUILD){
       return this->m_side;
     }
 
-    bool Case::getBuidable(){
+    bool Case::getBuildable(){
       return this->m_buildable;
     }
 
@@ -44,20 +44,15 @@ if (this->m_color!=BUILD){
     void Case::setY(float y){
       this->m_y=y;
     }
-    void setSide(float val){
+    void Case::setSide(float val){
       this->m_side=val;
     }
-    void setBuildable(bool val){
+    void Case::setBuildable(bool val){
       this->m_buildable=val;
     }
 
     //////OTHERS//////
 
-
-    // bool idBuildable(){
-    //   // Différent de getBuildable ?
-    // }
-
-};
-
-#endif
+    float Case::distance(Case c){
+      return sqrt((pow(this->getX()-c->getX(),2))+(pow(this->getY()-c->getY(),2)));
+    }

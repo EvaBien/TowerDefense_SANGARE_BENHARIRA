@@ -97,7 +97,3 @@ void Building::upgradeTower(Tower *t){
         t.setCadence(t->getCadence()*(1,25));
     }
 }
-
-void checkTower(){
-
-}

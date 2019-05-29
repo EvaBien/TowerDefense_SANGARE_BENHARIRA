@@ -176,17 +176,38 @@ bool Game::canBuildBuilding(BuildingType type, Case *c){
 
 }
 
-bool Game::canBuildTower(TowerType type, Case *c){
+bool Game::canBuildTower(TowerType type, Case c){
 
 }
 
+void Game::checkTowers(Building b){
+  int portee = b->getPortee();
+
+  for (Tower* tower : game->getVecTower()){
+      Case tCase = tower->getCase();
+      float distance = tCase->distance(b->getCase());
+        if (distance <= portee){
+          b->upgradeTower(tower);
+        }
+}
+
+void Game::checkBuildings(Tower *t){
+
+  for (Building* building : game->getVecBuilding()){
+    int portee = building->getPortee();
+    Case bCase = building->getCase();
+        float distance = bCase->distance(t->getCase());
+        if (distance <= portee){
+          building->upgradeTower(t);
+        }
+  }
 
 void Game::constructTower(TowerType type, Case *c){
   if(this->canBuyTower()){
     if (this->canBuildTower(type, c)){
       tower = new Tower(type, c, &this);
       this->setAddVecTower(tower);
-      tower->checkBuilding();
+      this->checkBuilding();
       tower->afficher();
     } else {
       printf("NOT BUILDABLE ZONE");

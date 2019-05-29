@@ -56,7 +56,6 @@ class Tower{
 
     void afficher();
     void attack();
-    void checkBuilding();
 
 };
 
