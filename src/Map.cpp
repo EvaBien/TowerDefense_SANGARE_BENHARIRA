@@ -1,5 +1,5 @@
 #include <string>
-#include "../include/CatMonster.hpp"
+#include "../include/Map.hpp"
 
 using namespace std;
 
@@ -124,18 +124,18 @@ void Map::readPPM(char* filename){
 		printf("%s", data);
 	} // end of for loop
 
-for (int y=0; y<height; y++){
-  for (int x=0; x<width; x++){
-    int pixel = (y*width*3)+x*3 // (Garder le x3 ? )
-    int r = data[pixel];
-    int v = data[pixel+1];
-    int b = data[pixel+2];
-    Case = new Case((x*30)+15,(y*30)+15,verifColor(r,v,b));
-    this->m_CaseMap(calculPosition(x,y)) = Case; //
+  for (int y=0; y<height; y++){
+    for (int x=0; x<width; x++){
+      int pixel = (y*width*3)+x*3 // (Garder le x3 ? )
+      int r = data[pixel];
+      int v = data[pixel+1];
+      int b = data[pixel+2];
+      Case = new Case((x*30)+15,(y*30)+15,verifColor(r,v,b));
+      this->m_CaseMap(calculPosition(x,y)) = Case; //
 
-    // Dessiner le carré sur le truc openGL (GLBegin blablabla Mais COMMENT sans récupérer sdl surface ??)
+      // Dessiner le carré sur le truc openGL (GLBegin blablabla Mais COMMENT sans récupérer sdl surface ??)
+    }
   }
-}
 
 
     //puis for i = 4 à i<taille.tab
