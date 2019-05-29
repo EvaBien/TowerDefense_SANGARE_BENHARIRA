@@ -67,9 +67,12 @@ CatMonster Tower::getTarget(){
   return this->target;
 }
 
+Game Tower::getGame(){
+  return this->game;
+}
 /////////SETTERS//////////
 
-void Tower::setCase(Case &case){
+void Tower::setCase(Case *case){
   this->m_case=case;
   this->setX(case->getX());
   this->setY(case->getY());
@@ -91,12 +94,16 @@ void Tower::setPrice(int price){
     this->m_price =  price;
 }
 
-void Tower::setTowerType(towerType){
-    this->type = towerType;
+void Tower::setTowerType(towerType type){
+    this->type = type;
 }
 
-void Tower::setTarget(CatMonster &target){
+void Tower::setTarget(CatMonster *target){
     this->target=target;
+}
+
+void Tower::setGame(Game *game){
+  this->game=game;
 }
 
 //////////OTHER METHODS//////////
@@ -120,5 +127,5 @@ void Tower::attack(){
             // Si touché gagne argent
       // Cherche nouvelle target si morte ou plus dans porté
 
-    this->target.beDamaged(this.getDamages());
+    this->target.beDamaged(this.getDamages(), &this);
 }

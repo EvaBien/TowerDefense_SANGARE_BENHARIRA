@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Building (BuildingType type, Case &case){ // A COMPLETER NE FONCTION DU SUJET
+Building (BuildingType type, Case *case){ // A COMPLETER NE FONCTION DU SUJET
     this->type=type;
     if (type==RADAR){
       this->m_portee=100;
@@ -19,7 +19,7 @@ Building (BuildingType type, Case &case){ // A COMPLETER NE FONCTION DU SUJET
       this->p_price=50;
       this->m_affichage = "../images/buildingStock.png";
     }
-    this->m_case=&case;
+    this->m_case=*case;
     this->m_x = case->getX(); // Position de l'entrée de la map
     this->m_y = case->getY(); // Position de l'entrée de la map
 }
@@ -43,9 +43,12 @@ TowerType Building::getBuildingType(){
     return this->type;
 }
 
+Game Building::getGame(){
+  return this->game;
+}
 /////////SETTERS//////////
 
-void Building::setCase(Case &case){
+void Building::setCase(Case *case){
   this->m_case=case;
   this->setX(case->getX());
   this->setY(case->getY());
@@ -62,6 +65,10 @@ void Building::setPrice(int price){
 
 void Building::setBuildingType(towerType type){
     this->type = type;
+}
+
+void Building::setGame(int *game){
+  this->game=game;
 }
 
 

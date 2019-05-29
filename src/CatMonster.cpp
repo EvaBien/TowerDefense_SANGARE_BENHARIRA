@@ -45,7 +45,7 @@ int CatMonster::getType(){
   return this->type;
 }
 
-int CatMonster::getGame(){
+Game CatMonster::getGame(){
   return this->game;
 }
 /////////SETTERS//////////
@@ -62,7 +62,7 @@ void CatMonster::setSpeed(int speed){
     this->m_speed=speed;
 }
 
-void CatMonster::setGame(int &game){
+void CatMonster::setGame(Game *game){
   this->game=game;
 }
 //////////OTHER METHODS//////////
@@ -80,7 +80,7 @@ void CatMonster::afficher(){
 
 
 
-void CatMonster::beDamaged(int nbDamages){
+void CatMonster::beDamaged(int nbDamages, Tower* tower){
     setLife(this->getLife()-nbDamages); //retire nbdégats reçus à nbPV possédés
     if (!this->isAlive()){
         this->destroy(); //détruit monstre si n'a plus de vie
@@ -95,12 +95,14 @@ void CatMonster::move(){
     while (this->isAlive()){
       float newX = ; //??
       float newY = ; //??
-      this->Position.setPosition(newX, newY); // Completer avec nouveau calcul
+      // this-s>Position.setPosition(newX, newY); // Completer avec nouveau calcul
     }
 }
 
 void CatMonster::destroy(){
-    // Récupérer le gain pour la cagnotte
+  Game* game = this->getGame();
+  int money = game->getCagnotte();
+  game->setCagnotte(money+this->getGainDeath());
     // Retirer de la liste de vecteurs
     // Se retirer de la tour qui ciblait
     //ajout pointeur vers game ==> cf constructeur à modif aussi &this dans game à appel constructeur

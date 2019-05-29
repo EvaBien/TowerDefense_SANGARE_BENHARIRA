@@ -37,13 +37,13 @@ class CatMonster : public Entity{
     void setLife(int newLife);
     void setGainDeath(int gain);
     void setSpeed(int speed);
-    void setGame(int &game);
+    void setGame(Game *game);
 
 
     //////OTHERS//////
 
     void afficher();
-    void beDamaged(int nbDamages);
+    void beDamaged(int nbDamages, Tower *tower);
     void move();
     bool isAlive();
     void destroy();

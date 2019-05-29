@@ -19,6 +19,7 @@ class Building{
     int m_portee; //jusqu'à quelle case peut tirer
     int m_price; //prix de la tour
     BuildingType type; //type de tour en fonction couleur
+    Game *game;
 
     public:
     // Méthodes
@@ -31,6 +32,7 @@ class Building{
     int getPortee();
     int getPrice();
     int getBuildingType();
+    int getGame();
 
 
     /////SETTERS/////
@@ -39,6 +41,7 @@ class Building{
     void setPortee(int portee);
     void setPrice(int price);
     void setBuildingType(BuildingType type);
+    void setGame(Game *game);
 
     //////OTHERS//////
 
