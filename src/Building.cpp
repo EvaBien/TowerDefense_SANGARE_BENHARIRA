@@ -19,9 +19,11 @@ Building (BuildingType type, Case *case, Game *game){ // A COMPLETER NE FONCTION
       this->p_price=50;
       this->m_affichage = "../images/buildingStock.png";
     }
-    this->m_case=*case;
+    this->m_case=case;
     this->m_x = case->getX(); // Position de l'entrée de la map
     this->m_y = case->getY(); // Position de l'entrée de la map
+    case->setBuildable(false);
+
 }
 
 //////////GETTERS//////////
@@ -97,5 +99,5 @@ void Building::upgradeTower(Tower *t){
 }
 
 void checkTower(){
-  
+
 }
