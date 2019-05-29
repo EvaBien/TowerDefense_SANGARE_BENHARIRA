@@ -4,11 +4,12 @@
 # OUR MAKEFILE
 
 #compilateur
-CC     = gcc 
+#CC = gcc
+CXX     = g++
 #Variable Tower_defense
 ITD = TowerDefense_SANGARE_BENHARIRA
 #options de compilation
-CFLAGS = -Wall -O2 -g 
+CPPFLAGS = -Wall -O2 -g 
 #options de l'édition de lien
 LDFLAGS	= -lSDL -lSDL_image -lGLU -lGL -lglut -lm
 
@@ -42,7 +43,7 @@ clean: #Remove all .o files
 
 BIGCLEAN: clean #Remove all "build artifacts" like .o files and the .exe
 ## ATTENTION ==> RISQUE DE TOUT EFFACER ?
-	rm -rf $(ITD)
+	rm -f $(ITD)
 	@echo "File .o and .exe are all removed"
 
 
