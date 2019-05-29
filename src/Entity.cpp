@@ -21,7 +21,7 @@ using namespace std;
   float Entity::getY(){
     return this->m_y;
   }
-  string  Entity::getAffichage(){
+  std:: string  Entity::getAffichage(){
     return this->m_affichage;
   }
 

@@ -11,7 +11,7 @@ class Entity{
       // Position position;
       float m_x;
       float m_y;
-      string m_affichage;
+      std::string m_affichage;
 
     public:
 
