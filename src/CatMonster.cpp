@@ -3,7 +3,7 @@
 
 using namespace std;
 
-CatMonster::CatMonster(CatMonsterType type, Game* game) {
+CatMonster::CatMonster(CatMonsterType type, Game *game) {
     if (this->type == KITTEN){
         this->m_life = 60;
         this->m_speed = 150;
@@ -83,7 +83,7 @@ void CatMonster::afficher(){
 void CatMonster::beDamaged(int nbDamages, Tower* tower){
     setLife(this->getLife()-nbDamages); //retire nbdégats reçus à nbPV possédés
     if (!this->isAlive()){
-        this->destroy(); //détruit monstre si n'a plus de vie
+        this->destroy(tower); //détruit monstre si n'a plus de vie
     }
 }
 
@@ -99,10 +99,21 @@ void CatMonster::move(){
     }
 }
 
-void CatMonster::destroy(){
+void CatMonster::destroy(Tower *t){
   Game* game = this->getGame();
   int money = game->getCagnotte();
   game->setCagnotte(money+this->getGainDeath());
+  std::vector<CatMonster*> vector = game->getVecCat();
+  int i=0;
+  for (i; i<vector.size(); i++){
+    if (vector[i] == this){
+      vector.erase(vector.begin()+i);
+    }
+  }
+  if (this=== t->getTarget()){
+    t->setTarget(nullptr);
+  }
+
     // Retirer de la liste de vecteurs
     // Se retirer de la tour qui ciblait
     //ajout pointeur vers game ==> cf constructeur à modif aussi &this dans game à appel constructeur

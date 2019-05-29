@@ -28,7 +28,7 @@ class Tower{
     public:
     // Méthodes
 
-    Tower(TowerType type, Case &case); //constructeur
+    Tower(TowerType type, Case *case, Game *game); //constructeur
 
     /////GETTERS/////
     Case getCase();
@@ -38,16 +38,18 @@ class Tower{
     int getPrice();
     int getTowerType();
     int getGame();
+    CatMonster getTarget();
 
 
     /////SETTERS/////
-    void setCase(Case &case);
+    void setCase(Case *case);
     void setDamages(int newDamages);
     void setPortee(int portee);
     void setCadence(int cadence);
     void setPrice(int price);
     void setTowerType(TowerType type);
     void setGame(Game *game);
+    void setTarget(CatMonster *target);
 
 
     //////OTHERS//////

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Building (BuildingType type, Case *case){ // A COMPLETER NE FONCTION DU SUJET
+Building (BuildingType type, Case *case, Game *game){ // A COMPLETER NE FONCTION DU SUJET
     this->type=type;
     if (type==RADAR){
       this->m_portee=100;

@@ -119,17 +119,17 @@ void Game::prepareWave(int numWave){
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
 // Avec un random ?
 
-  for (int i=1; i<=nbKitten, i++){
+  for (int i=1; i<=nbKitten; i++){
     CatMonster* newKitten = new CatMonster(KITTEN,&this);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
   }
-  for (int i=1; i<=nbJustCat, i++){
+  for (int i=1; i<=nbJustCat; i++){
     CatMonster* newJustCat = new CatMonster(JUSTCAT,&this);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
   }
-  for (int i=1; i<=nbFatCat, i++){
+  for (int i=1; i<=nbFatCat; i++){
     CatMonster* newFatCat = new CatMonster(FATCAT,&this);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
@@ -174,7 +174,7 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
 
 
 
-void Game::constructTower(TowerType type, Position p){
+void Game::constructTower(TowerType type, Case c){
   if(canBuyTower()){
     // Verifier si on peut construire à cet endroit + prix
     // Si oui construire
@@ -184,7 +184,9 @@ void Game::constructTower(TowerType type, Position p){
 }
 
 
-void Game::constructTower(BuildingType type, Position p){
+
+
+void Game::constructTower(BuildingType type, Case c){
   if(canBuyBuilding()){
     // Verifier si on peut construire à cet endroit + prix
     // Si oui construire
@@ -195,7 +197,7 @@ void Game::constructTower(BuildingType type, Position p){
 
 void Game::gameOver(){
 
-  this.setFinish(true);
+  this->setFinish(true);
 
   if (this->getWave()<20){
     printf("GAME OVER");
@@ -207,7 +209,7 @@ void Game::gameOver(){
     SDL_Quit();
 
     for (CatMonster* cat : this->getVecCat()){
-        this->getVecCat().erase(cat);
+        // this->getVecCat().erase(cat);
         cat->destroy();
     }
     for (Tower* tower : this->getVecTower()){

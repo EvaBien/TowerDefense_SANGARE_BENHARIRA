@@ -46,7 +46,7 @@ class CatMonster : public Entity{
     void beDamaged(int nbDamages, Tower *tower);
     void move();
     bool isAlive();
-    void destroy();
+    void destroy(Tower *t);
 
 
 };

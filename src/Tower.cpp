@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Tower::Tower (TowerType type, Case &case){ //on considère 100 comme valeur neutre
+Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme valeur neutre
     if (this->type == RED_LASER){
         this->m_damages = 150; //bcp de dégâts
         this->m_portee = 100;
@@ -32,9 +32,10 @@ Tower::Tower (TowerType type, Case &case){ //on considère 100 comme valeur neut
       this->m_price = 100;
       this->m_affichage = "../images/towerBlue.png";
     }
-    this->m_case=&case;
+    this->m_case= case;
     this->m_x = case->getX(); // Position de l'entrée de la map
     this->m_y = case->getY(); // Position de l'entrée de la map
+    this->target=nullptr;
 }
 
 //////////GETTERS//////////
