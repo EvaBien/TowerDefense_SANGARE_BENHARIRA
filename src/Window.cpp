@@ -1,10 +1,10 @@
 #include "../include/Window.hpp"
 #include <fstream>
- 
+
 using namespace std;
 
 
-SDL_Window* init(){
+SDL_Window* initWindow(){
   /* Initialisation + Nom fenêtre*/
   static const unsigned int WINDOW_WIDTH = 1000;
   static const unsigned int WINDOW_HEIGHT = 700;

@@ -7,6 +7,7 @@ Game() {
     this->m_cagnotte = 100;
     this->m_nbWave = 0;
     this->m_finished = false;
+    this->m_map;
     // Initialiser 3 vecteurs
 
     this->m_monsters = std::vector<CatMonster*> monsters;
@@ -26,6 +27,10 @@ int Game::getWave(){
 
 bool Game::getFinish(){
     return this->m_finished;
+}
+
+Map Gamme::getMap(){
+  return this->m_map;
 }
 
 std::vector<CatMonster*> Game::getVecCat(){
@@ -55,6 +60,10 @@ void Game::setFinish(bool value){
     this->m_finished = value;
 }
 
+void Game:setMap(Map map){
+  this->m_map=map;
+}
+
 void Game::setAddVecCat(CatMonster* cat){
   this->m_monsters.push_back(cat);
 }
@@ -82,6 +91,12 @@ void Game::setAddVecBuilding(Building* building){
 //////////OTHER METHODS//////////
 
 void Game::startGame(){
+
+  Map myMap = new Map();
+  myMap->initMap();
+  this->setMap(myMap);
+
+
   this.setFinish(false);
   int timeWave = 0;
   while (this->getFinish()==false){

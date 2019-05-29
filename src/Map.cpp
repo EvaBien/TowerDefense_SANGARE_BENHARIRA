@@ -54,17 +54,21 @@ void Map::setParams(int height, int width){
 
 //////////OTHER METHODS//////////
 
-int calculCoordX(int position){
+int calculCoordX(int position){ // Du R
 
 }
-int calculCoordY(int position){
+
+int calculCoordY(int position){ // Du R
 
 }
 
 int calculPosition(float x, float y){
- // calcul la position dans el tableau en fonction du clic
-
- // Exemple  -> Si la position X = 34 et Y <30, sachant qu'une case fait 30, alors on est sur la deuxième case
+  if (x==0){
+    int caseX=0;
+  } else{
+    int caseX = (int)(x/3);
+  }
+return (int)caseX+(int)(3*y);
 }
 
 void Map::Scale(int heightPPM, int widthPPM){
@@ -126,8 +130,8 @@ for (int y=0; y<height; y++){
     int r = data[pixel];
     int v = data[pixel+1];
     int b = data[pixel+2];
-    Case = new Case(x*3,y*3,verifColor(r,v,b));
-    this->m_CaseMap(x*y) = Case;
+    Case = new Case((x*30)+15,(y*30)+15,verifColor(r,v,b));
+    this->m_CaseMap(calculPosition(x,y)) = Case; //
 
     // Dessiner le carré sur le truc openGL (GLBegin blablabla Mais COMMENT sans récupérer sdl surface ??)
   }
@@ -145,7 +149,7 @@ for (int y=0; y<height; y++){
 }
 
 void Map::initMap(){
-this->readPPM;
+this->readPPM("./images/ITD");
 }
 
 
