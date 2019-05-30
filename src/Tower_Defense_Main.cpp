@@ -31,92 +31,157 @@ int main(int argc, char **argv) {
 
   bool TChecked = false;
   bool BChecked = false;
+  bool 1Checked = false;
+  bool 2Checked = false;
+  bool 3Checked = false;
+  bool 4Checked = false;
   int typeChecked = 0;
   SDL_Surface *cursor;
   SDL_Surface *image;
 
 
-          /* Boucle traitant les evenements */
-      SDL_Event e;
-      while(SDL_PollEvent(&e))
-          {
-          /* L'utilisateur ferme la fenetre : */
-          if(e.type == SDL_QUIT)
-          {
-             myGame->gameOver();
-                  break;
+  /* EVENEMENT */
+  SDL_Event e;
+  while(SDL_PollEvent(&e))
+  {
+
+      switch(e.type)
+      {
+
+        case SDL_QUIT:
+        myGame->gameOver();
+        /* Redimensionnement fenetre */
+        case SDL_VIDEORESIZE:
+        reshape(&surface, e.resize.w, e.resize.h);
+        break;
+
+        /* Clic souris */
+        case SDL_MOUSEBUTTONUP:
+        printf("clic en (%d, %d)\n", e.button.x, e.button.y);
+        break;
+
+        /* Touche clavier */
+        case SDL_KEYDOWN:
+        printf("touche pressee (code = %d)\n", e.key.keysym.sym);
+        switch(e.key.keysym.sym){
+
+          /* TOUCHE Q */
+          case SDLK_q:
+          myGame->gameOver();
+          break;
+
+          /* TOUCHE ESC */
+          case SDLK_ESCAPE:
+          myGame->gameOver();
+          break;
+
+          /* TOUCHE T */
+          case SDLK_t:
+          if (TChecked == false && BChecked == false){
+            TChecked = true;
+            1Checked = true;
+          } else if (TChecked ==false && BChecked == true){
+            TChecked = true;
+            BChecked = false;
+          } else if (TChecked == true){
+            TChecked = false;
+          }
+          break;
+
+          /* TOUCHE B */
+          case SDLK_b:
+          if (BChecked == false && TChecked == false){
+            BChecked = true;
+            1Checked = true;
+          } else if (BChecked ==false && TChecked == true){
+            BChecked = true;
+            TChecked = false;
+          } else if (BChecked == true){
+            BChecked = false;
+          }
+          break;
+
+          /* TOUCHE 1 */
+          case SDLK_1:
+
+          1Checked = true;
+          if (2Checked ==true){
+            2Checked = false;
+          }
+          if (3Checked ==true){
+            3Checked = false;
+          }
+          if (4Checked ==true){
+            4Checked = false;
+          }
+          break;
+
+          /*TOUCHE 2*/
+          case SDLK_2:
+          2Checked = true;
+          if (1Checked ==true){
+            1Checked = false;
+          }
+          if (3Checked ==true){
+            3Checked = false;
+          }
+          if (4Checked ==true){
+            4Checked = false;
+          }
+          break;
+
+          /* TOUCHE 3*/
+          case SDLK_3:
+          3Checked = true;
+          if (2Checked ==true){
+            2Checked = false;
+          }
+          if (1Checked ==true){
+            1Checked = false;
+          }
+          if (4Checked ==true){
+            4Checked = false;
           }
 
-          /* L'utilisateur ferme la fenetre : */
-  		if(e.type == SDL_QUIT)
-  	{
-  		myGame->gameOver();
-  		break;
-		}
-
-  	if(	e.type == SDL_KEYDOWN
-  		&& (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_ESCAPE))
-  	{
-  		myGame->gameOver();
-			break;
-		}
-
-          /* EVENEMENTS */
-          switch(e.type)
-          {
-                  /* Redimensionnement fenetre */
-  		            case SDL_VIDEORESIZE:
-                    reshape(&surface, e.resize.w, e.resize.h);
-                  break;
-
-                  /* Clic souris */
-                  case SDL_MOUSEBUTTONUP:
-                    printf("clic en (%d, %d)\n", e.button.x, e.button.y);
-                  break;
-
-                  /* Touche clavier */
-                  case SDL_KEYDOWN:
-                    printf("touche pressee (code = %d)\n", e.key.keysym.sym);
-                    switch(e.key.keysym.sym){
-                      /* TOUCHE T */
-                          // Verif -> TChecked == false;
-                              // Tcheched -> true
-                              //Verif ->BChecked == true -> devient false
-                              // Seconde touche -> e.type = SDL_KEYDOWN
-                              // CASE : 1, 2, 3, 4
-                                // Changer curseur
-                                // If click -> construct (x, y,, towertype)
-                              // CASE : T -> false;
-
-                          // Else Tcheekd devient false ;
+          break;
 
 
-
-
-
-                      /* TOUCHE B */
-
-                    }
-
-
-
-                  default:
-                      break;
-              }
+          /* TOUCHE 4*/
+          case SDLK_4:
+          if (TChecked == false){
+            4Checked = true;
+            if (2Checked ==true){
+              2Checked = false;
+            }
+            if (3Checked ==true){
+              3Checked = false;
+            }
+            if (1Checked ==true){
+              1Checked = false;
+            }
           }
-}
+          break;
 
 
-/*
-PROBLEME :
+          /*DEFAULT*/
+          default :
+          break;
+        }
 
-- Quand on tue un monstre on veut qu'il sorte du vecteur et qu'il
-donne de l'argent à la m_cagnotte
-- La cagnotte et le vecteur sont des attributs de Game
-- Game inclus CatMonster
+        // Verif -> TChecked == false;
+        // Tcheched -> true
+        //Verif ->BChecked == true -> devient false
+        // Seconde touche -> e.type = SDL_KEYDOWN
+        // CASE : 1, 2, 3, 4
+        // Changer curseur
+        // If click -> construct (x, y,, towertype)
+        // CASE : T -> false;
 
-==> ajouter entity.hpp
-read ITD à faire
+        default:
+        break;
+      }
+
+    }
 
 
-*/
+  }
