@@ -55,11 +55,6 @@ int main(int argc, char **argv) {
         reshape(&surface, e.resize.w, e.resize.h);
         break;
 
-        /* Clic souris */
-        case SDL_MOUSEBUTTONUP:
-        printf("clic en (%d, %d)\n", e.button.x, e.button.y);
-        break;
-
         /* Touche clavier */
         case SDL_KEYDOWN:
         printf("touche pressee (code = %d)\n", e.key.keysym.sym);
@@ -148,7 +143,7 @@ int main(int argc, char **argv) {
 
           /* TOUCHE 4*/
           case SDLK_4:
-          if (TChecked == false){
+          if (BChecked == false){
             4Checked = true;
             if (2Checked ==true){
               2Checked = false;
@@ -162,20 +157,40 @@ int main(int argc, char **argv) {
           }
           break;
 
-
           /*DEFAULT*/
           default :
           break;
         }
 
-        // Verif -> TChecked == false;
-        // Tcheched -> true
-        //Verif ->BChecked == true -> devient false
-        // Seconde touche -> e.type = SDL_KEYDOWN
-        // CASE : 1, 2, 3, 4
-        // Changer curseur
-        // If click -> construct (x, y,, towertype)
-        // CASE : T -> false;
+
+        /* Clic souris */
+        case SDL_MOUSEBUTTONUP:
+        printf("clic en (%d, %d)\n", e.button.x, e.button.y);
+
+
+        if (TChecked && 1Checked == true){
+          TowerType typeT = RED_LASER;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (TChecked && 2Checked == true){
+          TowerType typeT = GREEN_GRASS;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (TChecked && 3Checked == true){
+          TowerType typeT = YELLOW_GAMMELLE;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (TChecked && 1Checked == true){
+            TowerType typeT = BLUE_MILK;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (BChecked && 1Checked == true){
+          BuildingType typeB = RADAR;
+          myGame->constructBuilding(typeB, e.button.x, e.button.y);
+        } else if (BChecked && 2Checked == true){
+          BuildingType typeB = WEAPON;
+          myGame->constructBuilding(typeB, e.button.x, e.button.y);
+        } else if (BChecked && 3Checked == true){
+          BuildingType typeB = STOCK;
+          myGame->constructBuilding(typeB, e.button.x, e.button.y);
+        }
+        break;
 
         default:
         break;
