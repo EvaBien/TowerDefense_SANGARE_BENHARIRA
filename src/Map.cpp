@@ -162,13 +162,15 @@ glPopMatrix();
 
 
 ColorCase verifColor(int r, int v, int b){ // A compléter en fonction des couleurs
-  if (r==? && v==? && b==?){
+  if (r==200 && v==0 && b==0){
     return OUT;
-  } else if (r==? && v==? && b==?){
+  } else if (r==0 && v==200 && b==0){
     return IN;
-  } else if (r==? && v==? && b==?){
-    return BUILD ;
-  } else {
+  } else if (r==255 && v==200 && b==200){
+    return BUILD;
+  } else if (r==255 && v==255 && b==255){
     return PATH;
+  } else if (r==0 && v==0 && b==0){
+    return NODE;
   }
 }

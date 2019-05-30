@@ -7,7 +7,8 @@ enum ColorCase{
     OUT,
     IN,
     BUILD,
-    PATH,  // Intersection aussi ?
+    PATH,
+    NODE, 
 };
 
 
