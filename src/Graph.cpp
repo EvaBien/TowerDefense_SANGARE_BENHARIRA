@@ -37,30 +37,6 @@ void Graph::readITD(char* filename){
   // ==> on classe info associées dans un tableau ?
   // ie tant que ligne droite récup info revient à sauter de 5 en 5 case d'un tableau
 
-  // read header
-  fscanf(file,"%s\n", chaine);
-
-  // comment
-  do{
-    fgets(chaine, 255, file);
-  } while (chaine[0]=='#');
-
-  // read the rest of header
-  sscanf(chaine, "%d\n %d\n", &width, &height);
-  // check to see if they were stored properly
-  printf("Width: %d\n", width);
-  printf("Height: %d\n", height);
-
-  // Read 255
-  fscanf(file, "%s\n", chaine);
-
-  // On met le reste dans un tableau de pixels
-  unsigned char* data = new unsigned char[size]
-	// unformatted read of binary pixel data
-	while (fread(data, sizeof(int), width*height*3, file)) {
-		printf("%s", data);
-	} // end of for loop
-
   fclose(file);
 }
 
