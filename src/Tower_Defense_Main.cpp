@@ -7,9 +7,7 @@
 #include "../include/Window.hpp"
 
 // ChangerCurseur
-// SDL_Surface *cursor;
-// SDL_Surface *image;
-//
+
 // SDL_ShowCursor( SDL_DISABLE ); //Standard cursor must be turned off
 //
 // image = SDL_LoadBMP("mouseTower.bmp"); //Load my cursor
@@ -31,82 +29,174 @@ int main(int argc, char **argv) {
   Game myGame = new Game();
   myGame->startGame();
 
-
-        //   /* Boucle traitant les evenements */
-        //   SDL_Event e;
-        //   while(SDL_PollEvent(&e))
-        //   {
-        //       /* L'utilisateur ferme la fenetre : */
-        //       if(e.type == SDL_QUIT)
-        //       {
-        //           loop = 0;
-        //           break;
-        //       }
-        //
-        //       /* L'utilisateur ferme la fenetre : */
-  			// if(e.type == SDL_QUIT)
-  			// {
-  			// 	loop = 0;
-  			// 	break;
-  			// }
-        //
-  			// if(	e.type == SDL_KEYDOWN
-  			// 	&& (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_ESCAPE))
-  			// {
-  			// 	loop = 0;
-  			// 	break;
-  			// }
-        //
-        //       /* Quelques exemples de traitement d'evenements : */
-        //       switch(e.type)
-        //       {
-        //           /* Redimensionnement fenetre */
-  			// 	case SDL_VIDEORESIZE:
-        //               reshape(&surface, e.resize.w, e.resize.h);
-        //               break;
-        //
-        //           /* Clic souris */
-        //           case SDL_MOUSEBUTTONUP:
-        //               printf("clic en (%d, %d)\n", e.button.x, e.button.y);
-        //
-        //               switch(e.button.button)
-        //               {
-        //                   case SDL_BUTTON_LEFT:
-        //                       beta += 5.;
-        //                       break;
-        //
-        //                   case SDL_BUTTON_RIGHT:
-        //                       beta -= 5.;
-        //                       break;
-        //
-        //                   default:
-        //                       break;
-        //               }
-        //               break;
-        //
-        //           /* Touche clavier */
-        //           case SDL_KEYDOWN:
-        //               printf("touche pressee (code = %d)\n", e.key.keysym.sym);
-        //               break;
-        //
-        //           default:
-        //               break;
-        //       }
-        //   }
-
-}
+  bool TChecked = false;
+  bool BChecked = false;
+  bool 1Checked = false;
+  bool 2Checked = false;
+  bool 3Checked = false;
+  bool 4Checked = false;
+  int typeChecked = 0;
+  SDL_Surface *cursor;
+  SDL_Surface *image;
 
 
-/*
-PROBLEME :
+  /* EVENEMENT */
+  SDL_Event e;
+  while(SDL_PollEvent(&e))
+  {
 
-- Quand on tue un monstre on veut qu'il sorte du vecteur et qu'il
-donne de l'argent à la m_cagnotte
-- La cagnotte et le vecteur sont des attributs de Game
-- Game inclus CatMonster
+      switch(e.type)
+      {
 
-==> ajouter entity.hpp
-read ITD à faire
+        case SDL_QUIT:
+        myGame->gameOver();
+        /* Redimensionnement fenetre */
+        case SDL_VIDEORESIZE:
+        reshape(&surface, e.resize.w, e.resize.h);
+        break;
+
+        /* Touche clavier */
+        case SDL_KEYDOWN:
+        printf("touche pressee (code = %d)\n", e.key.keysym.sym);
+        switch(e.key.keysym.sym){
+
+          /* TOUCHE Q */
+          case SDLK_q:
+          myGame->gameOver();
+          break;
+
+          /* TOUCHE ESC */
+          case SDLK_ESCAPE:
+          myGame->gameOver();
+          break;
+
+          /* TOUCHE T */
+          case SDLK_t:
+          if (TChecked == false && BChecked == false){
+            TChecked = true;
+            1Checked = true;
+          } else if (TChecked ==false && BChecked == true){
+            TChecked = true;
+            BChecked = false;
+          } else if (TChecked == true){
+            TChecked = false;
+          }
+          break;
+
+          /* TOUCHE B */
+          case SDLK_b:
+          if (BChecked == false && TChecked == false){
+            BChecked = true;
+            1Checked = true;
+          } else if (BChecked ==false && TChecked == true){
+            BChecked = true;
+            TChecked = false;
+          } else if (BChecked == true){
+            BChecked = false;
+          }
+          break;
+
+          /* TOUCHE 1 */
+          case SDLK_1:
+
+          1Checked = true;
+          if (2Checked ==true){
+            2Checked = false;
+          }
+          if (3Checked ==true){
+            3Checked = false;
+          }
+          if (4Checked ==true){
+            4Checked = false;
+          }
+          break;
+
+          /*TOUCHE 2*/
+          case SDLK_2:
+          2Checked = true;
+          if (1Checked ==true){
+            1Checked = false;
+          }
+          if (3Checked ==true){
+            3Checked = false;
+          }
+          if (4Checked ==true){
+            4Checked = false;
+          }
+          break;
+
+          /* TOUCHE 3*/
+          case SDLK_3:
+          3Checked = true;
+          if (2Checked ==true){
+            2Checked = false;
+          }
+          if (1Checked ==true){
+            1Checked = false;
+          }
+          if (4Checked ==true){
+            4Checked = false;
+          }
+
+          break;
 
 
-*/
+          /* TOUCHE 4*/
+          case SDLK_4:
+          if (BChecked == false){
+            4Checked = true;
+            if (2Checked ==true){
+              2Checked = false;
+            }
+            if (3Checked ==true){
+              3Checked = false;
+            }
+            if (1Checked ==true){
+              1Checked = false;
+            }
+          }
+          break;
+
+          /*DEFAULT*/
+          default :
+          break;
+        }
+
+
+        /* Clic souris */
+        case SDL_MOUSEBUTTONUP:
+        printf("clic en (%d, %d)\n", e.button.x, e.button.y);
+
+
+        if (TChecked && 1Checked == true){
+          TowerType typeT = RED_LASER;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (TChecked && 2Checked == true){
+          TowerType typeT = GREEN_GRASS;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (TChecked && 3Checked == true){
+          TowerType typeT = YELLOW_GAMMELLE;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (TChecked && 1Checked == true){
+            TowerType typeT = BLUE_MILK;
+          myGame->constructTower(typeT, e.button.x, e.button.y);
+        } else if (BChecked && 1Checked == true){
+          BuildingType typeB = RADAR;
+          myGame->constructBuilding(typeB, e.button.x, e.button.y);
+        } else if (BChecked && 2Checked == true){
+          BuildingType typeB = WEAPON;
+          myGame->constructBuilding(typeB, e.button.x, e.button.y);
+        } else if (BChecked && 3Checked == true){
+          BuildingType typeB = STOCK;
+          myGame->constructBuilding(typeB, e.button.x, e.button.y);
+        }
+        break;
+
+        default:
+        break;
+      }
+
+    }
+
+
+  }
