@@ -36,7 +36,7 @@ class Map{
     int calculCoordX(int position);
     int calculCoordY(int position);
     int calculPosition(float x, float y); // Calcul la position de la case dans le tableau en fonction des coordonnées du pixel
-    void Scale( int heightPPM, int widthPPM); //créer carte de la taille souhaitée en fonction du plan fourni en ppm (échelle *30)
+    void Scale( int heightPPM, int widthPPM); //créer carte de la taille souhaitée en fonction du plan fourni en ppm (échelle *100)
     void readPPM(char* filename);
     void initMap();
     ColorCase verifColor(int r, int v, int b);

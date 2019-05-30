@@ -6,9 +6,9 @@ using namespace std;
 
 SDL_Window* initWindow(){
   /* Initialisation + Nom fenêtre*/
-  static const unsigned int WINDOW_WIDTH = 1000;
-  static const unsigned int WINDOW_HEIGHT = 700;
-  static const char WINDOW_TITLE[] = "Jeudicat";
+  static const unsigned int WINDOW_WIDTH = 1200;
+  static const unsigned int WINDOW_HEIGHT = 1800;
+  static const char WINDOW_TITLE[] = "IMACat Attack";
   SDL_Window* window = SDL_CreateWindow(WINDOW_TITLE,SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,WINDOW_WIDTH,WINDOW_HEIGHT, SDL_WINDOW_OPENGL);
 
   /* Espace fenetre virtuelle */

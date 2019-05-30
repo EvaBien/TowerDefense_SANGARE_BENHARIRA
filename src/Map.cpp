@@ -73,8 +73,8 @@ return (int)caseX+(int)(3*y);
 
 void Map::Scale(int heightPPM, int widthPPM){
     if (HeightPPM!=0 && widthPPM!=0){
-        setheight(this->heightPPM*30); //donne hauteur de notre image de ref fois 30
-        setWidth(this->widthPPM*30); //donne largeur de notre image de ref fois 30
+        setheight(this->heightPPM*100); //donne hauteur de notre image de ref fois 100
+        setWidth(this->widthPPM*100); //donne largeur de notre image de ref fois 100
     } else {
         printf("The picture does not have a proper size")
     }
@@ -130,7 +130,7 @@ void Map::readPPM(char* filename){
       int r = data[pixel];
       int v = data[pixel+1];
       int b = data[pixel+2];
-      Case = new Case((x*30)+15,(y*30)+15,verifColor(r,v,b));
+      Case = new Case((x*100)+50,(y*100)+50,verifColor(r,v,b));
       this->m_CaseMap(calculPosition(x,y)) = Case; //
 
       // Dessiner le carré sur le truc openGL (GLBegin blablabla Mais COMMENT sans récupérer sdl surface ??)
@@ -140,7 +140,7 @@ void Map::readPPM(char* filename){
 
     //puis for i = 4 à i<taille.tab
     //read tab[i] tab[i+1] tab[i+2] pour obtenir RVB de chaque pixel
-    // avec cette info on trace en open-gl un carré de 30 par 30 pixel de la couleur souhaité au bon emplacement
+    // avec cette info on trace en open-gl un carré de 100 par 100 pixel de la couleur souhaité au bon emplacement
     //comment gérer coordonnées ? ==> avec un compte de carré
     //on sait qu'on veut widthPPM carrés de large et heightPPM carrés de haut ==> permets de réaliser des boucles
 

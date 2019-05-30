@@ -8,7 +8,7 @@ enum ColorCase{
     IN,
     BUILD,
     PATH,
-    NODE, 
+    NODE,
 };
 
 
