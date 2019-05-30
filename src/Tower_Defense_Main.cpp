@@ -7,9 +7,7 @@
 #include "../include/Window.hpp"
 
 // ChangerCurseur
-// SDL_Surface *cursor;
-// SDL_Surface *image;
-//
+
 // SDL_ShowCursor( SDL_DISABLE ); //Standard cursor must be turned off
 //
 // image = SDL_LoadBMP("mouseTower.bmp"); //Load my cursor
@@ -31,69 +29,81 @@ int main(int argc, char **argv) {
   Game myGame = new Game();
   myGame->startGame();
 
+  bool TChecked = false;
+  bool BChecked = false;
+  int typeChecked = 0;
+  SDL_Surface *cursor;
+  SDL_Surface *image;
 
-        //   /* Boucle traitant les evenements */
-        //   SDL_Event e;
-        //   while(SDL_PollEvent(&e))
-        //   {
-        //       /* L'utilisateur ferme la fenetre : */
-        //       if(e.type == SDL_QUIT)
-        //       {
-        //           loop = 0;
-        //           break;
-        //       }
-        //
-        //       /* L'utilisateur ferme la fenetre : */
-  			// if(e.type == SDL_QUIT)
-  			// {
-  			// 	loop = 0;
-  			// 	break;
-  			// }
-        //
-  			// if(	e.type == SDL_KEYDOWN
-  			// 	&& (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_ESCAPE))
-  			// {
-  			// 	loop = 0;
-  			// 	break;
-  			// }
-        //
-        //       /* Quelques exemples de traitement d'evenements : */
-        //       switch(e.type)
-        //       {
-        //           /* Redimensionnement fenetre */
-  			// 	case SDL_VIDEORESIZE:
-        //               reshape(&surface, e.resize.w, e.resize.h);
-        //               break;
-        //
-        //           /* Clic souris */
-        //           case SDL_MOUSEBUTTONUP:
-        //               printf("clic en (%d, %d)\n", e.button.x, e.button.y);
-        //
-        //               switch(e.button.button)
-        //               {
-        //                   case SDL_BUTTON_LEFT:
-        //                       beta += 5.;
-        //                       break;
-        //
-        //                   case SDL_BUTTON_RIGHT:
-        //                       beta -= 5.;
-        //                       break;
-        //
-        //                   default:
-        //                       break;
-        //               }
-        //               break;
-        //
-        //           /* Touche clavier */
-        //           case SDL_KEYDOWN:
-        //               printf("touche pressee (code = %d)\n", e.key.keysym.sym);
-        //               break;
-        //
-        //           default:
-        //               break;
-        //       }
-        //   }
 
+          /* Boucle traitant les evenements */
+      SDL_Event e;
+      while(SDL_PollEvent(&e))
+          {
+          /* L'utilisateur ferme la fenetre : */
+          if(e.type == SDL_QUIT)
+          {
+             myGame->gameOver();
+                  break;
+          }
+
+          /* L'utilisateur ferme la fenetre : */
+  		if(e.type == SDL_QUIT)
+  	{
+  		myGame->gameOver();
+  		break;
+		}
+
+  	if(	e.type == SDL_KEYDOWN
+  		&& (e.key.keysym.sym == SDLK_q || e.key.keysym.sym == SDLK_ESCAPE))
+  	{
+  		myGame->gameOver();
+			break;
+		}
+
+          /* EVENEMENTS */
+          switch(e.type)
+          {
+                  /* Redimensionnement fenetre */
+  		            case SDL_VIDEORESIZE:
+                    reshape(&surface, e.resize.w, e.resize.h);
+                  break;
+
+                  /* Clic souris */
+                  case SDL_MOUSEBUTTONUP:
+                    printf("clic en (%d, %d)\n", e.button.x, e.button.y);
+                  break;
+
+                  /* Touche clavier */
+                  case SDL_KEYDOWN:
+                    printf("touche pressee (code = %d)\n", e.key.keysym.sym);
+                    switch(e.key.keysym.sym){
+                      /* TOUCHE T */
+                          // Verif -> TChecked == false;
+                              // Tcheched -> true
+                              //Verif ->BChecked == true -> devient false
+                              // Seconde touche -> e.type = SDL_KEYDOWN
+                              // CASE : 1, 2, 3, 4
+                                // Changer curseur
+                                // If click -> construct (x, y,, towertype)
+                              // CASE : T -> false;
+
+                          // Else Tcheekd devient false ;
+
+
+
+
+
+                      /* TOUCHE B */
+
+                    }
+
+
+
+                  default:
+                      break;
+              }
+          }
 }
 
 
