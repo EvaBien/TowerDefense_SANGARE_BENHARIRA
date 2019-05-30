@@ -1,6 +1,8 @@
 #ifndef DEF_MAP
 #define DEF_MAP
 #include "Case.hpp"
+#include "Node.hpp"
+
 
 
 

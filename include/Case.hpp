@@ -2,6 +2,7 @@
 #define DEF_CASE
 
 #include <string>
+#include "Node.hpp"
 
 enum ColorCase{
     OUT,
