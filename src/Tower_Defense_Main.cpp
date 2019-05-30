@@ -6,7 +6,21 @@
 #include "../include/Game.hpp"
 #include "../include/Window.hpp"
 
+// ChangerCurseur
+// SDL_Surface *cursor;
+// SDL_Surface *image;
+//
+// SDL_ShowCursor( SDL_DISABLE ); //Standard cursor must be turned off
+//
+// image = SDL_LoadBMP("mouseTower.bmp"); //Load my cursor
+// image = SDL_LoadBMP("mouseBuilding.bmp"); //Load my cursor
+// SDL_ShowCursor(SDL_ENABLE); // Fait réapparaitre mon curseur
 
+//
+// cursor = SDL_DisplayFormat(image); //Set
+//
+// //Set the color as transparent
+// SDL_SetColorKey(cursor,SDL_SRCCOLORKEY|SDL_RLEACCEL,SDL_MapRGB(cursor->format,0x0,0x0,0x0));
 
 int main(int argc, char **argv) {
 
