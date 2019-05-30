@@ -100,7 +100,6 @@ void Game::startGame(){
   myMap->initMap();
   this->setMap(myMap);
 
-
   this.setFinish(false);
   int timeWave = 0;
   while (this->getFinish()==false){

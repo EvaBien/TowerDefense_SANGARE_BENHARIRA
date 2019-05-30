@@ -150,6 +150,14 @@ void Map::readPPM(char* filename){
 
 void Map::initMap(){
 this->readPPM("../images/map1.ppm");
+GLuint mapTexture = 0;
+string pathMap = "../images/map1.png";
+mapTexture=loadTexture(pathMap);
+
+glPushMatrix();
+glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+drawPicture(mapTexture, this->getHeight(), this->getWidth()); // Taille tower
+glPopMatrix();
 }
 
 
