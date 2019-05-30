@@ -95,7 +95,7 @@ void Map::readPPM(char* filename){
     }
 
 
-    // read hearder
+    // read header
     fscanf(file,"%s\n", chaine);
 
     // comment
@@ -118,7 +118,7 @@ void Map::readPPM(char* filename){
     fscanf(file, "%s\n", chaine);
 
   // On met le reste dans un tableau de pixels
-  unsigned char* data = new unsigned char[size
+  unsigned char* data = new unsigned char[size]
 	// unformatted read of binary pixel data
 	while (fread(data, sizeof(int), width*height*3, file)) {
 		printf("%s", data);
