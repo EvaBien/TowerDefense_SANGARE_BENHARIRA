@@ -267,7 +267,7 @@ int main(int argc, char **argv) {
 
   /************************ OTHER *********************/
    /*
-   - Sound
+   - Sound : PlaySound("myMusic.wav", NULL, SND_ASYNC|SND_FILENAME|SND_LOOP);
    - Monster Disappear
    - Money
    */
