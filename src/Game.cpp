@@ -3,6 +3,8 @@
 #include "../include/CatMonster.hpp"
 #include "../include/Tower.hpp"
 #include "../include/Building.hpp"
+/* Nombre minimal de millisecondes separant le rendu de deux images */
+static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
 Game() {
@@ -102,6 +104,10 @@ void Game::startGame(){
   this.setFinish(false);
   int timeWave = 0;
   while (this->getFinish()==false){
+
+    /* Echange du front et du back buffer : mise a jour de la fenetre */
+      // SDL_GL_SwapBuffers();
+
       this->setWave(timeWave++);
       if ((loopCount==60*90)){ // SI ca fait 1min30sec
         prepareWave(this->getWave());
@@ -136,10 +142,6 @@ void Game::prepareWave(int numWave){
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
   }
-}
-
-bool Game::Buildable(float x , float y , string typeConstruc){
-  // Verifier la map à la position (float x, float y)
 }
 
 bool Game::canBuyTower(TowerType type){
@@ -182,10 +184,10 @@ bool Game::canBuildTower(TowerType type, Case c){
 
 }
 
-void Game::checkTowers(Building b){
+void Game::checkTowers(Building *b){
   int portee = b->getPortee();
 
-  for (Tower* tower : game->getVecTower()){
+  for (Tower* tower : this->getVecTower()){
       Case tCase = tower->getCase();
       float distance = tCase->distance(b->getCase());
         if (distance <= portee){
@@ -195,7 +197,7 @@ void Game::checkTowers(Building b){
 
 void Game::checkBuildings(Tower *t){
 
-  for (Building* building : game->getVecBuilding()){
+  for (Building* building : this->getVecBuilding()){
     int portee = building->getPortee();
     Case bCase = building->getCase();
         float distance = bCase->distance(t->getCase());
@@ -204,13 +206,15 @@ void Game::checkBuildings(Tower *t){
         }
   }
 
-void Game::constructTower(TowerType type, Case *c){
+void Game::constructTower(TowerType type, float x, float y){
+  // Trouver la case c pour x;y
   if(this->canBuyTower()){
     if (this->canBuildTower(type, c)){
       tower = new Tower(type, c, &this);
       this->setAddVecTower(tower);
       this->checkBuilding();
       tower->afficher();
+      tower->attack();
     } else {
       printf("NOT BUILDABLE ZONE");
     }
@@ -219,7 +223,8 @@ void Game::constructTower(TowerType type, Case *c){
   }
 }
 
-void Game::constructBuilding(BuildingType type, Case *c){
+void Game::constructBuilding(BuildingType type, float x, float y){
+  // Trouver la case c pour x;y
   if(this->canBuyBuilding()){
     if (this->canBuildBuildable(type, c)){
       building = new Building(type, c, &this);

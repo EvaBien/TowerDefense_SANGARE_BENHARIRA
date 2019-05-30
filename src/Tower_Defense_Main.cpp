@@ -18,9 +18,6 @@ int main(int argc, char **argv) {
   myGame->startGame();
 
 
-  /* Echange du front et du back buffer : mise a jour de la fenetre */
-          SDL_GL_SwapBuffers();
-
         //   /* Boucle traitant les evenements */
         //   SDL_Event e;
         //   while(SDL_PollEvent(&e))

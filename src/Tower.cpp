@@ -1,7 +1,8 @@
 #include <string>
 #include "../include/Tower.hpp"
 
-
+/* Nombre minimal de millisecondes separant le rendu de deux images */
+static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
 Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme valeur neutre
@@ -35,7 +36,7 @@ Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme
     this->m_case= case;
     this->m_x = case->getX(); // Position de l'entrée de la map
     this->m_y = case->getY(); // Position de l'entrée de la map
-    case->setBuildable(false);
+    this->m_case->setBuildable(false);
     this->target=nullptr;
 }
 
@@ -122,14 +123,39 @@ void Tower::afficher(){
 }
 
 void Tower::attack(){
+  Uint32 startTime = SDL_GetTicks();
+    while(this->getGame()->getFinish()==true){
+    /* Calcul du temps ecoule */
+    Uint32 elapsedTime = SDL_GetTicks() - startTime;
+    /* Si trop peu de temps s'est ecoule, on met en pause le programme */
+    if(elapsedTime < FRAMERATE_MILLISECONDS)
+    {
+        SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
+    }
 
-    // Cherche target
-    // Si this->target !=NULL
-        // Shoot monster
-            // Si touché gagne argent
-      // Cherche nouvelle target si morte ou plus dans porté
+    if (elapsedTime>=10000){ // Toutes les 10 secondes
 
-    this->target.beDamaged(this.getDamages(), &this);
+      while(this->getTarget()==nullptr){
+        this->searchTarget();
+      }
+      this->getTarget()->beDamaged(this->getDamages(), &this);
+      startTime = SDL_GetTicks();
+    }
+  }
 }
 
+void Tower::searchTarget(){
+  int portee = this->getPortee();
+  float distanceMin = portee;
+  CatMonster catClosest = nullptr;
+  Game game=this->getGame();
+
+  for (CatMonster* cat : game->getVecCat()){
+      Case cCase = cat->getCase();
+      float distanceCurrent = cCase->distance(this->getCase());
+        if (distanceCurrent < distanceMin){
+          distanceMin= distanceCurrent;
+          catClosest = cat;
+        }
+        this->setTarget(catClosest);
 }
