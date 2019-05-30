@@ -15,6 +15,7 @@ out 200 0 0
 #(1=in) (2=out)(3=coude)(4=intersection)
 #coordonnées x,y (largeur, hauteur)
 #indice des noeuds qui succèdent
+
 #noeud d'entrée
 0 1 1 2 2
 #noeud de sortie
