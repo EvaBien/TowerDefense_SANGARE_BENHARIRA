@@ -5,6 +5,8 @@
 #include "Entity.hpp"
 #include "Tower.hpp"
 
+class Game;
+
 
 enum BuildingType{
     RADAR,

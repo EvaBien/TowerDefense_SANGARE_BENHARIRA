@@ -1,12 +1,11 @@
 #ifndef DEF_GAME
 #define DEF_GAME
 
-#include "Tower.hpp"
-#include "Building.hpp"
-#include "CatMonster.hpp"
-#include "Windows.hpp"
 #include "Map.hpp"
 
+class CatMonster;
+class Tower;
+class Building;
 
 class Game{
     private:

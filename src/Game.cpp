@@ -1,6 +1,8 @@
 #include <string>
 #include "../include/Game.hpp"
-
+#include "../include/CatMonster.hpp"
+#include "../include/Tower.hpp"
+#include "../include/Building.hpp"
 using namespace std;
 
 Game() {

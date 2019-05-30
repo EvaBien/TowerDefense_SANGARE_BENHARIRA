@@ -4,6 +4,7 @@
 #include <string>
 #include "Entity.hpp"
 
+class Game;
 
 enum CatMonsterType{
     KITTEN,

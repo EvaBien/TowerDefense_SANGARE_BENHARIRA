@@ -5,6 +5,8 @@
 #include "Entity.hpp"
 #include "CatMonster.hpp"
 
+class Game;
+
 
 enum TowerType{
     RED_LASER,
