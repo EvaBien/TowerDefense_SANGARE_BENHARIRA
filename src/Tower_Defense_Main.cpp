@@ -57,20 +57,6 @@ int main(int argc, char **argv) {
           myGame->gameOver();
           break;
 
-          // ChangerCurseur
-
-          //  //Standard cursor must be turned off
-          //
-          // image = SDL_LoadBMP("mouseTower.bmp"); //Load my cursor
-          // image = SDL_LoadBMP("mouseBuilding.bmp"); //Load my cursor
-          // SDL_ShowCursor(SDL_ENABLE); // Fait réapparaitre mon curseur
-
-          //
-          // cursor = SDL_DisplayFormatAlpha(image); //Set
-          //
-          // //Set the color as transparent
-          // SDL_SetColorKey(cursor,SDL_SRCCOLORKEY|SDL_RLEACCEL,SDL_MapRGB(cursor->format,0x0,0x0,0x0));
-
           /* TOUCHE T */
           case SDLK_t:
           if (TChecked == false && BChecked == false){
@@ -250,8 +236,44 @@ int main(int argc, char **argv) {
         default:
         break;
       }
-
     }
-
-
   }
+
+
+
+
+/*******************************************************/
+/************************ TO DO  ***********************/
+/*******************************************************/
+
+/************************ DISPLAY *********************/
+ /*
+ - Cursors
+ - Map
+ - Cat
+ - Tower
+ - Building
+ */
+
+ /********************** GRAPH/PATH *******************/
+  /*
+  - Graph-Nodes functions
+  - Move Monster() (bouger + chercher noeud)
+  - Brassenham
+  - Dijkstra
+  - Read ITD
+  - CHeck Map x ITD
+  */
+
+  /************************ OTHER *********************/
+   /*
+   - Sound
+   - Monster Disappear
+   - Money
+   */
+
+
+
+ /*******************************************************/
+ /*******************************************************/
+ /*******************************************************/
