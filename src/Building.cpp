@@ -79,7 +79,7 @@ void Building::setGame(Game *game){
 void Building::afficher(){
   GLuint buildingTexture = 0;
   string pathBuilding = this->getAffichage();
-  buildingTexture=loadTexture(pathBuilding);
+  buildingTexture=loadTexture(pathBuilding.c_str());
 
   glPushMatrix();
   glTranslatef(this->getTile()->getX(),this->getTile()->getY(),0);
