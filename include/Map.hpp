@@ -3,9 +3,6 @@
 #include "Case.hpp"
 #include "Node.hpp"
 
-
-
-
 class Map{
 private:
   // Attributs
@@ -13,7 +10,7 @@ private:
   int m_width;
   Case m_CaseMap[];
   PathNode m_listNodes;
-
+  
 public:
 
   Map(); //constructeur

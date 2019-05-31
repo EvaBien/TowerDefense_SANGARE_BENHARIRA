@@ -7,50 +7,50 @@ class Map;
 class Case;
 
 enum TypeNode{
-    ENTREE,
-    SORTIE,
-    TWIST,
-    INTER,
+  ENTREE,
+  SORTIE,
+  TWIST,
+  INTER,
 };
 
 class Node{
-    private:
-    // Attributs
-    Case *m_case;
-    TypeNode type;
-    int index;
-    int successor;
-    Map *map;
-    Node *next;
+private:
+  // Attributs
+  Case *m_case;
+  TypeNode type;
+  int index;
+  int successor;
+  Map *map;
+  Node *next;
 
 
 
-    public:
+public:
 
-    Node(int type, float x, float y); //constructeur
-    ~Node();
+  Node(int type, float x, float y); //constructeur
+  ~Node();
 
-    //////GETTERS/////
-    Case getCase();
-    TypeNode getType();
-    int getIndex();
-    int getSuccessor();
-    Map* getMap();
-    Node* getNext();
+  //////GETTERS/////
+  Case getCase();
+  TypeNode getType();
+  int getIndex();
+  int getSuccessor();
+  Map* getMap();
+  Node* getNext();
 
-    //////SETTERS/////
-    void setCase (Case *c);
-    void setType(TypeNode type);
-    void setIndex(int index);
-    void setSuccessor(int successor);
-    void setMap(Map *map);
-    void setNext(Node *node);
-    //////OTHERS/////
+  //////SETTERS/////
+  void setCase (Case *c);
+  void setType(TypeNode type);
+  void setIndex(int index);
+  void setSuccessor(int successor);
+  void setMap(Map *map);
+  void setNext(Node *node);
+  //////OTHERS/////
 };
 
 class PathNode{
 
-  private:
+private:
   int m_lenght;
   Node *head;
   Node *end;

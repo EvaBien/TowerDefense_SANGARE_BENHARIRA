@@ -11,8 +11,6 @@
 #include <glad/glad.h>
 #include <spdlog/spdlog.h>
 
-
-
 void initWindow();
 void reshape(SDL_Surface** surface, unsigned int width, unsigned int height);
 

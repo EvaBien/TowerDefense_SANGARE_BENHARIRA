@@ -9,56 +9,56 @@ class Game;
 
 
 enum TowerType{
-    RED_LASER,
-    GREEN_GRASS,
-    YELLOW_GAMMELLE,
-    BLUE_MILK,
+  RED_LASER,
+  GREEN_GRASS,
+  YELLOW_GAMMELLE,
+  BLUE_MILK,
 };
 
 class Tower{
-    private:
-    // Attributs
-    Case *m_case;
-    int m_damages; //nb point de dégat
-    int m_portee; //jusqu'à quelle case peut tirer
-    int m_cadence; //vitesse à laquelle tour peut tirer
-    int m_price; //prix de la tour
-    TowerType type; //type de tour en fonction couleur
-    CatMonster *target;
-    Game *game;
+private:
+  // Attributs
+  Case *m_case;
+  int m_damages; //nb point de dégat
+  int m_portee; //jusqu'à quelle case peut tirer
+  int m_cadence; //vitesse à laquelle tour peut tirer
+  int m_price; //prix de la tour
+  TowerType type; //type de tour en fonction couleur
+  CatMonster *target;
+  Game *game;
 
-    public:
-    // Méthodes
+public:
+  // Méthodes
 
-    Tower(TowerType type, Case *case, Game *game); //constructeur
+  Tower(TowerType type, Case *case, Game *game); //constructeur
 
-    /////GETTERS/////
-    Case getCase();
-    int getDamages();
-    int getPortee();
-    int getCadence();
-    int getPrice();
-    int getTowerType();
-    int getGame();
-    CatMonster getTarget();
-
-
-    /////SETTERS/////
-    void setCase(Case *case);
-    void setDamages(int newDamages);
-    void setPortee(int portee);
-    void setCadence(int cadence);
-    void setPrice(int price);
-    void setTowerType(TowerType type);
-    void setGame(Game *game);
-    void setTarget(CatMonster *target);
+  /////GETTERS/////
+  Case getCase();
+  int getDamages();
+  int getPortee();
+  int getCadence();
+  int getPrice();
+  int getTowerType();
+  int getGame();
+  CatMonster getTarget();
 
 
-    //////OTHERS//////
+  /////SETTERS/////
+  void setCase(Case *case);
+  void setDamages(int newDamages);
+  void setPortee(int portee);
+  void setCadence(int cadence);
+  void setPrice(int price);
+  void setTowerType(TowerType type);
+  void setGame(Game *game);
+  void setTarget(CatMonster *target);
 
-    void afficher();
-    void attack();
-    void searchTarget();
+
+  //////OTHERS//////
+
+  void afficher();
+  void attack();
+  void searchTarget();
 
 };
 
