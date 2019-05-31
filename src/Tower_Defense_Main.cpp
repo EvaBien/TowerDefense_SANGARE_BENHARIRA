@@ -14,7 +14,6 @@ int main(int argc, char **argv) {
     cout << "Error window init" << endl;
   }
   Game myGame = new Game();
-  myGame->startGame();
 
   bool TChecked = false;
   bool BChecked = false;
@@ -46,6 +45,13 @@ int main(int argc, char **argv) {
         case SDL_KEYDOWN:
         printf("touche pressee (code = %d)\n", e.key.keysym.sym);
         switch(e.key.keysym.sym){
+
+          /*TOUCHE SPACE*/
+          case SDLK_SPACE:
+          if (myGame->getFinish()==true){
+            myGame->startGame();
+          }
+          break;
 
           /* TOUCHE Q */
           case SDLK_q:

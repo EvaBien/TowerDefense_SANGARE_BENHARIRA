@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Entity.hpp"
+#include "Map.hpp"
 
 class Game;
 
