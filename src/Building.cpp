@@ -1,6 +1,7 @@
 #include <string>
 #include "../include/Building.hpp"
 #include "../include/Game.hpp"
+#include <GL/gl.h>
 
 using namespace std;
 

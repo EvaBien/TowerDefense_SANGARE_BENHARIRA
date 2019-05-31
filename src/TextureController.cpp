@@ -6,6 +6,7 @@
 
 
 
+
 bool isLoaded (SDL_Surface* image){
   if (image__NULL){
     printf("FAIL : Texture loading");
