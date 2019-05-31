@@ -65,11 +65,11 @@ void Building::setPrice(int price){
   this->m_price =  price;
 }
 
-void Building::setBuildingType(towerType type){
+void Building::setBuildingType(BuildingType type){
   this->type = type;
 }
 
-void Building::setGame(int *game){
+void Building::setGame(Game *game){
   this->game=game;
 }
 
