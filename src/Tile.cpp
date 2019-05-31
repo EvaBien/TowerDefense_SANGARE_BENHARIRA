@@ -14,7 +14,7 @@ Tile::Tile(float x , float y, ColorTile color){
     this->m_buildable=true;
   }
 
-  Tile::~Tile(){0;}
+  Tile::~Tile(){}
 
   /////GETTERS/////
   float Tile::getX(){

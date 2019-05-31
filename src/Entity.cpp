@@ -10,7 +10,7 @@ Entity::Entity(float x, float y) {
   this->m_y=y;
 }
 
-Entity::~Entity(){0;}
+Entity::~Entity(){}
 
 //////////GETTERS/////////
 
