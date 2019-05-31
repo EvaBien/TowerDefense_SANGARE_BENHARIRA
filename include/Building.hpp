@@ -33,8 +33,8 @@ public:
   int getGain();
   int getPortee();
   int getPrice();
-  int getBuildingType();
-  int getGame();
+  BuildingType getBuildingType();
+  Game* getGame();
 
 
   /////SETTERS/////
