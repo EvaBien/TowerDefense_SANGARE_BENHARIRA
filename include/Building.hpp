@@ -7,7 +7,6 @@
 
 class Game;
 
-
 enum BuildingType{
   RADAR,
   WEAPON,
@@ -29,12 +28,12 @@ public:
   Building(BuildingType type, Tile* tile, Game *game); //constructeur
 
   /////GETTERS/////
-  Tile getTile();
+  Tile Building::getTile();
   int getGain();
   int getPortee();
   int getPrice();
   BuildingType getType();
-  Game* getGame();
+  Game* Building::getGame();
 
 
   /////SETTERS/////
@@ -43,7 +42,7 @@ public:
   void setPortee(int portee);
   void setPrice(int price);
   void setBuildingType(BuildingType type);
-  void setGame(Game* game);
+  void Building::setGame(Game* game);
 
   //////OTHERS//////
 

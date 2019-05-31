@@ -9,7 +9,7 @@ class Tower;
 class Building;
 
 class Game{
-private:
+  private:
   // Attributs
   int m_cagnotte;
   int m_nbWave;
@@ -23,7 +23,7 @@ private:
   std::vector<Building*> m_buildings;
 
 
-public:
+  public:
 
   Game(); //constructeur
 
