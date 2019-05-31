@@ -82,7 +82,7 @@ void Building::afficher(){
   buildingTexture=loadTexture(pathBuilding);
 
   glPushMatrix();
-  glTranslate(this->getTile()->getX(),this->getTile()->getY(),0);
+  glTranslatef(this->getTile()->getX(),this->getTile()->getY(),0);
   drawPicture(buildingTexture, 80, 80); // Taille tower
   glPopMatrix();
 }
