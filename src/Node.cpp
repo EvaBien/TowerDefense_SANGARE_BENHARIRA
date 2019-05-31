@@ -17,7 +17,7 @@ Node::Node(int type, float x, float y, int index, int successor, Map *map){
   this->index=index;
   this->successor=successor;
   this->map=map;
-  this->m_tile = map->getTile(calculPosition(x*100,y*100));
+  this->m_tile = map->getTile(calculPosition(x,y));
 }
 
 Node::~Node(){};
