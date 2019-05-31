@@ -45,7 +45,7 @@ BuildingType Building::getType(){
   return this->type;
 }
 
-Game Building::getGame(){
+Game* Building::getGame(){
   return this->game;
 }
 /////////SETTERS//////////
