@@ -123,25 +123,30 @@ void CatMonster::move(Map *m){
           float initialY = current.getY();
           float destinX = destination.getX();
           float destinY= destination.getY();
-          int deltaX = (int)abs(destinX - initialX);
-          int deltaY = (int)abs(destinY - intitialY);
-          float error = 0.0;
+          float errorX=0.0;
+          float errorY=0.0;
+          int deltaX = (int)(destinX - initialX);
+          int deltaY = (int)(destinY - intitialY);
+          int deltaX1 = fabs(deltaX);
+          int deltaY1 = fabs(deltaY);
+          int pX = 2*deltaY1-deltaX1;
+          int pY = 2*deltaX1-deltaY1;
 
-          if (deltaX == 0){
+          if (abs(deltaX) == 0){
             this->setX(initialX);
             if (deltaY <0){
               this->setY(this->getY()-1);
             } else if (deltaY >0){
               this->setY(this->getY()+1);
             }
-          } else if(deltaY == 0){
+          } else if(abs(deltaY) == 0){
             this->setY(initialY);
             if (deltaX <0){
               this->setX(this->getX()-1);
             } else if (deltaX >0){
               this->setX(this->getX()+1);
             }
-          } else if(deltaX != 0.0 && deltaY != 0.0){
+          } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){
             float deltaError= abs(deltaY/deltaX);
             int newY = (int)initialY;
             for (float newX=intialX; newX<destinX; newX++){
