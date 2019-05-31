@@ -26,7 +26,7 @@ class Building{
     public:
     // Méthodes
 
-    Building(BuildingType type, Case* case, Game *game); //constructeur
+    Building(BuildingType type, Case *case, Game *game); //constructeur
 
     /////GETTERS/////
     Case getCase();
