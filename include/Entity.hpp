@@ -17,7 +17,7 @@ class Entity{
 
     Entity();
     Entity(float x, float y);
-     ~Entity();
+    ~Entity();
 
 
 //////////GETTERS/////////
@@ -37,6 +37,6 @@ class Entity{
     float distance(float xA, float yA, float xB, float yB);
     virtual void afficher()=0;
 
-    };
+};
 
 #endif
