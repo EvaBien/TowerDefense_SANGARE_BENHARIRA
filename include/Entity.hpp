@@ -41,7 +41,7 @@ public:
   //////////OTHERS/////////////
 
   float distance(float xA, float yA, float xB, float yB);
-  void afficher();
+  virtual void afficher();
 
 };
 

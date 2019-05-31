@@ -36,12 +36,14 @@ public:
   int getSpeed();
   int getType();
   Game getGame();
+  GLuint getTexture();
+
 
   //////SETTERS/////
   void setLife(int newLife);
   void setGainDeath(int gain);
   void setSpeed(int speed);
-  void setTexture(GLuint *texture);
+  void setTexture(GLuint texture);
 
 
   //////OTHERS//////

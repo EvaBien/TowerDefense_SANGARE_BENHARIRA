@@ -48,6 +48,10 @@ int CatMonster::getType(){
 Game CatMonster::getGame(){
   return this->game;
 }
+
+GLuint CatMonster::getTexture(){
+  return this->m_texture;
+}
 /////////SETTERS//////////
 
 void CatMonster::setLife(int newLife){
@@ -66,11 +70,18 @@ void CatMonster::setGame(Game *game){
   this->game=game;
 }
 
-void CatMonster::setTexture(GLuint *texture){
-
+void CatMonster::setTexture(GLuint texture){
+  this->m_texture = texture;
 }
 
 //////////OTHER METHODS//////////
+
+void CatMonster::drawCat(GLuint texture, float x, float y){
+  glPushMatrix();
+  glTranslate(x,y,0);
+  drawPicture(texture, 50, 50); // Taille tower
+  glPopMatrix();
+}
 
 void CatMonster::afficher(){
   GLuint catTexture = 0;
@@ -151,6 +162,7 @@ void CatMonster::move(Map *m){
             }
             this->setX(x);
             this->setY(y);
+            this->drawCat(this->getTexture(),x,y);
             for (int i=0; x<errorX;i++){
               if(pX<0){
                 pX=pX+2*deltaY1;
@@ -165,6 +177,7 @@ void CatMonster::move(Map *m){
               delay(0);
               this->setX(x);
               this->setY(y);
+              this->drawCat(this->getTexture(),x,y);
             }
           } else {
             if(deltaY>=0) {
@@ -178,6 +191,7 @@ void CatMonster::move(Map *m){
             }
             this->setX(x);
             this->setY(y);
+            this->drawCat(this->getTexture(),x,y);
             for(i=0;y<errorY;i++)
             {
               y=y+1;
@@ -200,6 +214,7 @@ void CatMonster::move(Map *m){
               delay(0);
               this->setX(x);
               this->setY(y);
+              this->drawCat(this->getTexture(),x,y);
             }
           }
         }
