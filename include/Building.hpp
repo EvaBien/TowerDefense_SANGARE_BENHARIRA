@@ -14,7 +14,7 @@ enum BuildingType{
   STOCK,
 };
 
-class Building{
+class Building : public Entity {
 private:
   // Attributs
   Case *m_case;

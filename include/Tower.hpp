@@ -15,7 +15,7 @@ enum TowerType{
   BLUE_MILK,
 };
 
-class Tower{
+class Tower : public Entity {
 private:
   // Attributs
   Case *m_case;
