@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Building (BuildingType type, Tile *tile, Game *game){
+Building::Building (BuildingType type, Tile *tile, Game *game){
   this->type=type;
   if (type==RADAR){
     this->m_portee=100;
