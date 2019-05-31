@@ -12,6 +12,7 @@ class Map{
     int m_height;
     int m_width;
     Case m_CaseMap[];
+    PathNode m_listNodes;
 
     public:
 
@@ -24,6 +25,7 @@ class Map{
     Case getCase(int position);
     Case *getAllCases();
     int getSizeCases();
+    PathNode getListNodes();
 
     //////SETTERS/////
     void setHeight();
@@ -31,6 +33,7 @@ class Map{
     void setCaseMap(int Position, Case *c);
     void setAllCases(Case *tab);
     void setParams(int height, int width);
+    void setListNodes(PathNode list);
 
 
     //////OTHERS//////

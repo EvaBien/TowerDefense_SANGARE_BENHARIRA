@@ -27,6 +27,10 @@ Case* Map::getAllCases(){
 int Map::getSizeCases(){
   return this->getHeight()*this->getWidth();
 }
+
+PathNode Map::getlistNode(){
+  return this->m_listNodes;
+}
 /////////SETTERS//////////
 
 void Map::setHeight(int newHeight){
@@ -51,6 +55,9 @@ void Map::setParams(int height, int width){
   this->m_CaseMap= new Case[height*width];
 }
 
+PathNode Map::setListNodes(PathNode list){
+  this->m_listNodes = list;
+}
 
 //////////OTHER METHODS//////////
 
