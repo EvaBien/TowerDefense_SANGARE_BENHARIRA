@@ -29,7 +29,7 @@ public:
   Building(BuildingType type, Tile* tile, Game *game); //constructeur
 
   /////GETTERS/////
-  Tile getTile();
+  Tile* getTile();
   int getGain();
   int getPortee();
   int getPrice();
