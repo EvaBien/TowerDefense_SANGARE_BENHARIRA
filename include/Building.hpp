@@ -1,5 +1,5 @@
-#ifndef DEF_TOWER
-#define DEF_TOWER
+#ifndef DEF_BUILDING
+#define DEF_BUILDING
 
 #include <string>
 #include "Entity.hpp"
@@ -26,7 +26,7 @@ class Building{
     public:
     // Méthodes
 
-    Building(BuildingType type, Case *case, Game *game); //constructeur
+    Building(BuildingType type, Case* case, Game *game); //constructeur
 
     /////GETTERS/////
     Case getCase();
@@ -38,7 +38,7 @@ class Building{
 
 
     /////SETTERS/////
-    void setCase(Case *case);
+    void setCase(Case* case);
     void setGain(int newGain);
     void setPortee(int portee);
     void setPrice(int price);

@@ -24,7 +24,7 @@ class Entity{
 
       float getX();
       float getY();
-      string getAffichage();
+      std::string getAffichage();
 
 ///////////SETTERS////////
 
