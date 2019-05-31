@@ -18,7 +18,7 @@ Graph::~Graph(){};
 //////////OTHER METHODS//////////
 
 
-void Graph::readITD(char* filename){
+int* Graph::readITD(char* filename){
 
   // open the file to read
 	FILE *file = fopen(filename, "r");
@@ -29,6 +29,17 @@ void Graph::readITD(char* filename){
     return EXIT_FAILURE;
   }
 
+  char tabNode[nbNode];
+  //vérifie qu'on a ou non atteint la fin du document
+  reading = (fgets(tabNode, nbNode, file) != NULL);
+
+  while (reading)
+  {
+    if (tabNode[0] != '#'){
+      
+    }
+  }
+  
   //lire ligne par ligne donc entre chaque \n
   //s'il y a un # sur la ligne ==> ne pas la prendre en compte
   //SINON chercher char et lui associer triplet RVB
@@ -37,31 +48,8 @@ void Graph::readITD(char* filename){
   // ==> on classe info associées dans un tableau ?
   // ie tant que ligne droite récup info revient à sauter de 5 en 5 case d'un tableau
 
-  // read header
-  fscanf(file,"%s\n", chaine);
-
-  // comment
-  do{
-    fgets(chaine, 255, file);
-  } while (chaine[0]=='#');
-
-  // read the rest of header
-  sscanf(chaine, "%d\n %d\n", &width, &height);
-  // check to see if they were stored properly
-  printf("Width: %d\n", width);
-  printf("Height: %d\n", height);
-
-  // Read 255
-  fscanf(file, "%s\n", chaine);
-
-  // On met le reste dans un tableau de pixels
-  unsigned char* data = new unsigned char[size]
-	// unformatted read of binary pixel data
-	while (fread(data, sizeof(int), width*height*3, file)) {
-		printf("%s", data);
-	} // end of for loop
-
   fclose(file);
+  return
 }
 
 void Graph::initGraph(){

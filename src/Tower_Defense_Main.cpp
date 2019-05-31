@@ -278,6 +278,15 @@ int main(int argc, char **argv) {
    - Money
    */
 
+  //// FONCTION TEXT /////
+  /*glRasterPos2f(x, y);
+		for (c = s; *c != '\0'; c++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c); // Affiche chaque caractère de la chaîne
+
+		// Réinitialise la position du premier caractère de la chaîne
+		glRasterPos2f(0, 0);
+    }*/
+
 
 
  /*******************************************************/
