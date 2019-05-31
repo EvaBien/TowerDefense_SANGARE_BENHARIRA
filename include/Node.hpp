@@ -2,6 +2,9 @@
 #define DEF_NODE
 
 #include "Case.hpp"
+
+Class Map;
+Class Case;
 enum TypeNode{
     IN,
     OUT,

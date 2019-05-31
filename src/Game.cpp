@@ -115,21 +115,24 @@ void Game::startGame(){
   Case exit = list->getEnd()->getCase();
 
   this.setFinish(false);
-  int timeWave = 0;
+  this.setTime(0);
+  int nbWave = 0;
   while (this->getFinish()==false){
 
-    /* Echange du front et du back buffer : mise a jour de la fenetre */
-      // SDL_GL_SwapBuffers();
 
-      this->setWave(timeWave++);
-      if ((loopCount==60*90)){ // SI ca fait 1min30sec
+    /* Echange du front et du back buffer : mise a jour de la fenetre */
+      SDL_GL_SwapBuffers();
+
+      this->setWave(nbWave++);
+      if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec
         prepareWave(this->getWave());
-        loopCount = 0;
+        this.setTime(0);
 
         if(this->getWave()>=20){
           this->gameOver();
         }
       }
+      this.setTime(this.getTime()++);
   }
 }
 
