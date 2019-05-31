@@ -78,7 +78,7 @@ void CatMonster::setTexture(GLuint texture){
 
 void CatMonster::drawCat(GLuint texture, float x, float y){
   glPushMatrix();
-  glTranslate(x,y,0);
+  glTranslatef(x,y,0);
   drawPicture(texture, 50, 50); // Taille tower
   glPopMatrix();
 }
@@ -90,7 +90,7 @@ void CatMonster::afficher(){
   this->setTexture(catTexture);
 
   glPushMatrix();
-  glTranslate(this->getTile()->getX(),this->getTile()->getY(),0);
+  glTranslatef(this->getTile()->getX(),this->getTile()->getY(),0);
   drawPicture(catTexture, 50, 50); // Taille tower
   glPopMatrix();
 }
