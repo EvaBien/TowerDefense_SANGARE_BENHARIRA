@@ -43,13 +43,13 @@ class Building{
     void setPortee(int portee);
     void setPrice(int price);
     void setBuildingType(BuildingType type);
-    void setGame(Game *game);
+    void setGame(Game* game);
 
     //////OTHERS//////
 
 
     void afficher();
-    void upgradeTower(Tower *t);
+    void upgradeTower(Tower* t);
     void checkTower();
 
 };
