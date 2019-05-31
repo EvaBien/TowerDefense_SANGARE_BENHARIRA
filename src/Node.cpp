@@ -24,50 +24,51 @@ Node::~Node(){};
 
 //////GETTERS/////
 Case getCase(){
-
+  return this->m_case;
 }
-TypeNode getType(){
 
+TypeNode getType(){
+  return this->type;
 }
 
 int getIndex(){
-
+  return this->index;
 }
 int getSuccessor(){
-
+  return this->successor;
 }
 
 Map* getMap(){
-
+  return this->map;
 }
 
 Node* getNext(){
-
+  return this->next;
 }
 
 //////SETTERS/////
-void setCase(Case c){
-
+void setCase(Case *c){
+  this->m_case = case;
 }
 
 void setType(TypeNode type){
-
+  this->type=type;
 }
 
 void setIndex(int index){
-
+  this->index=index;
 }
 
 void setSuccessor(int successor){
-
+  this->successor=successor;
 }
 
 void setMap(Map *map){
-
+  this->map=map;
 }
 
 void setNext(Node *node){
-
+  this->next=node;
 }
 
 //////////OTHERS/////////
