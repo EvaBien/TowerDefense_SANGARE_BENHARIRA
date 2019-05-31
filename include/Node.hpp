@@ -12,8 +12,7 @@ enum NodeType{
 class Node{
     private:
     // Attributs
-    float m_x;
-    float m_y;
+    Case m_case;
     TypeNode type;
     int *successors;
     Node *next;
@@ -24,18 +23,16 @@ class Node{
     ~Node();
 
     //////GETTERS/////
-    float getX();
-    float getY();
+    Case getCase();
     TypeNode getType();
     int* getSuccessors();
     Node* getNext();
 
     //////SETTERS/////
-    void setX(float x);
-    void setY(float y);
+    void setCase (Case c);
     void setType(TypeNode type);
-    void setSuccessors(*int successors);
-    void setNext(*Node node);
+    void setSuccessors(int *successors);
+    void setNext(Node *node);
     //////OTHERS/////
 };
 
@@ -62,7 +59,7 @@ class PathNode{
 
   //////OTHERS/////
 
-  void addNode(NodeType type, float x, float y, int *successors);
+  void addNode(NodeType type, Case c, int *successors);
   void deleteNode(Node *node);
 
 }

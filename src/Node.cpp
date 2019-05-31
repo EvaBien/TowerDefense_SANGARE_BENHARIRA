@@ -7,8 +7,32 @@ Node::Node(){}
 
 Node::~Node(){};
 
-//////////GETTERS//////////
+//////GETTERS/////
+Case getCase(){
 
-//////////SETTERS/////////
+}
+TypeNode getType(){
+
+}
+int* getSuccessors(){
+
+}
+Node* getNext(){
+
+}
+
+//////SETTERS/////
+void setCase(Case c){
+
+}
+void setType(TypeNode type){
+
+}
+void setSuccessors(int *successors){
+
+}
+void setNext(Node *node){
+
+}
 
 //////////OTHERS/////////
