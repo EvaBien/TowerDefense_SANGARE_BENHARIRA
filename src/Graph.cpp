@@ -54,6 +54,10 @@ int* Graph::readITD(char* filename){
 
       // On met le reste dans un tableau de node
       unsigned char* tabNode = new unsigned char[nbNode]
+      for (int i = 1, i<nbNode, i++){
+        sscanf(chaine, "%d\n %d\n %d\n %d\n %d\n", index, &type, &x, &y, successors);
+        Node indice = newNode()
+      }
 
 
     }
