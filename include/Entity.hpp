@@ -4,6 +4,7 @@
 #include <string>
 #include <cmath>
 #include "Tile.hpp"
+#include "Texture.hpp"
 
 class Entity{
 protected:
