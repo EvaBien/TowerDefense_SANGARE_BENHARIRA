@@ -26,7 +26,7 @@ class Building{
     public:
     // Méthodes
 
-    Building(BuildingType type, Case* case, Game *game); //constructeur
+    Building(BuildingType type, Case *case, Game *game); //constructeur
 
     /////GETTERS/////
     Case getCase();
@@ -43,13 +43,13 @@ class Building{
     void setPortee(int portee);
     void setPrice(int price);
     void setBuildingType(BuildingType type);
-    void setGame(Game *game);
+    void setGame(Game* game);
 
     //////OTHERS//////
 
 
     void afficher();
-    void upgradeTower(Tower *t);
+    void upgradeTower(Tower* t);
     void checkTower();
 
 };
