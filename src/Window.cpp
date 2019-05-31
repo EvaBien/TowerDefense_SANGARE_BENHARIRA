@@ -29,7 +29,7 @@ SDL_Window* initWindow(){
   glLoadIdentity();
   // glOrtho(0,WINDOW_WIDTH,WINDOW_HEIGHT,0,-1,1);
   // glMatrixMode(GL_MODELVIEW);
- gluOrtho2D(0, SDL_GetWindowSurface(window)->w, SDL_GetWindowSurface(window)->h, 0);
+  gluOrtho2D(0, SDL_GetWindowSurface(window)->w, SDL_GetWindowSurface(window)->h, 0);
 
 
   // Blending
@@ -41,26 +41,26 @@ SDL_Window* initWindow(){
 
 void reshape(SDL_Surface** surface, unsigned int width, unsigned int height)
 {
-    SDL_Surface* surface_temp = SDL_SetVideoMode(
-        width, height, BIT_PER_PIXEL,
-        SDL_OPENGL | SDL_GL_DOUBLEBUFFER | SDL_RESIZABLE);
+  SDL_Surface* surface_temp = SDL_SetVideoMode(
+    width, height, BIT_PER_PIXEL,
+    SDL_OPENGL | SDL_GL_DOUBLEBUFFER | SDL_RESIZABLE);
     if(NULL == surface_temp)
     {
-        fprintf(
-            stderr,
-            "Erreur lors du redimensionnement de la fenetre.\n");
+      fprintf(
+        stderr,
+        "Erreur lors du redimensionnement de la fenetre.\n");
         exit(EXIT_FAILURE);
+      }
+      *surface = surface_temp;
+
+      glViewport(0, 0, (*surface)->w, (*surface)->h);
+      glMatrixMode(GL_PROJECTION);
+      glLoadIdentity();
+      gluOrtho2D(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
     }
-    *surface = surface_temp;
 
-    glViewport(0, 0, (*surface)->w, (*surface)->h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
-}
-
-void readITD(){
-    /* ifstream pour ouvrir fichier
-    parcourir ligne par ligne
-    en fonction info contenu dans ligne imbrication de if et différente action*/
-}
+    void readITD(){
+      /* ifstream pour ouvrir fichier
+      parcourir ligne par ligne
+      en fonction info contenu dans ligne imbrication de if et différente action*/
+    }

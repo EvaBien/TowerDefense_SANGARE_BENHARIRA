@@ -39,20 +39,20 @@ GLuint setTexture(const char* filename){
 
 void drawPicture(GLuint textureId, float x, float y){
 
-      glEnable(GL_TEXTURE_2D);
-      glBindTexture(GL_TEXTURE_2D,textureId);
-      glBegin(GL_QUADS);
-        glTexCoord2f(0,1);
-        glVertex2f(-x/2,-y/2);
-        glTexCoord2f(1,1);
-        glVertex2f(x/2,-y/2);
-        glTexCoord2f(1,0);
-        glVertex2f(x/2,y/2);
-        glTexCoord2f(0,0);
-        glVertex2f(-x/2,y/2);
-      glEnd();
-        glDisable(GL_TEXTURE_2D);
-      glBindTexture(GL_TEXTURE_2D,0);
+  glEnable(GL_TEXTURE_2D);
+  glBindTexture(GL_TEXTURE_2D,textureId);
+  glBegin(GL_QUADS);
+  glTexCoord2f(0,1);
+  glVertex2f(-x/2,-y/2);
+  glTexCoord2f(1,1);
+  glVertex2f(x/2,-y/2);
+  glTexCoord2f(1,0);
+  glVertex2f(x/2,y/2);
+  glTexCoord2f(0,0);
+  glVertex2f(-x/2,y/2);
+  glEnd();
+  glDisable(GL_TEXTURE_2D);
+  glBindTexture(GL_TEXTURE_2D,0);
 }
 
 
