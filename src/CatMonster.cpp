@@ -25,7 +25,7 @@ CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *c) {
   // Faire un random si plusieurs entrées
 }
 
-CatMonster::~CatMonster(){};
+CatMonster::~CatMonster(){0;};
 
 //////////GETTERS//////////
 
