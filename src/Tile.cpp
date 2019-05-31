@@ -15,7 +15,7 @@ Tile::Tile(float x , float y, ColorTile color){
   }
 
   Tile::~Tile(){}
-  
+
   /////GETTERS/////
   float Tile::getX(){
     return this->m_x;
