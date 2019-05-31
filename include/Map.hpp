@@ -8,7 +8,7 @@ private:
   // Attributs
   int m_height;
   int m_width;
-  Case m_CaseMap[];
+  Case m_CaseMap[150];
   PathNode m_listNodes;
   
 public:

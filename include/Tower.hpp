@@ -30,7 +30,7 @@ private:
 public:
   // Méthodes
 
-  Tower(TowerType type, Case *case, Game *game); //constructeur
+  Tower(TowerType type, Case* case, Game *game); //constructeur
 
   /////GETTERS/////
   Case getCase();

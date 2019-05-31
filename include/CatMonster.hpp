@@ -26,7 +26,7 @@ private:
 
 public:
 
-  CatMonster(CatMonsterType type, Game *game, Case *case); //constructeur
+  CatMonster(CatMonsterType type, Game *game, Case* case); //constructeur
   ~CatMonster(); // Desctructeur
 
   //////GETTERS/////
