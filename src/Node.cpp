@@ -18,8 +18,6 @@ Node::Node(int type, float x, float y, int index, int successor, Map *map){
   this->successor=successor;
   this->map=map;
   this->m_case = map->getCase(calculPosition(x*100,y*100));
-
-
 }
 
 Node::~Node(){};
@@ -31,9 +29,18 @@ Case getCase(){
 TypeNode getType(){
 
 }
+
+int getIndex(){
+
+}
 int getSuccessor(){
 
 }
+
+Map* getMap(){
+
+}
+
 Node* getNext(){
 
 }
@@ -42,12 +49,23 @@ Node* getNext(){
 void setCase(Case c){
 
 }
+
 void setType(TypeNode type){
 
 }
+
+void setIndex(int index){
+
+}
+
 void setSuccessor(int successor){
 
 }
+
+void setMap(Map *map){
+
+}
+
 void setNext(Node *node){
 
 }

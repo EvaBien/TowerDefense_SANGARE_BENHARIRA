@@ -14,10 +14,12 @@ class Node{
     // Attributs
     Case *m_case;
     TypeNode type;
-    int successor;
-    Node *next;
     int index;
+    int successor;
     Map *map;
+    Node *next;
+
+
 
     public:
 
@@ -27,13 +29,17 @@ class Node{
     //////GETTERS/////
     Case getCase();
     TypeNode getType();
+    int getIndex();
     int getSuccessor();
+    Map* getMap();
     Node* getNext();
 
     //////SETTERS/////
     void setCase (Case *c);
     void setType(TypeNode type);
+    void setIndex(int index);
     void setSuccessor(int successor);
+    void setMap(Map *map);
     void setNext(Node *node);
     //////OTHERS/////
 };
