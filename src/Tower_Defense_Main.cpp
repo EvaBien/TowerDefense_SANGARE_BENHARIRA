@@ -1,8 +1,15 @@
 // MAIN //
 #include <string>
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include <iostream>
+#include <math.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL_mixer.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
 #include "../include/Game.hpp"
 #include "../include/Window.hpp"
 
@@ -36,6 +43,8 @@ int main(int argc, char **argv) {
 
         case SDL_QUIT:
         myGame->gameOver();
+        Mix_FreeMusic(musique); //Libération de la musique
+        Mix_CloseAudio();
         /* Redimensionnement fenetre */
         case SDL_VIDEORESIZE:
         reshape(&surface, e.resize.w, e.resize.h);
@@ -50,17 +59,28 @@ int main(int argc, char **argv) {
           case SDLK_SPACE:
           if (myGame->getFinish()==true){
             myGame->startGame();
+            if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+              {
+                printf("Erreur de son %s", Mix_GetError());
+              }
+              Mix_Music *musique; //Création du pointeur de type Mix_Music
+              musique = Mix_LoadMUS("./sound/NyanCat.mp3"); //Chargement de la musique
+              Mix_PlayMusic(musique, -1); //Jouer infiniment la musique
           }
           break;
 
           /* TOUCHE Q */
           case SDLK_q:
           myGame->gameOver();
+          Mix_FreeMusic(musique); //Libération de la musique
+          Mix_CloseAudio();
           break;
 
           /* TOUCHE ESC */
           case SDLK_ESCAPE:
           myGame->gameOver();
+          Mix_FreeMusic(musique); //Libération de la musique
+          Mix_CloseAudio();
           break;
 
           /* TOUCHE T */
