@@ -5,6 +5,11 @@
 #include <cmath>
 #include "Tile.hpp"
 #include "Texture.hpp"
+#include <SDL/SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 class Entity{
 protected:
