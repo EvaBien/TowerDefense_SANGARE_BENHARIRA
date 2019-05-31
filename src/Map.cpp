@@ -212,13 +212,13 @@ Node* Map::readITD(char* filename){
   /////////////// LIGNES NODES ///////////////////
   int i=0;
   while(fgets(chaine, 255, file) != NULL){
-    
+
     int index;
     int type;
     int x;
     int y;
     int successors;
-    sscanf(chaine, "%d\n %d\n %d\n %d\n %d\n", index, type,(float)x, (float)y, successors); // OU ajouter les & devant les variable
+    sscanf(chaine, "%d\n %d\n %d\n %d\n %d\n", index, type,(float)(x*100.0+50.0), (float)(y*100.0+50.0), successors); // OU ajouter les & devant les variable
     tabNode[i] = new Node(x, y, type, successors, index, &this);
     i++;
   }
@@ -227,13 +227,22 @@ Node* Map::readITD(char* filename){
   return
 }
 
+bool Map::verifGraph(Node *tabNode){
+  // Pour chaque Node
+  // Je vérifie dans map->Cases pour la position (x,y) que node même type etc...
+  // Si oui -> node.setCase(case);
+  // Si non -> return false + compteur
+
+  return true;
+}
+
 
 void Map::initMap(){
 
   this->readPPM("../images/map1.ppm");
-  Node* tabNode =this->readITD("../data/map1.itd");
+  Node* tabNode = this->readITD("../data/map1.itd");
 
-  if (this->verifGraph()){
+  if (this->verifGraph(tabNode)){
 
     PathNode listMap = new PathNode();
     listMap->m_lenght = tabNode.size();
