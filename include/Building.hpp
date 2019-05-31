@@ -33,13 +33,11 @@ public:
   int getGain();
   int getPortee();
   int getPrice();
-<<<<<<< HEAD
   int getType();
   int getGame();
-=======
+
   BuildingType getBuildingType();
   Game* getGame();
->>>>>>> master
 
 
   /////SETTERS/////
