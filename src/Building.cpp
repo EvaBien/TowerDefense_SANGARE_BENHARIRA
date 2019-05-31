@@ -41,7 +41,7 @@ int Building::getPrice(){
   return this->m_price;
 }
 
-TowerType Building::getBuildingType(){
+TowerType Building::getType(){
   return this->type;
 }
 

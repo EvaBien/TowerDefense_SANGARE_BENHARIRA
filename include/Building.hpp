@@ -33,7 +33,7 @@ public:
   int getGain();
   int getPortee();
   int getPrice();
-  int getBuildingType();
+  int getType();
   int getGame();
 
 
