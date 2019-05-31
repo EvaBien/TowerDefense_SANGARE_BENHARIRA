@@ -74,7 +74,7 @@ void CatMonster::afficher(){
 
   glPushMatrix();
   glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
-  drawPicture(catTexture, 10, 10); // Taille tower
+  drawPicture(catTexture, 50, 50); // Taille tower
   glPopMatrix();
 }
 
