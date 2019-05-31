@@ -1,4 +1,4 @@
-#ifndef DEF_ENFITY
+#ifndef DEF_ENTITY
 #define DEF_ENTITY
 
 #include <string>
