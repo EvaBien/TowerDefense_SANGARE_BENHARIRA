@@ -123,37 +123,53 @@ void CatMonster::move(Map *m){
           float initialY = current.getY();
           float destinX = destination.getX();
           float destinY= destination.getY();
-          float deltaX = destinX - initialX;
-          float deltaY = destinY - intitialY;
+          int deltaX = (int)abs(destinX - initialX);
+          int deltaY = (int)abs(destinY - intitialY);
           float error = 0.0;
-          if (deltaX != 0.0){
-          float deltaError= abs(deltaY/deltaX);
-          int y = (int)initialY;
-          for (float x=intialX; x<destinX){
-            error = error+deltaError;
-            if (error >= 0.5){
-              y = y+sign(deltaY)*1;
-              error = error-1.0;
+
+          if (deltaX == 0){
+            this->setX(initialX);
+            if (deltaY <0){
+              this->setY(this->getY()-1);
+            } else if (deltaY >0){
+              this->setY(this->getY()+1);
             }
-          }
+          } else if(deltaY == 0){
+            this->setY(initialY);
+            if (deltaX <0){
+              this->setX(this->getX()-1);
+            } else if (deltaX >0){
+              this->setX(this->getX()+1);
+            }
+          } else if(deltaX != 0.0 && deltaY != 0.0){
+            float deltaError= abs(deltaY/deltaX);
+            int newY = (int)initialY;
+            for (float newX=intialX; newX<destinX; newX++){
+              error = error+deltaError;
+              if (error >= 0.5){
+                newY = newY+abs(deltaY)*1;
+                error = error-1.0;
+              }
+            }
+          } else
         }
       }
     }
   }
 }
 
-  void CatMonster::destroy(Tower *t){
-    Game* game = this->getGame();
-    int money = game->getCagnotte();
-    game->setCagnotte(money+this->getGainDeath());
-    std::vector<CatMonster*> vector = game->getVecCat();
-    int i=0;
-    for (i; i<vector.size(); i++){
-      if (vector[i] == this){
-        vector.erase(vector.begin()+i);
-      }
-    }
-    if (this=== t->getTarget()){
-      t->setTarget(nullptr);
+void CatMonster::destroy(Tower *t){
+  Game* game = this->getGame();
+  int money = game->getCagnotte();
+  game->setCagnotte(money+this->getGainDeath());
+  std::vector<CatMonster*> vector = game->getVecCat();
+  int i=0;
+  for (i; i<vector.size(); i++){
+    if (vector[i] == this){
+      vector.erase(vector.begin()+i);
     }
   }
+  if (this=== t->getTarget()){
+    t->setTarget(nullptr);
+  }
+}
