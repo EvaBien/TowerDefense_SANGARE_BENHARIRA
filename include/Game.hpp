@@ -1,7 +1,7 @@
 #ifndef DEF_GAME
 #define DEF_GAME
 
-#include<vector>
+#include <vector>
 #include "Map.hpp"
 
 class CatMonster;
@@ -18,9 +18,9 @@ private:
   int m_time;
 
   /*Creation des tableaux d'entités*/
-  vector<CatMonster*> m_monsters;
-  vector<Tower*> m_towers;
-  vector<Building*> m_buildings;
+  std::vector<CatMonster*> m_monsters;
+  std::vector<Tower*> m_towers;
+  std::vector<Building*> m_buildings;
 
 
 public:
@@ -33,9 +33,9 @@ public:
   bool getFinish();
   Map getMap();
   int getTime();
-  vector<CatMonster*> getVecCat();
-  vector<Tower*> getVecTower();
-  vector<Building*> getVecBuilding();
+  std::vector<CatMonster*> getVecCat();
+  std::vector<Tower*> getVecTower();
+  std::vector<Building*> getVecBuilding();
 
   //////SETTERS/////
   void setCagnotte(int money);
