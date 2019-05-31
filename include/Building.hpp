@@ -28,12 +28,12 @@ public:
   Building(BuildingType type, Tile* tile, Game *game); //constructeur
 
   /////GETTERS/////
-  Tile Building::getTile();
+  Tile getTile();
   int getGain();
   int getPortee();
   int getPrice();
   BuildingType getType();
-  Game* Building::getGame();
+  Game* getGame();
 
 
   /////SETTERS/////
@@ -42,7 +42,7 @@ public:
   void setPortee(int portee);
   void setPrice(int price);
   void setBuildingType(BuildingType type);
-  void Building::setGame(Game* game);
+  void setGame(Game* game);
 
   //////OTHERS//////
 
