@@ -1,5 +1,6 @@
 #include <string>
 #include "../include/Graph.hpp"
+#include "../include/Node.cpp"
 
 using namespace std;
 
@@ -29,14 +30,32 @@ int* Graph::readITD(char* filename){
     return EXIT_FAILURE;
   }
 
-  char tabNode[nbNode];
+  char chaine[250];
   //vérifie qu'on a ou non atteint la fin du document
-  reading = (fgets(tabNode, nbNode, file) != NULL);
-
+  reading = (fgets(chaine, 250, file) != NULL);
+  int nbNode;
   while (reading)
   {
-    if (tabNode[0] != '#'){
-      
+    // read header
+    if (fscanf(file,"%s\n", chaine) != "@ITD1"){
+      printf("ERROR, this file is not identified as an ITD \n");
+    } else {
+      // ne pas prendre en compte les comments
+      do{
+        fgets(chaine, 255, file);
+      } while (chaine[0]=='#');
+      for(int i=1, i<13, i++){
+        sscanf(chaine, "%s\n", chaine);
+      }
+      nbNode = sscanf(chaine, "%d\n", chaine);
+      do{
+        fgets(chaine, 255, file);
+      } while (chaine[0]=='#');
+
+      // On met le reste dans un tableau de node
+      unsigned char* tabNode = new unsigned char[nbNode]
+
+
     }
   }
   
