@@ -33,8 +33,8 @@ public:
   int getGain();
   int getPortee();
   int getPrice();
-  BuildingType Building::getType();
-  Game* Building::getGame();
+  BuildingType getType();
+  Game* getGame();
 
 
   /////SETTERS/////

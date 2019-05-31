@@ -1,6 +1,7 @@
 #ifndef DEF_GAME
 #define DEF_GAME
 
+#include<vector>
 #include "Map.hpp"
 
 class CatMonster;
