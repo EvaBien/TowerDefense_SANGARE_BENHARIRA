@@ -13,6 +13,7 @@ Tile::Tile(float x , float y, ColorTile color){
   } else {
     this->m_buildable=true;
   }
+}
 
   Tile::~Tile(){}
 
@@ -53,4 +54,3 @@ Tile::Tile(float x , float y, ColorTile color){
   float Tile::distance(Tile c){
     return sqrt((pow(this->getX()-c->getX(),2))+(pow(this->getY()-c->getY(),2)));
   }
-}
