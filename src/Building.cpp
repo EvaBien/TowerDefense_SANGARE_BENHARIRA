@@ -1,7 +1,6 @@
 #include <string>
 #include "../include/Building.hpp"
 #include "../include/Game.hpp"
-#include <GL/gl.h>
 
 using namespace std;
 
@@ -83,7 +82,7 @@ void Building::afficher(){
   buildingTexture=loadTexture(pathBuilding);
 
   glPushMatrix();
-  glTranslate(this->getTile()->getX(),this->getTile()->getY(),0);
+  glTranslatef(this->getTile()->getX(),this->getTile()->getY(),0);
   drawPicture(buildingTexture, 10, 10); // Taille tower
   glPopMatrix();
 }
