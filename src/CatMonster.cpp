@@ -117,6 +117,8 @@ void CatMonster::move(Map *m){
       if (current->getType()==NODE || current->getType()==IN){
         destination = this->chooseDestination(m);
         while (current != destination){
+          int initialX = current.getX();
+          int initialY = current.getY();
           // AVANCE BRASSENHAM
         }
       }
