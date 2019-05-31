@@ -7,8 +7,8 @@ class Map;
 class Case;
 
 enum TypeNode{
-    IN,
-    OUT,
+    ENTREE,
+    SORTIE,
     TWIST,
     INTER,
 };
