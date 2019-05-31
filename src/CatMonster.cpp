@@ -3,7 +3,7 @@
 
 using namespace std;
 
-CatMonster::CatMonster(CatMonsterType type, Game *game) {
+CatMonster::CatMonster(CatMonsterType type, Game *game, Case *c) {
     if (this->type == KITTEN){
         this->m_life = 60;
         this->m_speed = 150;

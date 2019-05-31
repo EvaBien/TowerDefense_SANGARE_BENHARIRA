@@ -105,9 +105,14 @@ void Game::setAddVecBuilding(Building* building){
 
 void Game::startGame(){
 
+
   Map myMap = new Map();
   myMap->initMap();
   this->setMap(myMap);
+
+  PathNode list = myMap->getListNodes();
+  Case entry = list->getHead()->getCase();
+  Case exit = list->getEnd()->getCase();
 
   this.setFinish(false);
   int timeWave = 0;
@@ -136,17 +141,17 @@ void Game::prepareWave(int numWave){
 // Avec un random ?
 
   for (int i=1; i<=nbKitten; i++){
-    CatMonster* newKitten = new CatMonster(KITTEN,&this);
+    CatMonster* newKitten = new CatMonster(KITTEN,&this, entry);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
   }
   for (int i=1; i<=nbJustCat; i++){
-    CatMonster* newJustCat = new CatMonster(JUSTCAT,&this);
+    CatMonster* newJustCat = new CatMonster(JUSTCAT,&this, entry);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
   }
   for (int i=1; i<=nbFatCat; i++){
-    CatMonster* newFatCat = new CatMonster(FATCAT,&this);
+    CatMonster* newFatCat = new CatMonster(FATCAT,&this, entry);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
   }

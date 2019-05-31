@@ -155,7 +155,18 @@ void Map::readPPM(char* filename){
     fclose(file);
 }
 
+PathNode Map::verifITD(char* filename){
+  //Prendre ce qu'il y a dans map
+}
+
 void Map::initMap(){
+
+this->setListNodes(this->verifITD("../map.itd.txt"));
+
+  if(this->getListNodes() == NULL) {
+  				fprintf(stderr, "Unvalid map\n");
+  			}
+
 this->readPPM("../images/map1.ppm");
 GLuint mapTexture = 0;
 string pathMap = "../images/map1.png";
