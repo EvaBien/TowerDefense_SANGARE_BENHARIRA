@@ -90,10 +90,10 @@ void Building::afficher(){
 
 void Building::upgradeTower(Tower *t){
   if (this->getType()==RADAR){
-    t.setPortee(t->getPortee()*(1,25));
+    t->setPortee(t->getPortee()*(1,25));
   } else   if (this->getType()==WEAPON){
-    t.setDamages(t->getDamages()*(1,25));
+    t->setDamages(t->getDamages()*(1,25));
   } else {
-    t.setCadence(t->getCadence()*(1,25));
+    t->setCadence(t->getCadence()*(1,25));
   }
 }
