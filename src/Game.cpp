@@ -114,8 +114,8 @@ void Game::startGame(){
   Tile entry = list->getHead()->getTile();
   Tile exit = list->getEnd()->getTile();
 
-  this.setFinish(false);
-  this.setTime(0);
+  this->setFinish(false);
+  this->setTime(0);
   int nbWave = 0;
   while (this->getFinish()==false){
 
@@ -126,13 +126,13 @@ void Game::startGame(){
       this->setWave(nbWave++);
       if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec
         prepareWave(this->getWave());
-        this.setTime(0);
+        this->setTime(0);
 
         if(this->getWave()>=20){
           this->gameOver();
         }
       }
-      this.setTime(this.getTime()++);
+      this->setTime(this.getTime()++);
   }
 }
 
@@ -171,7 +171,7 @@ bool Game::canBuyTower(TowerType type){
     int price = 100;
   }
     if (this->m_cagnotte-price >=0){
-      this.setCagnotte(this->m_cagnotte-price);
+      this->setCagnotte(this->m_cagnotte-price);
       return true;
     }
     return false;
@@ -186,7 +186,7 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
     int price = 100;
   }
     if (this->m_cagnotte-price >=0){
-      this.setCagnotte(this->m_cagnotte-price);
+      this->setCagnotte(this->m_cagnotte-price);
       return true;
     }
     return false;
