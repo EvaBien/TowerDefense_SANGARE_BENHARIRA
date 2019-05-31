@@ -91,7 +91,7 @@ bool CatMonster::isAlive(){
     return this->m_life > 0; //renvoie true si m_vie > 0, false sinon
 }
 
-Case CatMonster::chooseDestination(){
+Case CatMonster::chooseDestination(Map *m){
  // Retourne la Case suivante dans le graph
 
  // Je récup la case de mon monstre actuellement

@@ -3,8 +3,9 @@
 
 #include "Case.hpp"
 
-Class Map;
-Class Case;
+class Map;
+class Case;
+
 enum TypeNode{
     IN,
     OUT,

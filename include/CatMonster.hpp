@@ -1,4 +1,4 @@
-  #ifndef DEF_CATMONSTER
+#ifndef DEF_CATMONSTER
 #define DEF_CATMONSTER
 
 #include <string>
@@ -46,7 +46,7 @@ class CatMonster : public Entity{
     void afficher();
     void beDamaged(int nbDamages, Tower *tower);
     bool isAlive();
-    Case chooseDestination();
+    Case chooseDestination(Map *m);
     void move(Map *m);
     void destroy(Tower *t);
     // int Dijsktra(int current, int destination);
