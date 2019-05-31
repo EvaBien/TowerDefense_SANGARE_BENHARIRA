@@ -1,22 +1,22 @@
 #include <string>
 #include "../include/Building.hpp"
-
+#include "../include/Game.hpp"
 
 using namespace std;
 
-Building (BuildingType type, Tile *tile, Game *game){
+Building::Building (BuildingType type, Tile *tile, Game *game){
   this->type=type;
   if (type==RADAR){
     this->m_portee=100;
-    this->p_price=100;
+    this->m_price=100;
     this->m_affichage = "../images/buildingRadar.png";
   } else if (type==WEAPON){
     this->m_portee=75;
-    this->p_price=75;
+    this->m_price=75;
     this->m_affichage = "../images/buildingWeapon.png";
   } else{
     this->m_portee=50;
-    this->p_price=50;
+    this->m_price=50;
     this->m_affichage = "../images/buildingStock.png";
   }
   this->m_tile=tile;
@@ -28,12 +28,12 @@ Building (BuildingType type, Tile *tile, Game *game){
 
 //////////GETTERS//////////
 
-Tile Building::getTile(){
+Tile* Building::getTile(){
   return this->m_tile;
 }
 
 int Building::getPortee(){
-  return this->m_gportee;
+  return this->m_portee;
 }
 
 
@@ -41,7 +41,7 @@ int Building::getPrice(){
   return this->m_price;
 }
 
-TowerType Building::getType(){
+BuildingType Building::getType(){
   return this->type;
 }
 
