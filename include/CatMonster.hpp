@@ -6,6 +6,7 @@
 #include "Map.hpp"
 
 class Game;
+class Tower;
 
 enum CatMonsterType{
     KITTEN,
