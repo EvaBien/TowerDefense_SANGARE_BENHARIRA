@@ -88,16 +88,23 @@ void CatMonster::beDamaged(int nbDamages, Tower* tower){
 }
 
 bool CatMonster::isAlive(){
-    return this->m_life > 0; //renvoie true si m_vie > 0, false sinon
+    return this->m_life > 0;
 }
 
 Case CatMonster::chooseDestination(Map *m){
  // Retourne la Case suivante dans le graph
-
- // Je récup la case de mon monstre actuellement
- // Je cherche dans ma liste de node de la map où je suis
- // Je cherche mon next // Apppel Dijsktra
- // Je retourne la case de mon next;
+ Case current = this->getCase();
+ Map myMap = m;
+ PathNode list = myMap->getListNodes();
+ for (int i=0; i<list.getLenght(); i++){
+   if (list[i]->getCase() ==current){
+     int successor = list[i]->getSuccessor();
+     Node next = list[successor];
+     // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
+     return next->getCase();
+   } // MANQUE DIJSKTRA
+ }
+ return NULL;
 }
 
 void CatMonster::move(Map *m){
@@ -108,13 +115,11 @@ void CatMonster::move(Map *m){
         exit();
       } else {
         if (current->getType()==NODE || current->getType()==IN){
-
+          destination = this->chooseDestination(m);
+          while (current != destination){
+            // AVANCE BRASSENHAM
+          }
         }
-      // Je cherche la position de la Case actuelle
-      // Si c'est un coude ou une intersection --> choose Destination Case;
-      // J'ai une nouvelle destination
-      // Tant que je ne suis pas arrivée à destination
-      // Le monstre avance grace à Brassenham
     }
 }
 
@@ -132,8 +137,4 @@ void CatMonster::destroy(Tower *t){
   if (this=== t->getTarget()){
     t->setTarget(nullptr);
   }
-
-    // Retirer de la liste de vecteurs
-    // Se retirer de la tour qui ciblait
-    //ajout pointeur vers game ==> cf constructeur à modif aussi &this dans game à appel constructeur
 }
