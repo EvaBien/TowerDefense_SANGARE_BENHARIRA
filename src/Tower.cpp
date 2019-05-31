@@ -6,38 +6,38 @@ static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
 Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme valeur neutre
-    if (this->type == RED_LASER){
-        this->m_damages = 150; //bcp de dégâts
-        this->m_portee = 100;
-        this->m_cadence = 50; //cadence faible
-        this->m_price = 100;
-        this->m_affichage = "../images/towerRed.png";
-    } else if (this->type == GREEN_GRASS) {
-        this->m_damages = 100; // dégâts moyens
-        this->m_portee = 50; //faible portée
-        this->m_cadence = 150; //tirent très rapidement
-        this->m_price = 100;
-        this->m_affichage = "../images/towerGreen.png";
+  if (this->type == RED_LASER){
+    this->m_damages = 150; //bcp de dégâts
+    this->m_portee = 100;
+    this->m_cadence = 50; //cadence faible
+    this->m_price = 100;
+    this->m_affichage = "../images/towerRed.png";
+  } else if (this->type == GREEN_GRASS) {
+    this->m_damages = 100; // dégâts moyens
+    this->m_portee = 50; //faible portée
+    this->m_cadence = 150; //tirent très rapidement
+    this->m_price = 100;
+    this->m_affichage = "../images/towerGreen.png";
 
-    } else if (type == YELLOW_GAMMELLE) { //tirents sur tous les ennemis à leur portée
-        this->m_damages = 50; //peu de dégâts
-        this->m_portee = 50; //portée très limitée
-        this->m_cadence = 125; //bonne cadence de tir
-        this->m_price = 100;
-        this->m_affichage = "../images/towerYellow.png";
+  } else if (type == YELLOW_GAMMELLE) { //tirents sur tous les ennemis à leur portée
+    this->m_damages = 50; //peu de dégâts
+    this->m_portee = 50; //portée très limitée
+    this->m_cadence = 125; //bonne cadence de tir
+    this->m_price = 100;
+    this->m_affichage = "../images/towerYellow.png";
 
-    } else { // ie BLUE_MILK
-      this->m_damages = 50; //peu de dégâts
-      this->m_portee =150 ; //bonne portée
-      this->m_cadence = 150; //bonne cadence de tir
-      this->m_price = 100;
-      this->m_affichage = "../images/towerBlue.png";
-    }
-    this->m_case= case;
-    this->m_x = case->getX(); // Position de l'entrée de la map
-    this->m_y = case->getY(); // Position de l'entrée de la map
-    this->m_case->setBuildable(false);
-    this->target=nullptr;
+  } else { // ie BLUE_MILK
+    this->m_damages = 50; //peu de dégâts
+    this->m_portee =150 ; //bonne portée
+    this->m_cadence = 150; //bonne cadence de tir
+    this->m_price = 100;
+    this->m_affichage = "../images/towerBlue.png";
+  }
+  this->m_case= case;
+  this->m_x = case->getX(); // Position de l'entrée de la map
+  this->m_y = case->getY(); // Position de l'entrée de la map
+  this->m_case->setBuildable(false);
+  this->target=nullptr;
 }
 
 //////////GETTERS//////////
@@ -47,23 +47,23 @@ Case Tower::getCase(){
 }
 
 int Tower::getDamages(){
-    return this->m_damages;
+  return this->m_damages;
 }
 
 int Tower::getPortee(){
-    return this->m_gportee;
+  return this->m_gportee;
 }
 
 int Tower::getCadence(){
-    return this->m_cadence;
+  return this->m_cadence;
 }
 
 int Tower::getPrice(){
-    return this->m_price;
+  return this->m_price;
 }
 
 TowerType Tower::getTowerType(){
-    return this->type;
+  return this->type;
 }
 
 CatMonster Tower::getTarget(){
@@ -82,27 +82,27 @@ void Tower::setCase(Case *case){
 }
 
 void Tower::setDamages(int damages){
-    this->m_damages =  damages; //Remplace valeur damages par une nouvelle
+  this->m_damages =  damages; //Remplace valeur damages par une nouvelle
 }
 
 void Tower::setPortee(int portee){
-    this->m_portee =  portee;
+  this->m_portee =  portee;
 }
 
 void Tower::setCadence(int cadence){
-    this->m_cadence =  cadence;
+  this->m_cadence =  cadence;
 }
 
 void Tower::setPrice(int price){
-    this->m_price =  price;
+  this->m_price =  price;
 }
 
 void Tower::setTowerType(towerType type){
-    this->type = type;
+  this->type = type;
 }
 
 void Tower::setTarget(CatMonster *target){
-    this->target=target;
+  this->target=target;
 }
 
 void Tower::setGame(Game *game){
@@ -112,25 +112,25 @@ void Tower::setGame(Game *game){
 //////////OTHER METHODS//////////
 
 void Tower::afficher(){
-    GLuint towerTexture = 0;
-    string pathTower = this->getAffichage();
-    towerTexture=loadTexture(pathTower);
+  GLuint towerTexture = 0;
+  string pathTower = this->getAffichage();
+  towerTexture=loadTexture(pathTower);
 
-    glPushMatrix();
-    glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
-    drawPicture(towerTexture, 20, 20); // Taille tower
-    glPopMatrix();
+  glPushMatrix();
+  glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+  drawPicture(towerTexture, 20, 20); // Taille tower
+  glPopMatrix();
 }
 
 void Tower::attack(){
   Uint32 startTime = SDL_GetTicks();
-    while(this->getGame()->getFinish()==true){
+  while(this->getGame()->getFinish()==true){
     /* Calcul du temps ecoule */
     Uint32 elapsedTime = SDL_GetTicks() - startTime;
     /* Si trop peu de temps s'est ecoule, on met en pause le programme */
     if(elapsedTime < FRAMERATE_MILLISECONDS)
     {
-        SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
+      SDL_Delay(FRAMERATE_MILLISECONDS - elapsedTime);
     }
 
     if (elapsedTime>=10000){ // Toutes les 10 secondes
@@ -151,11 +151,11 @@ void Tower::searchTarget(){
   Game game=this->getGame();
 
   for (CatMonster* cat : game->getVecCat()){
-      Case cCase = cat->getCase();
-      float distanceCurrent = cCase->distance(this->getCase());
-        if (distanceCurrent < distanceMin){
-          distanceMin= distanceCurrent;
-          catClosest = cat;
-        }
-        this->setTarget(catClosest);
-}
+    Case cCase = cat->getCase();
+    float distanceCurrent = cCase->distance(this->getCase());
+    if (distanceCurrent < distanceMin){
+      distanceMin= distanceCurrent;
+      catClosest = cat;
+    }
+    this->setTarget(catClosest);
+  }

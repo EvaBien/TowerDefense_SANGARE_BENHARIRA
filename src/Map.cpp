@@ -190,7 +190,7 @@ void Map::initMap(){
 
     glPushMatrix();
     glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
-    drawPicture(mapTexture, this->getHeight(), this->getWidth()); 
+    drawPicture(mapTexture, this->getHeight(), this->getWidth());
     glPopMatrix();
   }
 }
