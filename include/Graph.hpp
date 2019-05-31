@@ -5,25 +5,25 @@
 
 
 class Graph{
-    private:
-    // Attributs
+private:
+  // Attributs
 
-    public:
+public:
 
-    Graph(); //constructeur
-    ~Graph();
+  Graph(); //constructeur
+  ~Graph();
 
-    //////GETTERS/////
-
-
-    //////SETTERS/////
-    
+  //////GETTERS/////
 
 
-    //////OTHERS//////
+  //////SETTERS/////
 
-    void readITD(char* filename);
-    void initGraph();
+
+
+  //////OTHERS//////
+
+  void readITD(char* filename);
+  void initGraph();
 };
 
 #endif

@@ -8,60 +8,60 @@ class Tower;
 class Building;
 
 class Game{
-    private:
-    // Attributs
-    int m_cagnotte;
-    int m_nbWave;
-    bool m_finished;
-    Map m_map;
-    int m_time;
+private:
+  // Attributs
+  int m_cagnotte;
+  int m_nbWave;
+  bool m_finished;
+  Map m_map;
+  int m_time;
 
-    /*Creation des tableaux d'entités*/
-    vector<CatMonster*> m_monsters;
-    vector<Tower*> m_towers;
-    vector<Building*> m_buildings;
+  /*Creation des tableaux d'entités*/
+  vector<CatMonster*> m_monsters;
+  vector<Tower*> m_towers;
+  vector<Building*> m_buildings;
 
 
-    public:
+public:
 
-    Game(); //constructeur
+  Game(); //constructeur
 
-    //////GETTERS/////
-    int getCagnotte();
-    int getWave();
-    bool getFinish();
-    Map getMap();
-    int getTime();
-    vector<CatMonster*> getVecCat();
-    vector<Tower*> getVecTower();
-    vector<Building*> getVecBuilding();
+  //////GETTERS/////
+  int getCagnotte();
+  int getWave();
+  bool getFinish();
+  Map getMap();
+  int getTime();
+  vector<CatMonster*> getVecCat();
+  vector<Tower*> getVecTower();
+  vector<Building*> getVecBuilding();
 
-    //////SETTERS/////
-    void setCagnotte(int money);
-    void setWave(int vague);
-    void setFinish(bool value);
-    void setMap(Map map);
-    void setTime(int time);
-    void setAddVecCat(CatMonster* cat);
-    void setAddVecTower(Tower* tower);
-    void setAddVecBuilding(Building* building);
-    // void setDeleteVecCat(CatMonster* cat);
-    // void setDeleteVecTower(Tower* tower);
-    // void setDeleteVecBuilding(Building* building);
+  //////SETTERS/////
+  void setCagnotte(int money);
+  void setWave(int vague);
+  void setFinish(bool value);
+  void setMap(Map map);
+  void setTime(int time);
+  void setAddVecCat(CatMonster* cat);
+  void setAddVecTower(Tower* tower);
+  void setAddVecBuilding(Building* building);
+  // void setDeleteVecCat(CatMonster* cat);
+  // void setDeleteVecTower(Tower* tower);
+  // void setDeleteVecBuilding(Building* building);
 
-    //////OTHERS//////
+  //////OTHERS//////
 
-    void startGame();
-    void prepareWave(int numWave);
-    bool canBuyTower(TowerType type);
-    bool canBuyBuilding(BuildingType type);
-    bool canBuildTower(TowerType type, Case c);
-    bool canBuildBuilding(BuildingType type, Case c);
-    void checkBuildings(Tower t);
-    void checkTowers(Building b);
-    void construcTower(TowerType type, Case *c);
-    void construcBuilding(BuildingType type, Case *c);
-    void gameOver();
+  void startGame();
+  void prepareWave(int numWave);
+  bool canBuyTower(TowerType type);
+  bool canBuyBuilding(BuildingType type);
+  bool canBuildTower(TowerType type, Case c);
+  bool canBuildBuilding(BuildingType type, Case c);
+  void checkBuildings(Tower t);
+  void checkTowers(Building b);
+  void construcTower(TowerType type, Case *c);
+  void construcBuilding(BuildingType type, Case *c);
+  void gameOver();
 
 };
 
