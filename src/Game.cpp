@@ -12,6 +12,7 @@ Game() {
     this->m_nbWave = 0;
     this->m_finished = false;
     this->m_map;
+    this->m_time=0;
     // Initialiser 3 vecteurs
 
     this->m_monsters = std::vector<CatMonster*> monsters;
@@ -33,8 +34,12 @@ bool Game::getFinish(){
     return this->m_finished;
 }
 
-Map Gamme::getMap(){
+Map Game::getMap(){
   return this->m_map;
+}
+
+int Game::getTime(){
+  return this->m_time;
 }
 
 std::vector<CatMonster*> Game::getVecCat(){
@@ -66,6 +71,10 @@ void Game::setFinish(bool value){
 
 void Game:setMap(Map map){
   this->m_map=map;
+}
+
+void Game:setTime(int time){
+  this->m_time=time;
 }
 
 void Game::setAddVecCat(CatMonster* cat){

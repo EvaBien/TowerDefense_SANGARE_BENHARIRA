@@ -14,6 +14,7 @@ class Game{
     int m_nbWave;
     bool m_finished;
     Map m_map;
+    int m_time;
 
     /*Creation des tableaux d'entités*/
     vector<CatMonster*> m_monsters;
@@ -30,6 +31,7 @@ class Game{
     int getWave();
     bool getFinish();
     Map getMap();
+    int getTime();
     vector<CatMonster*> getVecCat();
     vector<Tower*> getVecTower();
     vector<Building*> getVecBuilding();
@@ -39,6 +41,7 @@ class Game{
     void setWave(int vague);
     void setFinish(bool value);
     void setMap(Map map);
+    void setTime(int time);
     void setAddVecCat(CatMonster* cat);
     void setAddVecTower(Tower* tower);
     void setAddVecBuilding(Building* building);
