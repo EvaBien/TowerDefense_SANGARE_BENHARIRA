@@ -91,11 +91,22 @@ bool CatMonster::isAlive(){
     return this->m_life > 0; //renvoie true si m_vie > 0, false sinon
 }
 
-void CatMonster::move(){
+Case CatMonster::chooseDestination(){
+ // Retourne la Case suivante dans le graph
+
+ // Je récup la case de mon monstre actuellement
+ // Je cherche dans ma liste de node de la map où je suis
+ // Je cherche mon next // Apppel Dijsktra
+ // Je retourne la case de mon next;
+}
+
+void CatMonster::move(Map *m){
     while (this->isAlive()){
-      float newX = ; //??
-      float newY = ; //??
-      // this-s>Position.setPosition(newX, newY); // Completer avec nouveau calcul
+      // Je cherche la position de la Case actuelle
+      // Si c'est un coude ou une intersection --> choose Destination Case;
+      // J'ai une nouvelle destination
+      // Tant que je ne suis pas arrivée à destination
+      // Le monstre avance grace à Brassenham
     }
 }
 

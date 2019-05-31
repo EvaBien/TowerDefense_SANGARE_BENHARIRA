@@ -45,10 +45,11 @@ class CatMonster : public Entity{
 
     void afficher();
     void beDamaged(int nbDamages, Tower *tower);
-    void move();
     bool isAlive();
+    Case chooseDestination();
+    void move(Map *m);
     void destroy(Tower *t);
-
+    // int Dijsktra(int current, int destination);
 
 };
 
