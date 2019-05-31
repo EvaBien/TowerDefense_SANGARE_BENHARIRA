@@ -36,7 +36,7 @@ public:
   int getType();
   int getGame();
 
-  BuildingType getBuildingType();
+  BuildingType Building::getBuildingType();
   Game* getGame();
 
 

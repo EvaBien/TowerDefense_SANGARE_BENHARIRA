@@ -1,6 +1,6 @@
 #include <string>
 #include "../include/Building.hpp"
-
+#include "../include/Game.hpp"
 
 using namespace std;
 
@@ -28,7 +28,7 @@ Building (BuildingType type, Tile *tile, Game *game){
 
 //////////GETTERS//////////
 
-Tile Building::getTile(){
+Tile* Building::getTile(){
   return this->m_tile;
 }
 
@@ -41,7 +41,7 @@ int Building::getPrice(){
   return this->m_price;
 }
 
-TowerType Building::getType(){
+BuildingType Building::getType(){
   return this->type;
 }
 
