@@ -7,8 +7,8 @@ class Map;
 class Case;
 
 enum TypeNode{
-    IN,
-    OUT,
+    ENTREE,
+    SORTIE,
     TWIST,
     INTER,
 };
@@ -71,10 +71,10 @@ class PathNode{
 
   //////OTHERS/////
 
-  void addNode(NodeType type, Case c, int *successors);
+  void addNode(TypeNode type, Case c, int *successors);
   void deleteNode(Node *node);
 
-}
+};
 
 
 #endif
