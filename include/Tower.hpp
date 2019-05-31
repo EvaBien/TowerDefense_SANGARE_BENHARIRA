@@ -18,9 +18,9 @@ enum TowerType{
 class Tower : public Entity {
 private:
   // Attributs
-  Case *m_case;
+  Tile *m_tile;
   int m_damages; //nb point de dégat
-  int m_portee; //jusqu'à quelle case peut tirer
+  int m_portee; //jusqu'à quelle tile peut tirer
   int m_cadence; //vitesse à laquelle tour peut tirer
   int m_price; //prix de la tour
   TowerType type; //type de tour en fonction couleur
@@ -30,10 +30,10 @@ private:
 public:
   // Méthodes
 
-  Tower(TowerType type, Case* case, Game *game); //constructeur
+  Tower(TowerType type, Tile* tile, Game *game); //constructeur
 
   /////GETTERS/////
-  Case getCase();
+  Tile getTile();
   int getDamages();
   int getPortee();
   int getCadence();
@@ -44,7 +44,7 @@ public:
 
 
   /////SETTERS/////
-  void setCase(Case *case);
+  void setTile(Tile *tile);
   void setDamages(int newDamages);
   void setPortee(int portee);
   void setCadence(int cadence);

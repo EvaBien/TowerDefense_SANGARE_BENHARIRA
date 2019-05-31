@@ -78,7 +78,7 @@ int* Graph::readITD(char* filename){
 	//si juste un chiffre = nb neud
 	//si plusieurs chiffre : premier = indice du noeud
 	// ==> on classe info associées dans un tableau ?
-	// ie tant que ligne droite récup info revient à sauter de 5 en 5 case d'un tableau
+	// ie tant que ligne droite récup info revient à sauter de 5 en 5 tile d'un tableau
 
 	fclose(file);
 	return

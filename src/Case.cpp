@@ -1,9 +1,9 @@
-#include "Case.hpp"
+#include "Tile.hpp"
 
 using namespace std;
 
 
-Case::Case(float x , float y, ColorCase color){
+Tile::Tile(float x , float y, ColorTile color){
   this->m_x=x;
   this->m_y=y;
   this->m_side = 100;
@@ -14,42 +14,42 @@ Case::Case(float x , float y, ColorCase color){
     this->m_buildable=true;
   }
 
-  Case::~Case(){}
+  Tile::~Tile(){}
   
   /////GETTERS/////
-  float Case::getX(){
+  float Tile::getX(){
     return this->m_x;
   }
 
-  float Case::getY(){
+  float Tile::getY(){
     return this->m_y;
   }
 
-  int Case::getSide(){
+  int Tile::getSide(){
     return this->m_side;
   }
 
-  bool Case::getBuildable(){
+  bool Tile::getBuildable(){
     return this->m_buildable;
   }
 
   /////SETTERS/////
-  void Case::setX(float x){
+  void Tile::setX(float x){
     this->m_x=x;
   }
 
-  void Case::setY(float y){
+  void Tile::setY(float y){
     this->m_y=y;
   }
-  void Case::setSide(float val){
+  void Tile::setSide(float val){
     this->m_side=val;
   }
-  void Case::setBuildable(bool val){
+  void Tile::setBuildable(bool val){
     this->m_buildable=val;
   }
 
   //////OTHERS//////
 
-  float Case::distance(Case c){
+  float Tile::distance(Tile c){
     return sqrt((pow(this->getX()-c->getX(),2))+(pow(this->getY()-c->getY(),2)));
   }

@@ -111,8 +111,8 @@ void Game::startGame(){
   this->setMap(myMap);
 
   PathNode list = myMap->getListNodes();
-  Case entry = list->getHead()->getCase();
-  Case exit = list->getEnd()->getCase();
+  Tile entry = list->getHead()->getTile();
+  Tile exit = list->getEnd()->getTile();
 
   this.setFinish(false);
   this.setTime(0);
@@ -192,11 +192,11 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
     return false;
 }
 
-bool Game::canBuildBuilding(BuildingType type, Case *c){
+bool Game::canBuildBuilding(BuildingType type, Tile *c){
 
 }
 
-bool Game::canBuildTower(TowerType type, Case c){
+bool Game::canBuildTower(TowerType type, Tile c){
 
 }
 
@@ -204,8 +204,8 @@ void Game::checkTowers(Building *b){
   int portee = b->getPortee();
 
   for (Tower* tower : this->getVecTower()){
-      Case tCase = tower->getCase();
-      float distance = tCase->distance(b->getCase());
+      Tile tTile = tower->getTile();
+      float distance = tTile->distance(b->getTile());
         if (distance <= portee){
           b->upgradeTower(tower);
         }
@@ -215,15 +215,15 @@ void Game::checkBuildings(Tower *t){
 
   for (Building* building : this->getVecBuilding()){
     int portee = building->getPortee();
-    Case bCase = building->getCase();
-        float distance = bCase->distance(t->getCase());
+    Tile bTile = building->getTile();
+        float distance = bTile->distance(t->getTile());
         if (distance <= portee){
           building->upgradeTower(t);
         }
   }
 
 void Game::constructTower(TowerType type, float x, float y){
-  // Trouver la case c pour x;y
+  // Trouver la tile c pour x;y
   if(this->canBuyTower()){
     if (this->canBuildTower(type, c)){
       tower = new Tower(type, c, &this);
@@ -240,7 +240,7 @@ void Game::constructTower(TowerType type, float x, float y){
 }
 
 void Game::constructBuilding(BuildingType type, float x, float y){
-  // Trouver la case c pour x;y
+  // Trouver la tile c pour x;y
   if(this->canBuyBuilding()){
     if (this->canBuildBuildable(type, c)){
       building = new Building(type, c, &this);

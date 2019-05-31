@@ -1,10 +1,10 @@
 #ifndef DEF_NODE
 #define DEF_NODE
 
-#include "Case.hpp"
+#include "Tile.hpp"
 
 class Map;
-class Case;
+class Tile;
 
 enum TypeNode{
   ENTREE,
@@ -16,7 +16,7 @@ enum TypeNode{
 class Node{
 private:
   // Attributs
-  Case *m_case;
+  Tile *m_tile;
   TypeNode type;
   int index;
   int successor;
@@ -31,7 +31,7 @@ public:
   ~Node();
 
   //////GETTERS/////
-  Case getCase();
+  Tile getTile();
   TypeNode getType();
   int getIndex();
   int getSuccessor();
@@ -39,7 +39,7 @@ public:
   Node* getNext();
 
   //////SETTERS/////
-  void setCase (Case *c);
+  void setTile (Tile *c);
   void setType(TypeNode type);
   void setIndex(int index);
   void setSuccessor(int successor);
@@ -71,7 +71,7 @@ private:
 
   //////OTHERS/////
 
-  void addNode(TypeNode type, Case c, int *successors);
+  void addNode(TypeNode type, Tile c, int *successors);
   void deleteNode(Node *node);
 
 };

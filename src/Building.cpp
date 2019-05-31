@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Building (BuildingType type, Case *case, Game *game){
+Building (BuildingType type, Tile *tile, Game *game){
   this->type=type;
   if (type==RADAR){
     this->m_portee=100;
@@ -19,17 +19,17 @@ Building (BuildingType type, Case *case, Game *game){
     this->p_price=50;
     this->m_affichage = "../images/buildingStock.png";
   }
-  this->m_case=case;
-  this->m_x = case->getX(); // Position de l'entrée de la map
-  this->m_y = case->getY(); // Position de l'entrée de la map
-  this->m_case->setBuildable(false);
+  this->m_tile=tile;
+  this->m_x = tile->getX(); // Position de l'entrée de la map
+  this->m_y = tile->getY(); // Position de l'entrée de la map
+  this->m_tile->setBuildable(false);
 
 }
 
 //////////GETTERS//////////
 
-Case Building::getCase(){
-  return this->m_case;
+Tile Building::getTile(){
+  return this->m_tile;
 }
 
 int Building::getPortee(){
@@ -50,10 +50,10 @@ Game Building::getGame(){
 }
 /////////SETTERS//////////
 
-void Building::setCase(Case *case){
-  this->m_case=case;
-  this->setX(case->getX());
-  this->setY(case->getY());
+void Building::setTile(Tile *tile){
+  this->m_tile=tile;
+  this->setX(tile->getX());
+  this->setY(tile->getY());
 }
 
 void Building::setPortee(int portee){

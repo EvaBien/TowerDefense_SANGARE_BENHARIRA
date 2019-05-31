@@ -3,7 +3,7 @@
 
 using namespace std;
 
-CatMonster::CatMonster(CatMonsterType type, Game *game, Case *c) {
+CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *c) {
   if (this->type == KITTEN){
     this->m_life = 60;
     this->m_speed = 150;
@@ -91,17 +91,17 @@ bool CatMonster::isAlive(){
   return this->m_life > 0;
 }
 
-Case CatMonster::chooseDestination(Map *m){
-  // Retourne la Case suivante dans le graph
-  Case current = this->getCase();
+Tile CatMonster::chooseDestination(Map *m){
+  // Retourne la Tile suivante dans le graph
+  Tile current = this->getTile();
   Map myMap = m;
   PathNode list = myMap->getListNodes();
   for (int i=0; i<list.getLenght(); i++){
-    if (list[i]->getCase() ==current){
+    if (list[i]->getTile() ==current){
       int successor = list[i]->getSuccessor();
       Node next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next->getCase();
+      return next->getTile();
     } // MANQUE DIJSKTRA
   }
   return NULL;
@@ -109,7 +109,7 @@ Case CatMonster::chooseDestination(Map *m){
 
 void CatMonster::move(Map *m){
   while (this->isAlive()){
-    Case current = this->getCase();
+    Tile current = this->getTile();
     if (current->getType()==OUT){
       this->getGame()->gameOver();
       exit();

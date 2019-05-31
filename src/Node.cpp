@@ -17,14 +17,14 @@ Node::Node(int type, float x, float y, int index, int successor, Map *map){
   this->index=index;
   this->successor=successor;
   this->map=map;
-  this->m_case = map->getCase(calculPosition(x*100,y*100));
+  this->m_tile = map->getTile(calculPosition(x*100,y*100));
 }
 
 Node::~Node(){};
 
 //////GETTERS/////
-Case getCase(){
-  return this->m_case;
+Tile getTile(){
+  return this->m_tile;
 }
 
 TypeNode getType(){
@@ -47,8 +47,8 @@ Node* getNext(){
 }
 
 //////SETTERS/////
-void setCase(Case *c){
-  this->m_case = case;
+void setTile(Tile *c){
+  this->m_tile = tile;
 }
 
 void setType(TypeNode type){

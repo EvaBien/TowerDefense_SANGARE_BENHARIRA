@@ -5,7 +5,7 @@
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
-Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme valeur neutre
+Tower::Tower (TowerType type, Tile *tile, Game *game){ //on considère 100 comme valeur neutre
   if (this->type == RED_LASER){
     this->m_damages = 150; //bcp de dégâts
     this->m_portee = 100;
@@ -33,17 +33,17 @@ Tower::Tower (TowerType type, Case *case, Game *game){ //on considère 100 comme
     this->m_price = 100;
     this->m_affichage = "../images/towerBlue.png";
   }
-  this->m_case= case;
-  this->m_x = case->getX(); // Position de l'entrée de la map
-  this->m_y = case->getY(); // Position de l'entrée de la map
-  this->m_case->setBuildable(false);
+  this->m_tile= tile;
+  this->m_x = tile->getX(); // Position de l'entrée de la map
+  this->m_y = tile->getY(); // Position de l'entrée de la map
+  this->m_tile->setBuildable(false);
   this->target=nullptr;
 }
 
 //////////GETTERS//////////
 
-Case Tower::getCase(){
-  return this->m_case;
+Tile Tower::getTile(){
+  return this->m_tile;
 }
 
 int Tower::getDamages(){
@@ -75,10 +75,10 @@ Game Tower::getGame(){
 }
 /////////SETTERS//////////
 
-void Tower::setCase(Case *case){
-  this->m_case=case;
-  this->setX(case->getX());
-  this->setY(case->getY());
+void Tower::setTile(Tile *tile){
+  this->m_tile=tile;
+  this->setX(tile->getX());
+  this->setY(tile->getY());
 }
 
 void Tower::setDamages(int damages){
@@ -151,8 +151,8 @@ void Tower::searchTarget(){
   Game game=this->getGame();
 
   for (CatMonster* cat : game->getVecCat()){
-    Case cCase = cat->getCase();
-    float distanceCurrent = cCase->distance(this->getCase());
+    Tile cTile = cat->getTile();
+    float distanceCurrent = cTile->distance(this->getTile());
     if (distanceCurrent < distanceMin){
       distanceMin= distanceCurrent;
       catClosest = cat;

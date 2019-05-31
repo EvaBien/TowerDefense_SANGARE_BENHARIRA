@@ -17,14 +17,14 @@ int Map::getWidth(){
   return this->m_width;
 }
 
-Case Map::getCase(int position){
-  return this->mCaseMap[position];
+Tile Map::getTile(int position){
+  return this->mTileMap[position];
 }
-Case* Map::getAllCases(){
-  return this->m_CaseMap;
+Tile* Map::getAllTiles(){
+  return this->m_TileMap;
 }
 
-int Map::getSizeCases(){
+int Map::getSizeTiles(){
   return this->getHeight()*this->getWidth();
 }
 
@@ -41,18 +41,18 @@ void Map::setWidth(int newWidth){
   this->m_width=newWidth; //Remplace valeur Width par une nouvelle
 }
 
-void Map::setCaseMap(int position, Case *case){
-  this->m_CaseMap[position] = &case;
+void Map::setTileMap(int position, Tile *tile){
+  this->m_TileMap[position] = &tile;
 }
 
-void Map::setAllCases(Case *tab){
-  this->m_CaseMap=tab;
+void Map::setAllTiles(Tile *tab){
+  this->m_TileMap=tab;
 }
 
 void Map::setParams(int height, int width){
   this->m_height=height;
   this->m_width=width;
-  this->m_CaseMap= new Case[height*width];
+  this->m_TileMap= new Tile[height*width];
 }
 
 PathNode Map::setListNodes(PathNode list){
@@ -71,11 +71,11 @@ int calculCoordY(int position){ // Du R
 
 int calculPosition(float x, float y){
   if (x==0){
-    int caseX=0;
+    int tileX=0;
   } else{
-    int caseX = (int)(x/3);
+    int tileX = (int)(x/3);
   }
-  return (int)caseX+(int)(3*y);
+  return (int)tileX+(int)(3*y);
 }
 
 void Map::Scale(int heightPPM, int widthPPM){
@@ -88,7 +88,7 @@ void Map::Scale(int heightPPM, int widthPPM){
 }
 
 
-ColorCase verifColor(int r, int v, int b){ // A compléter en fonction des couleurs
+ColorTile verifColor(int r, int v, int b){ // A compléter en fonction des couleurs
   if (r==200 && v==0 && b==0){
     return OUT;
   } else if (r==0 && v==200 && b==0){
@@ -153,8 +153,8 @@ void Map::readPPM(char* filename){
       int r = data[pixel];
       int v = data[pixel+1];
       int b = data[pixel+2];
-      Case = new Case((x*100)+50,(y*100)+50,verifColor(r,v,b));
-      this->m_CaseMap(calculPosition(x,y)) = Case;
+      Tile = new Tile((x*100)+50,(y*100)+50,verifColor(r,v,b));
+      this->m_TileMap(calculPosition(x,y)) = Tile;
     }
   }
   fclose(file);

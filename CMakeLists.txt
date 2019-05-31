@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 # ---------------------------------------- PROJECT FILES
 # récupère tous les fichiers sources
 project(itd_eva)
-set(MY_SOURCES src/Building.cpp src/Case.cpp src/CatMonster.cpp src/Entity.cpp src/Game.cpp src/Graph.cpp src/Map.cpp src/TextureController.cpp src/Tower.cpp src/Tower_Defense_Main.cpp src/Window.cpp)
+set(MY_SOURCES src/Building.cpp src/Tile.cpp src/CatMonster.cpp src/Entity.cpp src/Game.cpp src/Graph.cpp src/Map.cpp src/TextureController.cpp src/Tower.cpp src/Tower_Defense_Main.cpp src/Window.cpp)
 
 # ---------------------------------------- FIND DEPENDENCIES
 

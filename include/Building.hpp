@@ -17,8 +17,8 @@ enum BuildingType{
 class Building : public Entity {
 private:
   // Attributs
-  Case *m_case;
-  int m_portee; //jusqu'à quelle case peut tirer
+  Tile *m_tile;
+  int m_portee; //jusqu'à quelle tile peut tirer
   int m_price; //prix de la tour
   BuildingType type; //type de tour en fonction couleur
   Game *game;
@@ -26,10 +26,10 @@ private:
 public:
   // Méthodes
 
-  Building(BuildingType type, Case* case, Game *game); //constructeur
+  Building(BuildingType type, Tile* tile, Game *game); //constructeur
 
   /////GETTERS/////
-  Case getCase();
+  Tile getTile();
   int getGain();
   int getPortee();
   int getPrice();
@@ -38,7 +38,7 @@ public:
 
 
   /////SETTERS/////
-  void setCase(Case* case);
+  void setTile(Tile* tile);
   void setGain(int newGain);
   void setPortee(int portee);
   void setPrice(int price);

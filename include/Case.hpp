@@ -1,10 +1,10 @@
-#ifndef DEF_CASE
-#define DEF_CASE
+#ifndef DEF_TILE
+#define DEF_TILE
 
 #include <string>
 #include "Node.hpp"
 
-enum ColorCase{
+enum ColorTile{
   OUT,
   IN,
   BUILD,
@@ -13,20 +13,20 @@ enum ColorCase{
 };
 
 
-class Case{
+class Tile{
 private:
   // Attributs
-  float m_x; //jusqu'à quelle case peut tirer
+  float m_x; //jusqu'à quelle tile peut tirer
   float m_y; //prix de la tour
   int m_side;
   bool m_buildable;
-  ColorCase m_color;
+  ColorTile m_color;
 
 public:
   // Méthodes
 
-  Case(float x, float y, ColorCase color);
-  ~Case();
+  Tile(float x, float y, ColorTile color);
+  ~Tile();
 
   /////GETTERS/////
   float getX();
@@ -42,7 +42,7 @@ public:
 
   //////OTHERS//////
 
-  float distance(Case c);
+  float distance(Tile c);
 
   // bool idBuildable();
 

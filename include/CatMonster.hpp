@@ -26,7 +26,7 @@ private:
 
 public:
 
-  CatMonster(CatMonsterType type, Game *game, Case* case); //constructeur
+  CatMonster(CatMonsterType type, Game *game, Tile* tile); //constructeur
   ~CatMonster(); // Desctructeur
 
   //////GETTERS/////
@@ -47,7 +47,7 @@ public:
   void afficher();
   void beDamaged(int nbDamages, Tower *tower);
   bool isAlive();
-  Case chooseDestination(Map *m);
+  Tile chooseDestination(Map *m);
   void move(Map *m);
   void destroy(Tower *t);
   // int Dijsktra(int current, int destination);
