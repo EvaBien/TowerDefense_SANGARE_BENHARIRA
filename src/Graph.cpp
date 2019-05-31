@@ -31,9 +31,12 @@ int* Graph::readITD(char* filename){
   }
 
   char chaine[250];
+  int nbNode;
+  unsigned char* tabNode = new unsigned char[nbNode]
+
   //vérifie qu'on a ou non atteint la fin du document
   reading = (fgets(chaine, 250, file) != NULL);
-  int nbNode;
+  
   while (reading)
   {
     // read header
@@ -52,8 +55,7 @@ int* Graph::readITD(char* filename){
         fgets(chaine, 255, file);
       } while (chaine[0]=='#');
 
-      // On met le reste dans un tableau de node
-      unsigned char* tabNode = new unsigned char[nbNode]
+      // On met le reste dans un tableau de node TabNode[]
       for (int i = 1, i<nbNode, i++){
         int index;
         int type;
@@ -61,11 +63,13 @@ int* Graph::readITD(char* filename){
         int y;
         int successors;
         sscanf(chaine, "%d\n %d\n %d\n %d\n %d\n", &index, &type, &x, &y, successors);
-        tabNode[i] = new Node(x, y, type, successors, &this)
+        tabNode[i] = new Node(x, y, type, successors, index, &this);
       }
-
-
+      reading = 0; //met fin à la lecture
     }
+    
+    fclose(fp);
+    return tabNode;
   }
   
   //lire ligne par ligne donc entre chaque \n
