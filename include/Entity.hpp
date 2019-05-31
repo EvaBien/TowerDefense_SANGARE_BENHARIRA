@@ -34,8 +34,8 @@ public:
 
   ///////////SETTERS////////
 
-  void setX(float X);
-  void setY(float Y);
+  void setX(float x);
+  void setY(float y);
   void setAffichage(std::string path);
 
   //////////OTHERS/////////////
