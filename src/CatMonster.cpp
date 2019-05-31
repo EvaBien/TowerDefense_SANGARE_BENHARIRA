@@ -131,32 +131,88 @@ void CatMonster::move(Map *m){
           int deltaY1 = fabs(deltaY);
           int pX = 2*deltaY1-deltaX1;
           int pY = 2*deltaX1-deltaY1;
-
-          if (abs(deltaX) == 0){
-            this->setX(initialX);
-            if (deltaY <0){
-              this->setY(this->getY()-1);
-            } else if (deltaY >0){
-              this->setY(this->getY()+1);
+          int x;
+          int y;
+          if (deltaY1<=deltaX1){
+            if(deltaX>=0){
+              x=initialX;
+              y=initialY;
+              errorX=destinX;
+            } else {
+              x=destinX;
+              y=destinY;
+              errorX=initialX;
             }
-          } else if(abs(deltaY) == 0){
-            this->setY(initialY);
-            if (deltaX <0){
-              this->setX(this->getX()-1);
-            } else if (deltaX >0){
-              this->setX(this->getX()+1);
-            }
-          } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){
-            float deltaError= abs(deltaY/deltaX);
-            int newY = (int)initialY;
-            for (float newX=intialX; newX<destinX; newX++){
-              error = error+deltaError;
-              if (error >= 0.5){
-                newY = newY+abs(deltaY)*1;
-                error = error-1.0;
+            this->setX(x);
+            this->setY(y);
+            for (int i=0; x<errorX;i++){
+              if(pX<0){
+                pX=pX+2*deltaY1;
+              } else {
+                if((deltaX<0 && deltaY<0) || (deltaX>0 && deltaY>0)){
+                  y=y+1;
+                } else {
+                  y=y-1;
+                }
+                pX=pX+2*(deltaY1-deltaX1);
               }
+              delay(0);
+              this->setX(x);
+              this->setY(y);
             }
-          } else
+          } else {
+            if(deltaY>=0) {
+              x=initialX;
+              y=initialY;
+              errorY=destinY;
+            } else {
+              x=destinX;
+              y=destinY;
+              errorY=initialY;
+            }
+            this->setX(x);
+            this->setY(y);
+            for(i=0;y<errorY;i++)
+            {
+              y=y+1;
+              if(pY<=0)
+              {
+                pY=pY+2*deltaX1;
+              }
+              else
+              {
+                if((deltaX<0 && deltaY<0) || (deltaX>0 && deltaY>0))
+                {
+                  x=x+1;
+                }
+                else
+                {
+                  x=x-1;
+                }
+                pY=pY+2*(deltaX1-deltaY1);
+              }
+              delay(0);
+              this->setX(x);
+              this->setY(y);
+            }
+          }
+        }
+
+        // if (abs(deltaX) == 0){
+        //   this->setX(initialX);
+        //   if (deltaY <0){
+        //     this->setY(this->getY()-1);
+        //   } else if (deltaY >0){
+        //     this->setY(this->getY()+1);
+        //   }
+        // } else if(abs(deltaY) == 0){
+        //   this->setY(initialY);
+        //   if (deltaX <0){
+        //     this->setX(this->getX()-1);
+        //   } else if (deltaX >0){
+        //     this->setX(this->getX()+1);
+        //   }
+        // } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){
         }
       }
     }
