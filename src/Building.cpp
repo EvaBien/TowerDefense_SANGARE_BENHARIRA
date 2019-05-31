@@ -8,15 +8,15 @@ Building (BuildingType type, Tile *tile, Game *game){
   this->type=type;
   if (type==RADAR){
     this->m_portee=100;
-    this->p_price=100;
+    this->m_price=100;
     this->m_affichage = "../images/buildingRadar.png";
   } else if (type==WEAPON){
     this->m_portee=75;
-    this->p_price=75;
+    this->m_price=75;
     this->m_affichage = "../images/buildingWeapon.png";
   } else{
     this->m_portee=50;
-    this->p_price=50;
+    this->m_price=50;
     this->m_affichage = "../images/buildingStock.png";
   }
   this->m_tile=tile;
@@ -33,7 +33,7 @@ Tile Building::getTile(){
 }
 
 int Building::getPortee(){
-  return this->m_gportee;
+  return this->m_portee;
 }
 
 
