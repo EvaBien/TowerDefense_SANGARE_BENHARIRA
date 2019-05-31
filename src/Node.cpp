@@ -81,14 +81,26 @@ void setNext(Node *node){
 
 
 //////GETTERS/////
-int getLenght();
-Node* getHead();
-Node* getEnd();
+int getLenght(){
+  return this->m_lenght;
+}
+Node* getHead(){
+  return this->head;
+}
+Node* getEnd(){
+  return this->end;
+}
 
 //////SETTERS/////
-void setLenght(int lenght);
-void setHead(Node* node);
-void setEnd(Node* node);
+void setLenght(int lenght){
+  this->m_lenght=lenght;
+}
+void setHead(Node* node){
+  this->head=node;
+}
+void setEnd(Node* node){
+  this->end=node;
+}
 
 //////OTHERS/////
 
