@@ -23,6 +23,7 @@ private:
   int m_speed; //vitesse à laquelle monstre se déplace
   CatMonsterType type; //type de chat mutant
   Game *game;
+  GLuint m_texture;
 
 public:
 
@@ -40,6 +41,7 @@ public:
   void setLife(int newLife);
   void setGainDeath(int gain);
   void setSpeed(int speed);
+  void setTexture(GLuint *texture);
 
 
   //////OTHERS//////

@@ -65,15 +65,21 @@ void CatMonster::setSpeed(int speed){
 void CatMonster::setGame(Game *game){
   this->game=game;
 }
+
+void CatMonster::setTexture(GLuint *texture){
+
+}
+
 //////////OTHER METHODS//////////
 
 void CatMonster::afficher(){
   GLuint catTexture = 0;
   string pathCat = this->getAffichage();
   catTexture=loadTexture(pathCat);
+  this->setTexture(catTexture);
 
   glPushMatrix();
-  glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+  glTranslate(this->getTile()->getX(),this->getTile()->getY(),0);
   drawPicture(catTexture, 50, 50); // Taille tower
   glPopMatrix();
 }
