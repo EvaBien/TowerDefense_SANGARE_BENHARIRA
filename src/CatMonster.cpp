@@ -102,6 +102,14 @@ Case CatMonster::chooseDestination(){
 
 void CatMonster::move(Map *m){
     while (this->isAlive()){
+      Case current = this->getCase();
+      if (current->getType()==OUT){
+        this->getGame()->gameOver();
+        exit();
+      } else {
+        if (current->getType()==NODE || current->getType()==IN){
+
+        }
       // Je cherche la position de la Case actuelle
       // Si c'est un coude ou une intersection --> choose Destination Case;
       // J'ai une nouvelle destination

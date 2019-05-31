@@ -1,7 +1,7 @@
 #ifndef DEF_NODE
 #define DEF_NODE
 
-#include()
+#include "Case.hpp"
 enum TypeNode{
     IN,
     OUT,
