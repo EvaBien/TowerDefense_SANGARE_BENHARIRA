@@ -117,13 +117,30 @@ void CatMonster::move(Map *m){
       if (current->getType()==NODE || current->getType()==IN){
         destination = this->chooseDestination(m);
         while (current != destination){
-          int initialX = current.getX();
-          int initialY = current.getY();
-          // AVANCE BRASSENHAM
+
+          ////////// BRASSENHAM ///////////
+          float initialX = current.getX();
+          float initialY = current.getY();
+          float destinX = destination.getX();
+          float destinY= destination.getY();
+          float deltaX = destinX - initialX;
+          float deltaY = destinY - intitialY;
+          float error = 0.0;
+          if (deltaX != 0.0){
+          float deltaError= abs(deltaY/deltaX);
+          int y = (int)initialY;
+          for (float x=intialX; x<destinX){
+            error = error+deltaError;
+            if (error >= 0.5){
+              y = y+sign(deltaY)*1;
+              error = error-1.0;
+            }
+          }
         }
       }
     }
   }
+}
 
   void CatMonster::destroy(Tower *t){
     Game* game = this->getGame();
