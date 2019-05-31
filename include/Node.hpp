@@ -1,37 +1,39 @@
 #ifndef DEF_NODE
 #define DEF_NODE
 
-
-enum NodeType{
-    OUT,
+#include()
+enum TypeNode{
     IN,
-    INTER,
+    OUT,
     TWIST,
+    INTER,
 };
 
 class Node{
     private:
     // Attributs
-    Case m_case;
+    Case *m_case;
     TypeNode type;
-    int *successors;
+    int successor;
     Node *next;
+    int index;
+    Map *map;
 
     public:
 
-    Node(); //constructeur
+    Node(int type, float x, float y); //constructeur
     ~Node();
 
     //////GETTERS/////
     Case getCase();
     TypeNode getType();
-    int* getSuccessors();
+    int getSuccessor();
     Node* getNext();
 
     //////SETTERS/////
-    void setCase (Case c);
+    void setCase (Case *c);
     void setType(TypeNode type);
-    void setSuccessors(int *successors);
+    void setSuccessor(int successor);
     void setNext(Node *node);
     //////OTHERS/////
 };

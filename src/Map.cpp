@@ -161,13 +161,13 @@ PathNode Map::verifITD(char* filename){
 
 void Map::initMap(){
 
+this->readPPM("../images/map1.ppm");
 this->setListNodes(this->verifITD("../map.itd.txt"));
 
   if(this->getListNodes() == NULL) {
   				fprintf(stderr, "Unvalid map\n");
   			}
 
-this->readPPM("../images/map1.ppm");
 GLuint mapTexture = 0;
 string pathMap = "../images/map1.png";
 mapTexture=loadTexture(pathMap);
