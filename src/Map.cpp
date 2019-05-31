@@ -162,7 +162,60 @@ void Map::readPPM(char* filename){
 
 
 Node* Map::readITD(char* filename){
-  //Prendre ce qu'il y a dans map
+
+  // open the file to read
+  FILE *file = fopen(filename, "r");
+
+  //check that there is no error
+  if(!file){
+    printf("ERROR READING ITD \n");
+    return EXIT_FAILURE;
+  }
+
+  char chaine[250];
+  int nbNode;
+  unsigned char* tabNode = new unsigned char[nbNode]
+
+  //vérifie qu'on a ou non atteint la fin du document
+  if  (fgets(chaine, 250, file) != NULL){
+
+    bool reading = true;
+
+    while (reading)	{
+      // read header
+      if (fscanf(file,"%s\n", chaine) != "@ITD1"){
+        printf("ERROR, this file is not identified as an ITD \n");
+      } else {
+        // ne pas prendre en compte les comments
+        do{
+          fgets(chaine, 255, file);
+        } while (chaine[0]=='#');
+
+        for(int i=1; i<13; i++){
+          sscanf(chaine, "%s\n", chaine);
+        }
+        nbNode = sscanf(chaine, "%d\n", chaine);
+        do{
+          fgets(chaine, 255, file);
+        } while (chaine[0]=='#');
+
+        // On met le reste dans un tableau de node TabNode[]
+        for (int i = 1; i<nbNode; i++){
+          int index;
+          int type;
+          int x;
+          int y;
+          int successors;
+          sscanf(chaine, "%d\n %d\n %d\n %d\n %d\n", &index, &type, &x, &y, successors);
+          tabNode[i] = new Node(x, y, type, successors, index, &this);
+        }
+        reading = false; //met fin à la lecture
+      }
+    }
+  }
+
+  fclose(file);
+  return
 }
 
 
