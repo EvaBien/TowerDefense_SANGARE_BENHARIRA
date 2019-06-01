@@ -16,7 +16,7 @@ int Map::getWidth(){
   return this->m_width;
 }
 
-Tile Map::getTile(int position){
+Tile* Map::getTile(int position){
   return this->m_TileMap[position];
 }
 Tile* Map::getAllTiles(){

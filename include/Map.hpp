@@ -19,7 +19,7 @@ public:
   //////GETTERS/////
   int getHeight();
   int getWidth();
-  Tile getTile(int position);
+  Tile *getTile(int position);
   Tile *getAllTiles();
   int getSizeTiles();
   Node *getListNodes();
@@ -27,7 +27,7 @@ public:
   //////SETTERS/////
   void setHeight();
   void setWidth();
-  void setTileMap(int Position, Tile *c);
+  void setTileMap(int Position, Tile *t);
   void setAllTiles(Tile *tab);
   void setParams(int height, int width);
   void setListNodes(Node* list);

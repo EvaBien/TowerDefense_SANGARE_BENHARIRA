@@ -20,7 +20,7 @@ class Game{
   int m_cagnotte;
   int m_nbWave;
   bool m_finished;
-  Map m_map;
+  Map* m_map;
   int m_time;
 
   /*Creation des tableaux d'entités*/
@@ -31,13 +31,13 @@ class Game{
 
   public:
 
-  Game(); //constructeur
+  Game(std::vector<CatMonster*>& monster, std::vector<Tower*>& towers, std::vector<Building*>& buildings); //constructeur
 
   //////GETTERS/////
   int getCagnotte();
   int getWave();
   bool getFinish();
-  Map getMap();
+  Map *getMap();
   int getTime();
   std::vector<CatMonster*> getVecCat();
   std::vector<Tower*> getVecTower();
@@ -47,14 +47,11 @@ class Game{
   void setCagnotte(int money);
   void setWave(int vague);
   void setFinish(bool value);
-  void setMap(Map map);
+  void setMap(Map* map);
   void setTime(int time);
   void setAddVecCat(CatMonster* cat);
   void setAddVecTower(Tower* tower);
   void setAddVecBuilding(Building* building);
-  // void setDeleteVecCat(CatMonster* cat);
-  // void setDeleteVecTower(Tower* tower);
-  // void setDeleteVecBuilding(Building* building);
 
   //////OTHERS//////
 
@@ -62,8 +59,6 @@ class Game{
   void prepareWave(int numWave);
   bool canBuyTower(TowerType type);
   bool canBuyBuilding(BuildingType type);
-  bool canBuildTower(TowerType type, Tile *t);
-  bool canBuildBuilding(BuildingType type, Tile *t);
   void checkBuildings(Tower *t);
   void checkTowers(Building *b);
   void constructTower(TowerType type, float x, float y);

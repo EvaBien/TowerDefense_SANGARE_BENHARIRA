@@ -1,13 +1,13 @@
 #include <string>
 #include "../include/Game.hpp"
-#include "../include/CatMonster.hpp"
-#include "../include/Tower.hpp"
-#include "../include/Building.hpp"
+// #include "../include/CatMonster.hpp"
+// #include "../include/Tower.hpp"
+// #include "../include/Building.hpp"
 /* Nombre minimal de millisecondes separant le rendu de deux images */
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
-Game::Game() {
+Game::Game(std::vector<CatMonster*>& monster, std::vector<Tower*>& towers, std::vector<Building*>& buildings){ //constructeur
   this->m_cagnotte = 100;
   this->m_nbWave = 0;
   this->m_finished = false;
@@ -15,9 +15,9 @@ Game::Game() {
   this->m_time=0;
   // Initialiser 3 vecteurs
 
-  this->m_monsters = std::vector<CatMonster*> monsters;
-  this->m_towers = std::vector<Tower*> towers;
-  this->m_buildings = std::vector<Building*> buildings;
+  this->m_monsters =  monsters;
+  this->m_towers = towers;
+  this->m_buildings =  buildings;
 }
 
 //////////GETTERS//////////
@@ -69,7 +69,7 @@ void Game::setFinish(bool value){
   this->m_finished = value;
 }
 
-void Game::setMap(Map map){
+void Game::setMap(Map *map){
   this->m_map=map;
 }
 
@@ -94,7 +94,7 @@ Map myMap = new Map();
 void Game::startGame(){
 
   myMap.initMap();
-  this->setMap(myMap);
+  this->setMap(&myMap);
 
   Node* list = myMap.getListNodes();
   entry = list[0].getTile();
@@ -183,14 +183,6 @@ bool Game::canBuyBuilding(BuildingType type){
   return false;
 }
 
-bool Game::canBuildBuilding(BuildingType type, Tile *c){
-
-}
-
-bool Game::canBuildTower(TowerType type, Tile *c){
-
-}
-
 void Game::checkTowers(Building *b){
   int portee = b->getPortee();
 
@@ -216,14 +208,14 @@ void Game::checkBuildings(Tower *t){
 }
 
 void Game::constructTower(TowerType type, float x, float y){
-  Map *mymap = this->getMap();
+  Map* map = this->getMap();
   int position = calculPosition(x,y);
-  Tile *t = mymap->getTile(position);
+  Tile* t = map->getTile(position);
   if(this->canBuyTower(type)){
-    if (this->canBuildTower(type, t)){
+    if (t->getBuildable()){
       Tower tower = new Tower(type, t, this);
-      this->setAddVecTower(tower);
-      this->checkBuildings();
+      this->setAddVecTower(*tower);
+      this->checkBuildings(*tower);
       tower.afficher();
       tower.attack();
     } else {
@@ -235,15 +227,15 @@ void Game::constructTower(TowerType type, float x, float y){
 }
 
 void Game::constructBuilding(BuildingType type, float x, float y){
-  Map *mymap = this->getMap();
+  Map* map = this->getMap();
   int position = calculPosition(x,y);
-  Tile *t=mymap->getTile(position);
+  Tile* t = map->getTile(position);
   if(this->canBuyBuilding(type)){
-    if (this->canBuildBuilding(type, t)){
+    if (t->getBuildable()){
       Building building = new Building(type, t, this);
-      this->setAddVecBuilding(building);
-      building->checkTower();
-      building->afficher();
+      this->setAddVecBuilding(*building);
+      this->checkTowers(*building);
+      building.afficher();
     } else {
       printf("NOT BUILDABLE ZONE");
     }

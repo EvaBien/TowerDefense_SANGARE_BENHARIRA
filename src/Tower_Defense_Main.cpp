@@ -16,11 +16,15 @@
 
 int main(int argc, char **argv) {
 
+  std::vector<CatMonster*> monsters;
+  std::vector<Tower*> towers;
+  std::vector<Building*> buildings;
+
   SDL_Window* window = initWindow(); // Init fenêtre
   if (window == nullptr) {
     cout << "Error window init" << endl;
   }
-  Game myGame = new Game();
+  Game myGame = new Game(monster, towers, buildings);
 
   bool TChecked = false;
   bool BChecked = false;
