@@ -65,8 +65,8 @@ class Game{
   bool canBuildBuilding(BuildingType type, Tile *c);
   void checkBuildings(Tower *t);
   void checkTowers(Building *b);
-  void construcTower(TowerType type, Tile *c);
-  void construcBuilding(BuildingType type, Tile *c);
+  void construcTower(TowerType type, float x, float y);
+  void construcBuilding(BuildingType type, float x , float y);
   void gameOver();
 
 };

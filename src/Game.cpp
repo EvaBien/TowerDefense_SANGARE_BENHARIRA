@@ -268,13 +268,13 @@ void Game::gameOver(){
   //   this->getVecBuilding().erase(building);
   // }
 
-  catVec = this->getVecCat();
+  std::vector<CatMonster *> catVec = this->getVecCat();
   catVec.erase(catVec.begin(), catVec.end());
 
-  TowerVec = this->getVecTower();
-  TowerVec.erase(TowerVec.begin(), TowerVec.end());
+  std::vector<Tower *>towerVec = this->getVecTower();
+  towerVec.erase(towerVec.begin(), towerVec.end());
 
-  buildVec = this->getVecBuilding();
+  std::vector<Buildingr *> buildVec = this->getVecBuilding();
   buildVec.erase(buildVec.begin(), buildVec.end());
 
 
