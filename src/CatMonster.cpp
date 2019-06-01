@@ -2,6 +2,7 @@
 #include <vector>
 #include "../include/CatMonster.hpp"
 #include"../include/Game.hpp"
+#include"../include/Tower.hpp"
 using namespace std;
 
 CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *tile) {
