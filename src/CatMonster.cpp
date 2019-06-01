@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include "../include/CatMonster.hpp"
-
+#include"../include/Game.hpp"
 using namespace std;
 
 CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *tile) {
@@ -116,10 +116,10 @@ Tile* CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
   Map *myMap = m;
-  Node* list = myMap->getListNodes();
+  Node* list[9] = myMap->getListNodes();
   int i=0;
-  while (list[i]->getNext()!=nullptr){
-    if (&list[i].getTile() == current){
+  while (list[i].getNext()!=nullptr){
+    if (list[i].getTile() == &current){
       int successor = list[i].getSuccessor();
       Node next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
