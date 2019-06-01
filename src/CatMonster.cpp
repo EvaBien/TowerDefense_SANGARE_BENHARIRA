@@ -1,6 +1,8 @@
 #include <string>
+#include <vector>
 #include "../include/CatMonster.hpp"
-
+#include"../include/Game.hpp"
+#include"../include/Tower.hpp"
 using namespace std;
 
 CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *tile) {
@@ -111,38 +113,41 @@ bool CatMonster::isAlive(){
   return this->m_life > 0;
 }
 
-Tile CatMonster::chooseDestination(Map *m){
+Tile* CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
-  Map *myMap = m;
-  PathNode list = myMap->getListNodes();
-  for (int i=0; i<list.getLenght(); i++){
-    if (list[i]->getTile() ==current){
-      int successor = list[i]->getSuccessor();
+  Node* list = m->getListNodes();
+  int i=0;
+  while (list[i].getNext()!=nullptr){
+    if (list[i].getTile() == current){
+      int successor = list[i].getSuccessor();
       Node next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next->getTile();
-    } // MANQUE DIJSKTRA
+      return next.getTile();
+    }
+    i++;
   }
-  return NULL;
+  current = NULL;
+  return current;
 }
 
 void CatMonster::move(Map *m){
   while (this->isAlive()){
-    Tile current = this->getTile();
+    Tile *current = this->getTile();
     if (current->getType()==OUT){
-      this->getGame()->gameOver();
-      exit();
+      Game *game = this->getGame();
+      game->gameOver();
+      exit(0);
     } else {
       if (current->getType()==NODE || current->getType()==IN){
-        destination = this->chooseDestination(m);
+        Tile *destination = this->chooseDestination(m);
         while (current != destination){
 
           ////////// BRASSENHAM ///////////
-          float initialX = current.getX();
-          float initialY = current.getY();
-          float destinX = destination.getX();
-          float destinY= destination.getY();
+          float initialX = current->getX();
+          float initialY = current->getY();
+          float destinX = destination->getX();
+          float destinY= destination->getY();
           float errorX=0.0;
           float errorY=0.0;
           int deltaX = (int)(destinX - initialX);
@@ -213,39 +218,22 @@ void CatMonster::move(Map *m){
             }
           }
         }
-
-        // if (abs(deltaX) == 0){
-        //   this->setX(initialX);
-        //   if (deltaY <0){
-        //     this->setY(this->getY()-1);
-        //   } else if (deltaY >0){
-        //     this->setY(this->getY()+1);
-        //   }
-        // } else if(abs(deltaY) == 0){
-        //   this->setY(initialY);
-        //   if (deltaX <0){
-        //     this->setX(this->getX()-1);
-        //   } else if (deltaX >0){
-        //     this->setX(this->getX()+1);
-        //   }
-        // } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){}
       }
     }
   }
 }
 
 void CatMonster::destroy(Tower *t){
-  Game* game = this->getGame();
+  Game *game = this->getGame();
   int money = game->getCagnotte();
   game->setCagnotte(money+this->getGainDeath());
-  std::vector<CatMonster*> vector = game->getVecCat();
+  printf("Montre mort ! La nouvelle cagnotte : %d", game->getCagnotte());
+  std::vector<CatMonster *> vector = game->getVecCat();
   int i=0;
   for (i; i<vector.size(); i++){
     if (vector[i] == this){
       vector.erase(vector.begin()+i);
     }
   }
-  if (this=== t->getTarget()){
     t->setTarget(nullptr);
-  }
 }

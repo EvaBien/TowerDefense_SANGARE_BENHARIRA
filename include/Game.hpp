@@ -6,9 +6,12 @@
 #include <chrono>
 #include <thread>
 
-class CatMonster;
-class Tower;
-class Building;
+#include "../include/CatMonster.hpp"
+#include "../include/Tower.hpp"
+#include "../include/Building.hpp"
+// class CatMonster;
+// class Tower;
+// class Building;
 
 class Game{
   private:
@@ -60,8 +63,8 @@ class Game{
   bool canBuyBuilding(BuildingType type);
   bool canBuildTower(TowerType type, Tile c);
   bool canBuildBuilding(BuildingType type, Tile c);
-  void checkBuildings(Tower t);
-  void checkTowers(Building b);
+  void checkBuildings(Tower *t);
+  void checkTowers(Building *b);
   void construcTower(TowerType type, Tile *c);
   void construcBuilding(BuildingType type, Tile *c);
   void gameOver();

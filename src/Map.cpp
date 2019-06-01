@@ -18,7 +18,7 @@ int Map::getWidth(){
 }
 
 Tile Map::getTile(int position){
-  return this->mTileMap[position];
+  return this->m_TileMap[position];
 }
 Tile* Map::getAllTiles(){
   return this->m_TileMap;
@@ -28,7 +28,7 @@ int Map::getSizeTiles(){
   return this->getHeight()*this->getWidth();
 }
 
-PathNode Map::getlistNode(){
+Node* Map::getlistNode(){
   return this->m_listNodes;
 }
 /////////SETTERS//////////
@@ -55,7 +55,7 @@ void Map::setParams(int height, int width){
   this->m_TileMap= new Tile[height*width];
 }
 
-PathNode Map::setListNodes(PathNode list){
+void Map::setListNodes(Node* list){
   this->m_listNodes = list;
 }
 
@@ -246,12 +246,8 @@ void Map::initMap(){
 
   if (this->verifGraph(tabNode)){
 
-    PathNode listMap = new PathNode();
-    listMap->m_lenght = tabNode.size();
-    listMap->head = tabNode[0];
-    listMap->end = tabNode[1];
 
-    this->setListNodes(listMap);
+    this->setListNodes(tabNode);
 
     if(this->getListNodes() == NULL) {
       fprintf(stderr, "Unvalid map\n");
@@ -262,7 +258,7 @@ void Map::initMap(){
     mapTexture=loadTexture(pathMap);
 
     glPushMatrix();
-    glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+    glTranslate(0,0,0); // 1500 x 1000;
     drawPicture(mapTexture, this->getHeight(), this->getWidth());
     glPopMatrix();
   }

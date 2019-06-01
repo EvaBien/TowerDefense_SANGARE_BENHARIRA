@@ -35,7 +35,7 @@ public:
   int getGainDeath();
   int getSpeed();
   int getType();
-  Game getGame();
+  Game* getGame();
   GLuint getTexture();
 
 
@@ -45,6 +45,7 @@ public:
   void setLife(int newLife);
   void setGainDeath(int gain);
   void setSpeed(int speed);
+  void setGame(Game *game);
   void setTexture(GLuint texture);
 
 
@@ -53,7 +54,7 @@ public:
   void afficher();
   void beDamaged(int nbDamages, Tower *tower);
   bool isAlive();
-  Tile chooseDestination(Map *m);
+  Tile* chooseDestination(Map *m);
   void move(Map *m);
   void drawCat(GLuint Texture, float x, float y);
   void destroy(Tower *t);

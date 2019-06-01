@@ -28,9 +28,9 @@ Building::Building (BuildingType type, Tile *tile, Game *game){
 
 //////////GETTERS//////////
 
-Tile* Building::getTile(){
-  return this->m_tile;
-}
+// Tile* Building::getTile(){
+//   return this->m_tile;
+// }
 
 int Building::getPortee(){
   return this->m_portee;
@@ -50,11 +50,11 @@ Game* Building::getGame(){
 }
 /////////SETTERS//////////
 
-void Building::setTile(Tile *tile){
-  this->m_tile=tile;
-  this->setX(tile->getX());
-  this->setY(tile->getY());
-}
+// void Building::setTile(Tile *tile){
+//   this->m_tile=tile;
+//   this->setX(tile->getX());
+//   this->setY(tile->getY());
+// }
 
 void Building::setPortee(int portee){
   this->m_portee =  portee;
