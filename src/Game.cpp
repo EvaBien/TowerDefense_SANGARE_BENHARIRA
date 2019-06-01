@@ -15,9 +15,9 @@ Game::Game() {
   this->m_time=0;
   // Initialiser 3 vecteurs
 
-  this->m_monsters = std::vector<CatMonster*> monsters;
-  this->m_towers = std::vector<Tower*> towers;
-  this->m_buildings = std::vector<Building*> buildings;
+  this->m_monsters = std::vector<CatMonster *> monsters;
+  this->m_towers = std::vector<Tower *> towers;
+  this->m_buildings = std::vector<Building *> buildings;
 }
 
 //////////GETTERS//////////
@@ -130,19 +130,19 @@ void Game::prepareWave(int numWave){
   // Avec un random ?
 
   for (int i=0; i<nbKitten; i++){
-    CatMonster* newKitten = new CatMonster(KITTEN,this, &entry);
+    CatMonster* newKitten = new CatMonster(KITTEN,this, entry);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   for (int i=0; i<nbJustCat; i++){
-    CatMonster* newJustCat = new CatMonster(JUSTCAT,this, &entry);
+    CatMonster* newJustCat = new CatMonster(JUSTCAT,this, entry);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   for (int i=0; i<nbFatCat; i++){
-    CatMonster* newFatCat = new CatMonster(FATCAT,this, &entry);
+    CatMonster* newFatCat = new CatMonster(FATCAT,this, entry);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
