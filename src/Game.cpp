@@ -69,11 +69,11 @@ void Game::setFinish(bool value){
     this->m_finished = value;
 }
 
-void Game:setMap(Map map){
+void Game::setMap(Map map){
   this->m_map=map;
 }
 
-void Game:setTime(int time){
+void Game::setTime(int time){
   this->m_time=time;
 }
 
@@ -88,17 +88,18 @@ void Game::setAddVecBuilding(Building* building){
 }
 
 //////////OTHER METHODS//////////
-
+Tile entry;
+Tile exit;
 void Game::startGame(){
 
 
   Map myMap = new Map();
-  myMap->initMap();
+  myMap.initMap();
   this->setMap(myMap);
 
-  PathNode list = myMap->getListNodes();
-  Tile entry = list->getHead()->getTile();
-  Tile exit = list->getEnd()->getTile();
+  Node* list = myMap.getListNodes();
+  entry = list[0];
+  exit = list[1];
 
   this->setFinish(false);
   this->setTime(0);
@@ -118,7 +119,7 @@ void Game::startGame(){
           this->gameOver();
         }
       }
-      this->setTime(this.getTime()++);
+      this->setTime(this->getTime()++);
   }
 }
 
@@ -130,19 +131,19 @@ void Game::prepareWave(int numWave){
 // Avec un random ?
 
   for (int i=0; i<nbKitten; i++){
-    CatMonster* newKitten = new CatMonster(KITTEN,&this, entry);
+    CatMonster* newKitten = new CatMonster(KITTEN,this, entry);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   for (int i=0; i<nbJustCat; i++){
-    CatMonster* newJustCat = new CatMonster(JUSTCAT,&this, entry);
+    CatMonster* newJustCat = new CatMonster(JUSTCAT,this, entry);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   for (int i=0; i<nbFatCat; i++){
-    CatMonster* newFatCat = new CatMonster(FATCAT,&this, entry);
+    CatMonster* newFatCat = new CatMonster(FATCAT,this, entry);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -159,8 +160,8 @@ bool Game::canBuyTower(TowerType type){
   } else {
     int price = 100;
   }
-    if (this->m_cagnotte-price >=0){
-      this->setCagnotte(this->m_cagnotte-price);
+    if (this->getCagnotte()-price >=0){
+      this->setCagnotte(this->getCagnotte()-price);
       return true;
     }
     return false;
@@ -174,8 +175,8 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
   } else {
     int price = 100;
   }
-    if (this->m_cagnotte-price >=0){
-      this->setCagnotte(this->m_cagnotte-price);
+    if (this->getCagnotte()-price >=0){
+      this->setCagnotte(this->getCagnotte()-price);
       return true;
     }
     return false;
@@ -215,7 +216,7 @@ void Game::constructTower(TowerType type, float x, float y){
   // Trouver la tile c pour x;y
   if(this->canBuyTower()){
     if (this->canBuildTower(type, c)){
-      tower = new Tower(type, c, &this);
+      tower = new Tower(type, c, this);
       this->setAddVecTower(tower);
       this->checkBuilding();
       tower->afficher();
@@ -232,7 +233,7 @@ void Game::constructBuilding(BuildingType type, float x, float y){
   // Trouver la tile c pour x;y
   if(this->canBuyBuilding()){
     if (this->canBuildBuildable(type, c)){
-      building = new Building(type, c, &this);
+      building = new Building(type, c, this);
       this->setAddVecBuilding(building);
       building->checkTower();
       building->afficher();
