@@ -87,20 +87,6 @@ void Game::setAddVecBuilding(Building* building){
   this->m_buildings.push_back(building);
 }
 
-// void Game::setDeleteVecCat(CatMonster* cat){
-//  for (CatMonster* current : this->getVecCat()){
-//    if (current === cat) {
-//      delete cat;
-//    }
-//  }
-// }
-// void Game::setDeleteVecTower(Tower* tower){
-//   this->m_towers.push_back(tower);
-// }
-// void Game::setDeleteVecBuilding(Building* building){
-//   this->m_buildings.push_back(building);
-// }
-
 //////////OTHER METHODS//////////
 
 void Game::startGame(){
@@ -124,7 +110,7 @@ void Game::startGame(){
       SDL_GL_SwapBuffers();
 
       this->setWave(nbWave++);
-      if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec
+      if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec // OU UTILISER std::this_thread::sleep_for(std::chrono::milliseconds(60*90));
         prepareWave(this->getWave());
         this->setTime(0);
 
@@ -143,20 +129,23 @@ void Game::prepareWave(int numWave){
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
 // Avec un random ?
 
-  for (int i=1; i<=nbKitten; i++){
+  for (int i=0; i<nbKitten; i++){
     CatMonster* newKitten = new CatMonster(KITTEN,&this, entry);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
-  for (int i=1; i<=nbJustCat; i++){
+  for (int i=0; i<nbJustCat; i++){
     CatMonster* newJustCat = new CatMonster(JUSTCAT,&this, entry);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
-  for (int i=1; i<=nbFatCat; i++){
+  for (int i=0; i<nbFatCat; i++){
     CatMonster* newFatCat = new CatMonster(FATCAT,&this, entry);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
 }
 
