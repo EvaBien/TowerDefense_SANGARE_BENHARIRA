@@ -6,9 +6,12 @@
 #include <chrono>
 #include <thread>
 
-class CatMonster;
-class Tower;
-class Building;
+#include "../include/CatMonster.hpp"
+#include "../include/Tower.hpp"
+#include "../include/Building.hpp"
+// class CatMonster;
+// class Tower;
+// class Building;
 
 class Game{
   private:
