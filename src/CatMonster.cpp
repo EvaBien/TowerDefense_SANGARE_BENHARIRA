@@ -222,6 +222,7 @@ void CatMonster::destroy(Tower *t){
   Game* game = this->getGame();
   int money = game->getCagnotte();
   game->setCagnotte(money+this->getGainDeath());
+  printf("Montre mort ! La nouvelle cagnotte : %d", game->getCagnotte());
   std::vector<CatMonster*> vector = game->getVecCat();
   int i=0;
   for (i; i<vector.size(); i++){

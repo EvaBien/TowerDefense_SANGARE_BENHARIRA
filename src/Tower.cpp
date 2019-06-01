@@ -138,6 +138,7 @@ void Tower::attack(){
       while(this->getTarget()==nullptr){
         this->searchTarget();
       }
+      printf("TIIIIR !! ");
       this->getTarget()->beDamaged(this->getDamages(), &this);
       startTime = SDL_GetTicks();
     }
