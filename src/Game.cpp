@@ -7,7 +7,7 @@
 static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
-Game() {
+Game::Game() {
   this->m_cagnotte = 100;
   this->m_nbWave = 0;
   this->m_finished = false;
@@ -89,7 +89,7 @@ void Game::setAddVecBuilding(Building* building){
 
 //////////OTHER METHODS//////////
 Tile entry;
-Tile exit;
+Tile out;
 void Game::startGame(){
 
 
@@ -98,8 +98,8 @@ void Game::startGame(){
   this->setMap(myMap);
 
   Node* list = myMap.getListNodes();
-  entry = list[0]->getTile();
-  exit = list[1]->getTile();
+  entry = list[0].getTile();
+  out = list[1].getTile();
 
   this->setFinish(false);
   this->setTime(0);
@@ -196,7 +196,7 @@ void Game::checkTowers(Building *b){
   int portee = b->getPortee();
 
   for (Tower* tower : this->getVecTower()){
-    Tile tTile = tower->getTile();
+    Tile *tTile = tower->getTile();
     float distance = tTile->distance(b->getTile());
     if (distance <= portee){
       b->upgradeTower(tower);
@@ -256,18 +256,27 @@ void Game::gameOver(){
   if (this->getWave()<20){
     printf("GAME OVER");
   } else {
-    printf("YOU WIN !! ");
+    printf("YOU WON !! ");
   }
 
-  for (CatMonster* cat : this->getVecCat()){
-    this->getVecCat().erase(cat);
-  }
-  for (Tower* tower : this->getVecTower()){
-    this->getVecTower().erase(tower);
-  }
-  for (Building* building : this->getVecBuilding()){
-    this->getVecBuilding().erase(building);
-  }
+  // for (CatMonster* cat : this->getVecCat()){
+  // }
+  // for (Tower* tower : this->getVecTower()){
+  //   this->getVecTower().erase(tower);
+  // }
+  // for (Building* building : this->getVecBuilding()){
+  //   this->getVecBuilding().erase(building);
+  // }
+
+  catVec = this->getVecCat();
+  catVec.erase(catVec.begin(), catVec.end());
+
+  TowerVec = this->getVecTower();
+  TowerVec.erase(TowerVec.begin(), TowerVec.end());
+
+  buildVec = this->getVecBuilding();
+  buildVec.erase(buildVec.begin(), buildVec.end());
+
 
   // CLEAN //
   SDL_Quit();

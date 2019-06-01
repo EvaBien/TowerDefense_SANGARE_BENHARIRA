@@ -3,8 +3,7 @@
 
 using namespace std;
 
-Map::Map(){}
-
+Map::Map(){};
 Map::~Map(){};
 
 //////////GETTERS//////////
