@@ -61,14 +61,6 @@ PathNode Map::setListNodes(PathNode list){
 
 //////////OTHER METHODS//////////
 
-int calculCoordX(int position){ // Du R
-
-}
-
-int calculCoordY(int position){ // Du R
-
-}
-
 int calculPosition(float x, float y){
   if (x==0){
     int tileX=0;
@@ -228,12 +220,21 @@ Node* Map::readITD(char* filename){
 }
 
 bool Map::verifGraph(Node *tabNode){
-  
-  // Pour chaque Node
-  // Je vérifie dans map->Cases pour la position (x,y) que node même type etc...
-  // Si oui -> node.setCase(case);
-  // Si non -> return false + compteur
+  int size = tabNode.size();
 
+  for (int i=0; i<size; i++){
+    float x = tabNode[i]->getX();
+    float y = tabNode[i]->getY();
+    int position = calculPosition(x,y);
+    Tile tile = this->getTile(position);
+
+    if (tile->getType() == NODE && tabNode[i]->getType()==TWIST || tile->getType() == NODE && tabNode[i]->getType()==INTER || tile->getType() == OUT && tabNode[i]->getType()== SORTIE || tile->getType() == IN && tabNode[i]->getType()==ENTREE){
+      tabNode[i]->setCase(case);
+    } else {
+      printf("Le node %d pour la position X=%d & Y=%d est faux", i, x, y);
+      return false;
+    }
+  }
   return true;
 }
 

@@ -10,7 +10,7 @@ private:
   int m_width;
   Tile m_TileMap[150];
   PathNode m_listNodes;
-  
+
 public:
 
   Map(); //constructeur
@@ -35,8 +35,6 @@ public:
 
   //////OTHERS//////
 
-  int calculCoordX(int position);
-  int calculCoordY(int position);
   int calculPosition(float x, float y); // Calcul la position de la tile dans le tableau en fonction des coordonnées du pixel
   void Scale( int heightPPM, int widthPPM); //créer carte de la taille souhaitée en fonction du plan fourni en ppm (échelle *100)
   ColorTile verifColor(int r, int v, int b);

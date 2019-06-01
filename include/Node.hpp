@@ -16,6 +16,8 @@ enum TypeNode{
 class Node{
 private:
   // Attributs
+  float m_x;
+  float m_y;
   Tile *m_tile;
   TypeNode type;
   int index;
@@ -31,6 +33,8 @@ public:
   ~Node();
 
   //////GETTERS/////
+  float getX();
+  float getY();
   Tile getTile();
   TypeNode getType();
   int getIndex();
@@ -39,6 +43,8 @@ public:
   Node* getNext();
 
   //////SETTERS/////
+  void setX(float x);
+  void setY(float y);
   void setTile (Tile *c);
   void setType(TypeNode type);
   void setIndex(int index);
