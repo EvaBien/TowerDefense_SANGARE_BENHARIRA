@@ -121,9 +121,10 @@ Tile* CatMonster::chooseDestination(Map *m){
   while (list[i].getNext()!=nullptr){
     if (list[i].getTile() == *current){
       int successor = list[i].getSuccessor();
-      Node next = *list[successor];
+      Node next = list[successor];
+      Tile nextTile = next.getTile();
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next->getTile();
+      return *nextTile;
     }
     i++;
   }
