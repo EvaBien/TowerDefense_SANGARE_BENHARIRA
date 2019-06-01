@@ -2,6 +2,7 @@
 #define DEF_TILE
 
 #include <string>
+#include <math.h>
 #include "Node.hpp"
 
 enum ColorTile{
