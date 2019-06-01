@@ -89,7 +89,7 @@ void CatMonster::drawCat(GLuint texture, float x, float y){
 void CatMonster::afficher(){
   GLuint catTexture = 0;
   string pathCat = this->getAffichage();
-  catTexture=loadTexture(pathCat);
+  catTexture=loadTexture(pathCat.c_str());
   this->setTexture(catTexture);
 
   glPushMatrix();
