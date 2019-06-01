@@ -47,7 +47,7 @@ int CatMonster::getType(){
   return this->type;
 }
 
-Game CatMonster::getGame(){
+Game* CatMonster::getGame(){
   return this->game;
 }
 
@@ -113,8 +113,8 @@ bool CatMonster::isAlive(){
 
 Tile CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
-  Tile current = this->getTile();
-  Map myMap = m;
+  Tile *current = this->getTile();
+  Map *myMap = m;
   PathNode list = myMap->getListNodes();
   for (int i=0; i<list.getLenght(); i++){
     if (list[i]->getTile() ==current){
