@@ -116,10 +116,6 @@ bool CatMonster::isAlive(){
 Tile* CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
-
-
-
-  Map *myMap = m;
   Node* (*list) = m->getListNodes();
   int i=0;
   while (list[i]->getNext()!=nullptr){
