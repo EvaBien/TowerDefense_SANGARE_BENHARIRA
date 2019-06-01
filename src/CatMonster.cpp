@@ -116,15 +116,18 @@ bool CatMonster::isAlive(){
 Tile* CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
+
+
+
   Map *myMap = m;
-  Node* list[9] = myMap->getListNodes();
+  Node* (*list) = m->getListNodes();
   int i=0;
   while (list[i]->getNext()!=nullptr){
     if (list[i]->getTile() == *current){
       int successor = list[i]->getSuccessor();
       Node *next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next->getTile();
+      return next;
     } // MANQUE DIJSKTRA
     i++;
   }

@@ -22,7 +22,7 @@ public:
   Tile getTile(int position);
   Tile *getAllTiles();
   int getSizeTiles();
-  Node* getListNodes();
+  Node *getListNodes();
 
   //////SETTERS/////
   void setHeight();
