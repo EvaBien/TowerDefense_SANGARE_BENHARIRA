@@ -177,7 +177,6 @@ void CatMonster::move(Map *m){
                 }
                 pX=pX+2*(deltaY1-deltaX1);
               }
-              delay(0);
               this->setX(x);
               this->setY(y);
               this->drawCat(this->getTexture(),x,y);
@@ -208,7 +207,6 @@ void CatMonster::move(Map *m){
                 }
                 pY=pY+2*(deltaX1-deltaY1);
               }
-              delay(0);
               this->setX(x);
               this->setY(y);
               this->drawCat(this->getTexture(),x,y);
