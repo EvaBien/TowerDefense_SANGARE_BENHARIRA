@@ -5,9 +5,9 @@ using namespace std;
 
 Node::Node(int type, float x, float y, int index, int successor, Map *map){
   if (type==1){
-    this->type = IN;
+    this->type = ENTREE;
   } else if (type==2){
-    this->type = OUT;
+    this->type = SORTIE;
   } else if (type==3){
     this->type = TWIST;
   } else {
@@ -17,28 +17,37 @@ Node::Node(int type, float x, float y, int index, int successor, Map *map){
   this->index=index;
   this->successor=successor;
   this->map=map;
-  this->m_tile = map->getTile(calculPosition(x,y));
+  this->m_x = x;
+  this->m_y = y;
 }
 
 Node::~Node(){};
 
 //////GETTERS/////
-Tile getTile(){
+float Node::getX(){
+  return this->m_x;
+}
+
+float Node::getY(){
+  return this->m_y;
+}
+
+Tile Node::getTile(){
   return this->m_tile;
 }
 
-TypeNode getType(){
+TypeNode Node::getType(){
   return this->type;
 }
 
-int getIndex(){
+int Node::getIndex(){
   return this->index;
 }
-int getSuccessor(){
+int Node::getSuccessor(){
   return this->successor;
 }
 
-Map* getMap(){
+Map* Node::getMap(){
   return this->map;
 }
 
@@ -46,24 +55,33 @@ Node* getNext(){
   return this->next;
 }
 
+
 //////SETTERS/////
-void setTile(Tile *c){
+void Node::setX(float x){
+  this->m_x=x;
+}
+
+void Node::setY(float y){
+  this->m_y=y;
+}
+
+void Node::setTile(Tile *c){
   this->m_tile = tile;
 }
 
-void setType(TypeNode type){
+void Node::setType(TypeNode type){
   this->type=type;
 }
 
-void setIndex(int index){
+void Node::setIndex(int index){
   this->index=index;
 }
 
-void setSuccessor(int successor){
+void Node::setSuccessor(int successor){
   this->successor=successor;
 }
 
-void setMap(Map *map){
+void Node::setMap(Map *map){
   this->map=map;
 }
 
@@ -81,28 +99,28 @@ void setNext(Node *node){
 
 
 //////GETTERS/////
-int getLenght(){
+int PathNode::getLenght(){
   return this->m_lenght;
 }
-Node* getHead(){
+Node* PathNode::getHead(){
   return this->head;
 }
-Node* getEnd(){
+Node* PathNode::getEnd(){
   return this->end;
 }
 
 //////SETTERS/////
-void setLenght(int lenght){
+void PathNode::setLenght(int lenght){
   this->m_lenght=lenght;
 }
-void setHead(Node* node){
+void PathNode::setHead(Node* node){
   this->head=node;
 }
-void setEnd(Node* node){
+void PathNode::setEnd(Node* node){
   this->end=node;
 }
 
 //////OTHERS/////
 
-void addNode(NodeType type, float x, float y, int *successors);
-void deleteNode(Node *node);
+void PathNode::addNode(NodeType type, float x, float y, int *successors);
+void PathNode::deleteNode(Node *node);
