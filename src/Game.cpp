@@ -216,16 +216,16 @@ void Game::checkBuildings(Tower *t){
 }
 
 void Game::constructTower(TowerType type, float x, float y){
-  Map* mymap = this->getMap();
+  Map *mymap = this->getMap();
   int position = calculPosition(x,y);
-  Tile *t= mymap->getTile(position);
+  Tile *t = mymap->getTile(position);
   if(this->canBuyTower(type)){
-    if (this->canBuildTower(type, *t)){
-      Tower tower = new Tower(type, *t, this);
+    if (this->canBuildTower(type, t)){
+      Tower tower = new Tower(type, t, this);
       this->setAddVecTower(tower);
       this->checkBuildings();
-      tower->afficher();
-      tower->attack();
+      tower.afficher();
+      tower.attack();
     } else {
       printf("NOT BUILDABLE ZONE");
     }
@@ -239,8 +239,8 @@ void Game::constructBuilding(BuildingType type, float x, float y){
   int position = calculPosition(x,y);
   Tile *t=mymap->getTile(position);
   if(this->canBuyBuilding(type)){
-    if (this->canBuildBuilding(type, *t)){
-      Building building = new Building(type, *t, this);
+    if (this->canBuildBuilding(type, t)){
+      Building building = new Building(type, t, this);
       this->setAddVecBuilding(building);
       building->checkTower();
       building->afficher();
@@ -261,15 +261,6 @@ void Game::gameOver(){
   } else {
     printf("YOU WON !! ");
   }
-
-  // for (CatMonster* cat : this->getVecCat()){
-  // }
-  // for (Tower* tower : this->getVecTower()){
-  //   this->getVecTower().erase(tower);
-  // }
-  // for (Building* building : this->getVecBuilding()){
-  //   this->getVecBuilding().erase(building);
-  // }
 
   std::vector<CatMonster *> catVec = this->getVecCat();
   catVec.erase(catVec.begin(), catVec.end());
