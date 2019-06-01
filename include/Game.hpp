@@ -61,8 +61,8 @@ class Game{
   void prepareWave(int numWave);
   bool canBuyTower(TowerType type);
   bool canBuyBuilding(BuildingType type);
-  bool canBuildTower(TowerType type, Tile c);
-  bool canBuildBuilding(BuildingType type, Tile c);
+  bool canBuildTower(TowerType type, Tile *c);
+  bool canBuildBuilding(BuildingType type, Tile *c);
   void checkBuildings(Tower *t);
   void checkTowers(Building *b);
   void construcTower(TowerType type, Tile *c);

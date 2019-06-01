@@ -8,30 +8,30 @@ static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
 Game() {
-    this->m_cagnotte = 100;
-    this->m_nbWave = 0;
-    this->m_finished = false;
-    this->m_map;
-    this->m_time=0;
-    // Initialiser 3 vecteurs
+  this->m_cagnotte = 100;
+  this->m_nbWave = 0;
+  this->m_finished = false;
+  this->m_map;
+  this->m_time=0;
+  // Initialiser 3 vecteurs
 
-    this->m_monsters = std::vector<CatMonster*> monsters;
-    this->m_towers = std::vector<Tower*> towers;
-    this->m_buildings = std::vector<Building*> buildings;
+  this->m_monsters = std::vector<CatMonster*> monsters;
+  this->m_towers = std::vector<Tower*> towers;
+  this->m_buildings = std::vector<Building*> buildings;
 }
 
 //////////GETTERS//////////
 
 int Game::getCagnotte(){
-    return this->m_cagnotte;
+  return this->m_cagnotte;
 }
 
 int Game::getWave(){
-    return this->m_nbWave;
+  return this->m_nbWave;
 }
 
 bool Game::getFinish(){
-    return this->m_finished;
+  return this->m_finished;
 }
 
 Map Game::getMap(){
@@ -62,11 +62,11 @@ void Game::setCagnotte(int money){
 }
 
 void Game::setWave(int nbWave){
-    this->m_nbWave=nbWave;
+  this->m_nbWave=nbWave;
 }
 
 void Game::setFinish(bool value){
-    this->m_finished = value;
+  this->m_finished = value;
 }
 
 void Game::setMap(Map map){
@@ -108,18 +108,18 @@ void Game::startGame(){
 
 
     /* Echange du front et du back buffer : mise a jour de la fenetre */
-      SDL_GL_SwapBuffers();
+    SDL_GL_SwapBuffers();
 
-      this->setWave(nbWave++);
-      if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec // OU UTILISER std::this_thread::sleep_for(std::chrono::milliseconds(60*90));
-        prepareWave(this->getWave());
-        this->setTime(0);
+    this->setWave(nbWave++);
+    if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec // OU UTILISER std::this_thread::sleep_for(std::chrono::milliseconds(60*90));
+      prepareWave(this->getWave());
+      this->setTime(0);
 
-        if(this->getWave()>=20){
-          this->gameOver();
-        }
+      if(this->getWave()>=20){
+        this->gameOver();
       }
-      this->setTime(this->getTime()++);
+    }
+    this->setTime(this->getTime()++);
   }
 }
 
@@ -128,7 +128,7 @@ void Game::prepareWave(int numWave){
   int nbKitten = 2; // A modifier --> Décroissant en fonction du num Wave
   int nbJustCat = 6; // A modifier --> Croissant " "
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
-// Avec un random ?
+  // Avec un random ?
 
   for (int i=0; i<nbKitten; i++){
     CatMonster* newKitten = new CatMonster(KITTEN,this, entry);
@@ -151,6 +151,7 @@ void Game::prepareWave(int numWave){
 }
 
 bool Game::canBuyTower(TowerType type){
+  int price;
   if (type== RED_LASER){
     int price = 100;
   } else if (type==GREEN_GRASS){
@@ -160,11 +161,11 @@ bool Game::canBuyTower(TowerType type){
   } else {
     int price = 100;
   }
-    if (this->getCagnotte()-price >=0){
-      this->setCagnotte(this->getCagnotte()-price);
-      return true;
-    }
-    return false;
+  if (this->getCagnotte()-price >=0){
+    this->setCagnotte(this->getCagnotte()-price);
+    return true;
+  }
+  return false;
 }
 
 bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des type de building
@@ -175,11 +176,11 @@ bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des ty
   } else {
     int price = 100;
   }
-    if (this->getCagnotte()-price >=0){
-      this->setCagnotte(this->getCagnotte()-price);
-      return true;
-    }
-    return false;
+  if (this->getCagnotte()-price >=0){
+    this->setCagnotte(this->getCagnotte()-price);
+    return true;
+  }
+  return false;
 }
 
 bool Game::canBuildBuilding(BuildingType type, Tile *c){
@@ -194,23 +195,25 @@ void Game::checkTowers(Building *b){
   int portee = b->getPortee();
 
   for (Tower* tower : this->getVecTower()){
-      Tile tTile = tower->getTile();
-      float distance = tTile->distance(b->getTile());
-        if (distance <= portee){
-          b->upgradeTower(tower);
-        }
+    Tile tTile = tower->getTile();
+    float distance = tTile->distance(b->getTile());
+    if (distance <= portee){
+      b->upgradeTower(tower);
+    }
+  }
 }
 
 void Game::checkBuildings(Tower *t){
-
+  
   for (Building* building : this->getVecBuilding()){
     int portee = building->getPortee();
     Tile bTile = building->getTile();
-        float distance = bTile->distance(t->getTile());
-        if (distance <= portee){
-          building->upgradeTower(t);
-        }
+    float distance = bTile->distance(t->getTile());
+    if (distance <= portee){
+      building->upgradeTower(t);
+    }
   }
+}
 
 void Game::constructTower(TowerType type, float x, float y){
   // Trouver la tile c pour x;y
@@ -252,23 +255,23 @@ void Game::gameOver(){
   if (this->getWave()<20){
     printf("GAME OVER");
   } else {
-      printf("YOU WIN !! ");
+    printf("YOU WIN !! ");
   }
-    // CLEAN //
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+  // CLEAN //
+  SDL_DestroyWindow(window);
+  SDL_Quit();
 
-    for (CatMonster* cat : this->getVecCat()){
-        // this->getVecCat().erase(cat);
-        cat->destroy();
-    }
-    for (Tower* tower : this->getVecTower()){
-        this->getVecTower().erase(tower);
-        tower->destroy();
-    }
-    for (Building* building : this->getVecBuilding()){
-          this->getVecBuilding().erase(building);
-          building->destroy();
-    }
+  for (CatMonster* cat : this->getVecCat()){
+    // this->getVecCat().erase(cat);
+    cat->destroy();
+  }
+  for (Tower* tower : this->getVecTower()){
+    this->getVecTower().erase(tower);
+    tower->destroy();
+  }
+  for (Building* building : this->getVecBuilding()){
+    this->getVecBuilding().erase(building);
+    building->destroy();
+  }
 
 }
