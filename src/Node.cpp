@@ -32,7 +32,7 @@ float Node::getY(){
   return this->m_y;
 }
 
-Tile Node::getTile(){
+Tile* Node::getTile(){
   return this->m_tile;
 }
 

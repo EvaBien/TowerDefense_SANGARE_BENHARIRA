@@ -35,7 +35,7 @@ public:
   //////GETTERS/////
   float getX();
   float getY();
-  Tile getTile();
+  Tile *getTile();
   TypeNode getType();
   int getIndex();
   int getSuccessor();
