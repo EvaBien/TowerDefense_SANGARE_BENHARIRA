@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 #include "../include/CatMonster.hpp"
 
 using namespace std;
@@ -117,14 +118,14 @@ Tile* CatMonster::chooseDestination(Map *m){
   Map *myMap = m;
   Node* list = myMap->getListNodes();
   int i=0;
-  while (list[i]!=nullptr){
+  while (list[i]->getNext()!=nullptr){
     if (&list[i].getTile() == current){
       int successor = list[i].getSuccessor();
       Node next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next->getTile();
+      return next.getTile();
     } // MANQUE DIJSKTRA
-    i++
+    i++;
   }
   current = NULL;
   return current;
