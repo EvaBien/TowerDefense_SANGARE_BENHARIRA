@@ -208,8 +208,8 @@ void Game::checkBuildings(Tower *t){
 
   for (Building* building : this->getVecBuilding()){
     int portee = building->getPortee();
-    Tile &bTile = building->getTile();
-    float distance = bTile.distance(t->getTile());
+    Tile *bTile = building->getTile();
+    float distance = bTile->distance(t->getTile());
     if (distance <= portee){
       building->upgradeTower(t);
     }
