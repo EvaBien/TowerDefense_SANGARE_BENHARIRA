@@ -116,12 +116,12 @@ Tile* CatMonster::chooseDestination(Map *m){
   Tile *current = this->getTile();
   Map *myMap = m;
   Node* list = myMap->getListNodes();
-  for (int i=0; i<list.getLenght(); i++){
-    if (list[i]->getTile() ==current){
-      int successor = list[i]->getSuccessor();
+  for (int i=0; i<list.size(); i++){
+    if (list[i].getTile() ==current){
+      int successor = list[i].getSuccessor();
       Node next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next->getTile();
+      return nex.>getTile();
     } // MANQUE DIJSKTRA
   }
   current = NULL;
@@ -140,10 +140,10 @@ void CatMonster::move(Map *m){
         while (current != destination){
 
           ////////// BRASSENHAM ///////////
-          float initialX = current.getX();
-          float initialY = current.getY();
-          float destinX = destination.getX();
-          float destinY= destination.getY();
+          float initialX = current->getX();
+          float initialY = current->getY();
+          float destinX = destination->getX();
+          float destinY= destination->getY();
           float errorX=0.0;
           float errorY=0.0;
           int deltaX = (int)(destinX - initialX);
@@ -220,11 +220,11 @@ void CatMonster::move(Map *m){
 }
 
 void CatMonster::destroy(Tower *t){
-  Game game = this->getGame();
+  Game *game = this->getGame();
   int money = game->getCagnotte();
-  game.setCagnotte(money+this->getGainDeath());
-  printf("Montre mort ! La nouvelle cagnotte : %d", game.getCagnotte());
-  std::vector<CatMonster*> vector = game.getVecCat();
+  game->setCagnotte(money+this->getGainDeath());
+  printf("Montre mort ! La nouvelle cagnotte : %d", game->getCagnotte());
+  std::vector<CatMonster*> vector = game->getVecCat();
   int i=0;
   for (i; i<vector.size(); i++){
     if (vector[i] == this){
