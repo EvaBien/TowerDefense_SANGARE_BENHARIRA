@@ -3,7 +3,7 @@
 
 using namespace std;
 
-CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *c) {
+CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *tile) {
   if (this->type == KITTEN){
     this->m_life = 60;
     this->m_speed = 150;
@@ -20,8 +20,10 @@ CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *c) {
     this->m_gainDeath =5;
     this->m_affichage = "../images/justcat.png";
   }
-  this->m_position= new Position(0,0);
-  this->game=game; // Position de l'entrée de la map
+  this->m_tile= tile;
+  this->game=game;
+  this->m_x = tile->getX();
+  this->m_y=tile->getY();// Position de l'entrée de la map
   // Faire un random si plusieurs entrées
 }
 
@@ -52,6 +54,7 @@ Game CatMonster::getGame(){
 GLuint CatMonster::getTexture(){
   return this->m_texture;
 }
+
 /////////SETTERS//////////
 
 void CatMonster::setLife(int newLife){

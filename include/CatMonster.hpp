@@ -24,6 +24,7 @@ private:
   CatMonsterType type; //type de chat mutant
   Game *game;
   GLuint m_texture;
+  Tile *tile;
 
 public:
 
@@ -37,9 +38,12 @@ public:
   int getType();
   Game getGame();
   GLuint getTexture();
+  Tile* getTile();
+
 
 
   //////SETTERS/////
+  void setTile(Tile *t);
   void setLife(int newLife);
   void setGainDeath(int gain);
   void setSpeed(int speed);
