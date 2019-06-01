@@ -33,7 +33,7 @@ public:
   float getX();
   float getY();
   int getSide();
-  bool getBuidable();
+  bool getBuildable();
 
   /////SETTERS/////
   void setX(float x);
