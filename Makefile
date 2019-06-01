@@ -231,33 +231,6 @@ src/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/itd_eva.dir/build.make CMakeFiles/itd_eva.dir/src/Game.cpp.s
 .PHONY : src/Game.cpp.s
 
-src/Graph.o: src/Graph.cpp.o
-
-.PHONY : src/Graph.o
-
-# target to build an object file
-src/Graph.cpp.o:
-	$(MAKE) -f CMakeFiles/itd_eva.dir/build.make CMakeFiles/itd_eva.dir/src/Graph.cpp.o
-.PHONY : src/Graph.cpp.o
-
-src/Graph.i: src/Graph.cpp.i
-
-.PHONY : src/Graph.i
-
-# target to preprocess a source file
-src/Graph.cpp.i:
-	$(MAKE) -f CMakeFiles/itd_eva.dir/build.make CMakeFiles/itd_eva.dir/src/Graph.cpp.i
-.PHONY : src/Graph.cpp.i
-
-src/Graph.s: src/Graph.cpp.s
-
-.PHONY : src/Graph.s
-
-# target to generate assembly for a file
-src/Graph.cpp.s:
-	$(MAKE) -f CMakeFiles/itd_eva.dir/build.make CMakeFiles/itd_eva.dir/src/Graph.cpp.s
-.PHONY : src/Graph.cpp.s
-
 src/Map.o: src/Map.cpp.o
 
 .PHONY : src/Map.o
@@ -441,9 +414,6 @@ help:
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
-	@echo "... src/Graph.o"
-	@echo "... src/Graph.i"
-	@echo "... src/Graph.s"
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
