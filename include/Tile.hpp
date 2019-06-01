@@ -46,7 +46,7 @@ public:
 
   //////OTHERS//////
 
-  float distance(Tile c);
+  float distance(Tile t*);
 
   // bool idBuildable();
 
