@@ -43,7 +43,7 @@ Tower::Tower (TowerType type, Tile *tile, Game *game){ //on considère 100 comme
 
 //////////GETTERS//////////
 
-Tile Tower::getTile(){
+Tile* Tower::getTile(){
   return this->m_tile;
 }
 

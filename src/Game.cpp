@@ -88,12 +88,11 @@ void Game::setAddVecBuilding(Building* building){
 }
 
 //////////OTHER METHODS//////////
-Tile entry;
-Tile out;
+Tile *entry;
+Tile *out;
+Map myMap = new Map();
 void Game::startGame(){
 
-
-  Map myMap = new Map();
   myMap.initMap();
   this->setMap(myMap);
 
@@ -274,7 +273,7 @@ void Game::gameOver(){
   std::vector<Tower *>towerVec = this->getVecTower();
   towerVec.erase(towerVec.begin(), towerVec.end());
 
-  std::vector<Buildingr *> buildVec = this->getVecBuilding();
+  std::vector<Building *> buildVec = this->getVecBuilding();
   buildVec.erase(buildVec.begin(), buildVec.end());
 
 

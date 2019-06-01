@@ -33,7 +33,7 @@ public:
   Tower(TowerType type, Tile* tile, Game *game); //constructeur
 
   /////GETTERS/////
-  Tile getTile();
+  Tile* getTile();
   int getDamages();
   int getPortee();
   int getCadence();
