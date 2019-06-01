@@ -216,9 +216,9 @@ void Game::checkBuildings(Tower *t){
 }
 
 void Game::constructTower(TowerType type, float x, float y){
-  Map *mymap this->getMap();
+  Map* mymap = this->getMap();
   int position = calculPosition(x,y);
-  Tile *t=mymap->getTile(position);
+  Tile *t= mymap->getTile(position);
   if(this->canBuyTower(type)){
     if (this->canBuildTower(type, *t)){
       Tower tower = new Tower(type, *t, this);
@@ -235,7 +235,7 @@ void Game::constructTower(TowerType type, float x, float y){
 }
 
 void Game::constructBuilding(BuildingType type, float x, float y){
-  Map *mymap this->getMap();
+  Map *mymap = this->getMap();
   int position = calculPosition(x,y);
   Tile *t=mymap->getTile(position);
   if(this->canBuyBuilding(type)){
