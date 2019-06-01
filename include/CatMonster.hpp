@@ -53,6 +53,7 @@ public:
   bool isAlive();
   Tile chooseDestination(Map *m);
   void move(Map *m);
+  void drawCat(GLuint Texture, float x, float y);
   void destroy(Tower *t);
   // int Dijsktra(int current, int destination);
 

@@ -143,7 +143,7 @@ void CatMonster::move(Map *m){
           float errorX=0.0;
           float errorY=0.0;
           int deltaX = (int)(destinX - initialX);
-          int deltaY = (int)(destinY - intitialY);
+          int deltaY = (int)(destinY - initialY);
           int deltaX1 = fabs(deltaX);
           int deltaY1 = fabs(deltaY);
           int pX = 2*deltaY1-deltaX1;
@@ -192,21 +192,15 @@ void CatMonster::move(Map *m){
             this->setX(x);
             this->setY(y);
             this->drawCat(this->getTexture(),x,y);
-            for(i=0;y<errorY;i++)
-            {
+            for(int i=0;y<errorY;i++){
               y=y+1;
-              if(pY<=0)
-              {
+              if(pY<=0){
                 pY=pY+2*deltaX1;
               }
-              else
-              {
-                if((deltaX<0 && deltaY<0) || (deltaX>0 && deltaY>0))
-                {
+              else{
+                if((deltaX<0 && deltaY<0) || (deltaX>0 && deltaY>0)){
                   x=x+1;
-                }
-                else
-                {
+                } else {
                   x=x-1;
                 }
                 pY=pY+2*(deltaX1-deltaY1);
@@ -233,8 +227,7 @@ void CatMonster::move(Map *m){
         //   } else if (deltaX >0){
         //     this->setX(this->getX()+1);
         //   }
-        // } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){
-        }
+        // } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){}
       }
     }
   }
