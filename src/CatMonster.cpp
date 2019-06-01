@@ -134,7 +134,7 @@ void CatMonster::move(Map *m){
   while (this->isAlive()){
     Tile *current = this->getTile();
     if (current->getType()==OUT){
-      this->getGame()->gameOver();
+      &(this->getGame())->gameOver();
       exit(0);
     } else {
       if (current->getType()==NODE || current->getType()==IN){
