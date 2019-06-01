@@ -9,7 +9,7 @@ private:
   int m_height;
   int m_width;
   Tile m_TileMap[150];
-  PathNode m_listNodes;
+  Node* m_listNodes;
 
 public:
 
@@ -22,7 +22,7 @@ public:
   Tile getTile(int position);
   Tile *getAllTiles();
   int getSizeTiles();
-  PathNode getListNodes();
+  Node* getListNodes();
 
   //////SETTERS/////
   void setHeight();
@@ -30,7 +30,7 @@ public:
   void setTileMap(int Position, Tile *c);
   void setAllTiles(Tile *tab);
   void setParams(int height, int width);
-  void setListNodes(PathNode list);
+  void setListNodes(Node* list);
 
 
   //////OTHERS//////

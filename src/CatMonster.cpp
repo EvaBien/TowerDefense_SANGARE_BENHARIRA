@@ -115,7 +115,7 @@ Tile CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
   Map *myMap = m;
-  PathNode list = myMap->getListNodes();
+  Nodes* list = myMap->getListNodes();
   for (int i=0; i<list.getLenght(); i++){
     if (list[i]->getTile() ==current){
       int successor = list[i]->getSuccessor();
@@ -124,18 +124,18 @@ Tile CatMonster::chooseDestination(Map *m){
       return next->getTile();
     } // MANQUE DIJSKTRA
   }
-  return NULL;
+  return nullptr;
 }
 
 void CatMonster::move(Map *m){
   while (this->isAlive()){
-    Tile current = this->getTile();
+    Tile *current = this->getTile();
     if (current->getType()==OUT){
       this->getGame()->gameOver();
-      exit();
+      exit(0);
     } else {
-      if (current->getType()==NODE || current->getType()==IN){
-        destination = this->chooseDestination(m);
+      if (current.getType()==NODE || current.getType()==IN){
+        Tile destination = this->chooseDestination(m);
         while (current != destination){
 
           ////////// BRASSENHAM ///////////
@@ -213,22 +213,6 @@ void CatMonster::move(Map *m){
             }
           }
         }
-
-        // if (abs(deltaX) == 0){
-        //   this->setX(initialX);
-        //   if (deltaY <0){
-        //     this->setY(this->getY()-1);
-        //   } else if (deltaY >0){
-        //     this->setY(this->getY()+1);
-        //   }
-        // } else if(abs(deltaY) == 0){
-        //   this->setY(initialY);
-        //   if (deltaX <0){
-        //     this->setX(this->getX()-1);
-        //   } else if (deltaX >0){
-        //     this->setX(this->getX()+1);
-        //   }
-        // } else if(abs(deltaX) != 0.0 && abs(deltaY= != 0.0){}
       }
     }
   }
@@ -245,7 +229,7 @@ void CatMonster::destroy(Tower *t){
       vector.erase(vector.begin()+i);
     }
   }
-  if (this=== t->getTarget()){
+  if (this== t->getTarget()){
     t->setTarget(nullptr);
   }
 }
