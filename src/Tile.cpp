@@ -52,5 +52,5 @@ Tile::Tile(float x , float y, ColorTile color){
   //////OTHERS//////
 
   float Tile::distance(Tile c){
-    return sqrt((pow(this->getX()-c->getX(),2))+(pow(this->getY()-c->getY(),2)));
+    return sqrt((pow(this->getX()-c.getX(),2))+(pow(this->getY()-c.getY(),2)));
   }
