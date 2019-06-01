@@ -98,8 +98,8 @@ void Game::startGame(){
   this->setMap(myMap);
 
   Node* list = myMap.getListNodes();
-  entry = list[0];
-  exit = list[1];
+  entry = list[0]->getTile();
+  exit = list[1]->getTile();
 
   this->setFinish(false);
   this->setTime(0);
@@ -119,7 +119,7 @@ void Game::startGame(){
         this->gameOver();
       }
     }
-    this->setTime(this->getTime()++);
+    this->setTime(this->getTime()+1);
   }
 }
 
@@ -131,19 +131,19 @@ void Game::prepareWave(int numWave){
   // Avec un random ?
 
   for (int i=0; i<nbKitten; i++){
-    CatMonster* newKitten = new CatMonster(KITTEN,this, entry);
+    CatMonster* newKitten = new CatMonster(KITTEN,this, &entry);
     this->setAddVecCat(newKitten);
     newKitten->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   for (int i=0; i<nbJustCat; i++){
-    CatMonster* newJustCat = new CatMonster(JUSTCAT,this, entry);
+    CatMonster* newJustCat = new CatMonster(JUSTCAT,this, &entry);
     this->setAddVecCat(newJustCat);
     newJustCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
   for (int i=0; i<nbFatCat; i++){
-    CatMonster* newFatCat = new CatMonster(FATCAT,this, entry);
+    CatMonster* newFatCat = new CatMonster(FATCAT,this, &entry);
     this->setAddVecCat(newFatCat);
     newFatCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -168,7 +168,8 @@ bool Game::canBuyTower(TowerType type){
   return false;
 }
 
-bool Game::canBuyBuilding(BuildingType type){ // A modifier avec les noms des type de building
+bool Game::canBuyBuilding(BuildingType type){
+  int price; // A modifier avec les noms des type de building
   if (type== RADAR){
     int price = 100;
   } else if (type==WEAPON){
@@ -207,7 +208,7 @@ void Game::checkBuildings(Tower *t){
 
   for (Building* building : this->getVecBuilding()){
     int portee = building->getPortee();
-    Tile bTile = building->getTile();
+    Tile &bTile = building->getTile();
     float distance = bTile.distance(t->getTile());
     if (distance <= portee){
       building->upgradeTower(t);

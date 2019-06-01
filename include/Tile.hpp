@@ -26,6 +26,7 @@ private:
 public:
   // Méthodes
 
+  Tile();
   Tile(float x, float y, ColorTile color);
   ~Tile();
 

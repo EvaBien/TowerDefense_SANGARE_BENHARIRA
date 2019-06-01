@@ -2,7 +2,9 @@
 
 using namespace std;
 
+Tile::Tile(){
 
+}
 Tile::Tile(float x , float y, ColorTile color){
   this->m_x=x;
   this->m_y=y;
