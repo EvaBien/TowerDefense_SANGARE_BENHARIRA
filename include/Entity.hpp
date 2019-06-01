@@ -17,6 +17,7 @@ protected:
   // Position position;
   float m_x;
   float m_y;
+  Tile* m_tile;
   std::string m_affichage;
 
 public:
@@ -30,12 +31,14 @@ public:
 
   float getX();
   float getY();
+  Tile* getTile();
   std::string getAffichage();
 
   ///////////SETTERS////////
 
   void setX(float x);
   void setY(float y);
+  void setTile(Tile* t);
   void setAffichage(std::string path);
 
   //////////OTHERS/////////////

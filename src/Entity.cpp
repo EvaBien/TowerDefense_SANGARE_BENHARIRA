@@ -21,6 +21,11 @@ float Entity::getX(){
 float Entity::getY(){
   return this->m_y;
 }
+
+Tile* Entity::getTile(){
+  return this->m_tile;
+}
+
 std:: string  Entity::getAffichage(){
   return this->m_affichage;
 }
@@ -34,6 +39,11 @@ void Entity::setX(float x){
 void Entity::setY(float y){
   this->m_y=y;
 }
+
+void Entity::setTile(Tile *t){
+  this->m_tile=t;
+}
+
 void  Entity::setAffichage(std::string path){
   this->m_affichage=path;
 }
