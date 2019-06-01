@@ -34,12 +34,14 @@ public:
   float getY();
   int getSide();
   bool getBuildable();
+  ColorTile getType();
 
   /////SETTERS/////
   void setX(float x);
   void setY(float y);
   void setSide(float val);
   void setBuildable(bool val);
+  void setType(ColorTile color);
 
   //////OTHERS//////
 

@@ -54,7 +54,7 @@ public:
   void afficher();
   void beDamaged(int nbDamages, Tower *tower);
   bool isAlive();
-  Tile chooseDestination(Map *m);
+  Tile* chooseDestination(Map *m);
   void move(Map *m);
   void drawCat(GLuint Texture, float x, float y);
   void destroy(Tower *t);

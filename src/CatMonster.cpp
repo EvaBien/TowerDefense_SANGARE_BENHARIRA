@@ -111,11 +111,11 @@ bool CatMonster::isAlive(){
   return this->m_life > 0;
 }
 
-Tile CatMonster::chooseDestination(Map *m){
+Tile* CatMonster::chooseDestination(Map *m){
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
   Map *myMap = m;
-  Nodes* list = myMap->getListNodes();
+  Node* list = myMap->getListNodes();
   for (int i=0; i<list.getLenght(); i++){
     if (list[i]->getTile() ==current){
       int successor = list[i]->getSuccessor();
@@ -124,7 +124,8 @@ Tile CatMonster::chooseDestination(Map *m){
       return next->getTile();
     } // MANQUE DIJSKTRA
   }
-  return nullptr;
+  current = NULL;
+  return current;
 }
 
 void CatMonster::move(Map *m){
@@ -134,8 +135,8 @@ void CatMonster::move(Map *m){
       this->getGame()->gameOver();
       exit(0);
     } else {
-      if (current.getType()==NODE || current.getType()==IN){
-        Tile destination = this->chooseDestination(m);
+      if (current->getType()==NODE || current->getType()==IN){
+        Tile *destination = this->chooseDestination(m);
         while (current != destination){
 
           ////////// BRASSENHAM ///////////
@@ -219,18 +220,18 @@ void CatMonster::move(Map *m){
 }
 
 void CatMonster::destroy(Tower *t){
-  Game* game = this->getGame();
+  Game game = this->getGame();
   int money = game->getCagnotte();
-  game->setCagnotte(money+this->getGainDeath());
-  printf("Montre mort ! La nouvelle cagnotte : %d", game->getCagnotte());
-  std::vector<CatMonster*> vector = game->getVecCat();
+  game.setCagnotte(money+this->getGainDeath());
+  printf("Montre mort ! La nouvelle cagnotte : %d", game.getCagnotte());
+  std::vector<CatMonster*> vector = game.getVecCat();
   int i=0;
   for (i; i<vector.size(); i++){
     if (vector[i] == this){
       vector.erase(vector.begin()+i);
     }
   }
-  if (this== t->getTarget()){
+  if (&this== t->getTarget()){
     t->setTarget(nullptr);
   }
 }

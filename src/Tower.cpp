@@ -38,6 +38,7 @@ Tower::Tower (TowerType type, Tile *tile, Game *game){ //on considère 100 comme
   this->m_y = tile->getY(); // Position de l'entrée de la map
   this->m_tile->setBuildable(false);
   this->target=nullptr;
+  this->game=game;
 }
 
 //////////GETTERS//////////

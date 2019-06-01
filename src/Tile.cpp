@@ -34,6 +34,9 @@ Tile::Tile(float x , float y, ColorTile color){
     return this->m_buildable;
   }
 
+  ColorTile Tile::getType(){
+    return this->m_color;
+  }
   /////SETTERS/////
   void Tile::setX(float x){
     this->m_x=x;
@@ -47,6 +50,10 @@ Tile::Tile(float x , float y, ColorTile color){
   }
   void Tile::setBuildable(bool val){
     this->m_buildable=val;
+  }
+
+  void Tile::setType(ColorTile color){
+    this->m_color = color;
   }
 
   //////OTHERS//////
