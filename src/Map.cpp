@@ -228,6 +228,7 @@ Node* Map::readITD(char* filename){
 }
 
 bool Map::verifGraph(Node *tabNode){
+  
   // Pour chaque Node
   // Je vérifie dans map->Cases pour la position (x,y) que node même type etc...
   // Si oui -> node.setCase(case);
