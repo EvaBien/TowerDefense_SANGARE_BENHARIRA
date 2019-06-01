@@ -123,7 +123,7 @@ Tile* CatMonster::chooseDestination(Map *m){
       int successor = list[i]->getSuccessor();
       Node *next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
-      return next;
+      return next->getTile();
     } // MANQUE DIJSKTRA
     i++;
   }
@@ -135,7 +135,7 @@ void CatMonster::move(Map *m){
   while (this->isAlive()){
     Tile *current = this->getTile();
     if (current->getType()==OUT){
-      &(this->getGame())->gameOver();
+      std::addressof(this->getGame())->gameOver();
       exit(0);
     } else {
       if (current->getType()==NODE || current->getType()==IN){
