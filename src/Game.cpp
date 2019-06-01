@@ -15,9 +15,9 @@ Game::Game() {
   this->m_time=0;
   // Initialiser 3 vecteurs
 
-  this->m_monsters = std::vector<CatMonster *> monsters;
-  this->m_towers = std::vector<Tower *> towers;
-  this->m_buildings = std::vector<Building *> buildings;
+  this->m_monsters = std::vector<CatMonster*> monsters;
+  this->m_towers = std::vector<Tower*> towers;
+  this->m_buildings = std::vector<Building*> buildings;
 }
 
 //////////GETTERS//////////
@@ -216,12 +216,14 @@ void Game::checkBuildings(Tower *t){
 }
 
 void Game::constructTower(TowerType type, float x, float y){
-  // Trouver la tile c pour x;y
-  if(this->canBuyTower()){
-    if (this->canBuildTower(type, c)){
-      tower = new Tower(type, c, this);
+  Map *mymap this->getMap();
+  int position = calculPosition(x,y);
+  Tile *t=mymap->getTile(position);
+  if(this->canBuyTower(type)){
+    if (this->canBuildTower(type, *t)){
+      Tower tower = new Tower(type, *t, this);
       this->setAddVecTower(tower);
-      this->checkBuilding();
+      this->checkBuildings();
       tower->afficher();
       tower->attack();
     } else {
@@ -233,10 +235,12 @@ void Game::constructTower(TowerType type, float x, float y){
 }
 
 void Game::constructBuilding(BuildingType type, float x, float y){
-  // Trouver la tile c pour x;y
-  if(this->canBuyBuilding()){
-    if (this->canBuildBuildable(type, c)){
-      building = new Building(type, c, this);
+  Map *mymap this->getMap();
+  int position = calculPosition(x,y);
+  Tile *t=mymap->getTile(position);
+  if(this->canBuyBuilding(type)){
+    if (this->canBuildBuilding(type, *t)){
+      Building building = new Building(type, *t, this);
       this->setAddVecBuilding(building);
       building->checkTower();
       building->afficher();
