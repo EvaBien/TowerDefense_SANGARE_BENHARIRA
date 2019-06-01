@@ -117,7 +117,7 @@ Tile* CatMonster::chooseDestination(Map *m){
   Map *myMap = m;
   Node* list = myMap->getListNodes();
   for (int i=0; i<list->size(); i++){
-    if (list[i].getTile() == &current){
+    if (&list[i].getTile() == current){
       int successor = list[i].getSuccessor();
       Node next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
@@ -224,14 +224,14 @@ void CatMonster::destroy(Tower *t){
   int money = game->getCagnotte();
   game->setCagnotte(money+this->getGainDeath());
   printf("Montre mort ! La nouvelle cagnotte : %d", game->getCagnotte());
-  std::vector<CatMonster*> vector = game->getVecCat();
+  std::vector<CatMonster *> vector = game->getVecCat();
   int i=0;
   for (i; i<vector.size(); i++){
     if (vector[i] == this){
       vector.erase(vector.begin()+i);
     }
   }
-  if (this == &t->getTarget()){
+  if (&this == t->getTarget()){
     t->setTarget(nullptr);
   }
 }
