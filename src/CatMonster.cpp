@@ -120,7 +120,7 @@ Tile* CatMonster::chooseDestination(Map *m){
   Node* list[9] = myMap->getListNodes();
   int i=0;
   while (list[i]->getNext()!=nullptr){
-    if (list[i]->getTile() == &current){
+    if (list[i]->getTile() == *current){
       int successor = list[i]->getSuccessor();
       Node *next = list[successor];
       // Pour utilisation de Dijsktra -> Node next = dijsktra(list[i]);
@@ -235,7 +235,7 @@ void CatMonster::destroy(Tower *t){
       vector.erase(vector.begin()+i);
     }
   }
-  if (&this == t->getTarget()){
+  if (std::addressof(this) == t->getTarget()){
     t->setTarget(nullptr);
   }
 }
