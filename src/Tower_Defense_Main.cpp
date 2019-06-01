@@ -45,6 +45,9 @@ int main(int argc, char **argv) {
       myGame->gameOver();
       Mix_FreeMusic(musique); //Libération de la musique
       Mix_CloseAudio();
+      SDL_DestroyWindow(window);
+      break;
+
       /* Redimensionnement fenetre */
       case SDL_VIDEORESIZE:
       reshape(&surface, e.resize.w, e.resize.h);
@@ -74,6 +77,8 @@ int main(int argc, char **argv) {
         myGame->gameOver();
         Mix_FreeMusic(musique); //Libération de la musique
         Mix_CloseAudio();
+        SDL_DestroyWindow(window);
+
         break;
 
         /* TOUCHE ESC */
@@ -81,6 +86,7 @@ int main(int argc, char **argv) {
         myGame->gameOver();
         Mix_FreeMusic(musique); //Libération de la musique
         Mix_CloseAudio();
+        SDL_DestroyWindow(window);
         break;
 
         /* TOUCHE T */

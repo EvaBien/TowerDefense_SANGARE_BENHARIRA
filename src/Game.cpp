@@ -187,7 +187,7 @@ bool Game::canBuildBuilding(BuildingType type, Tile *c){
 
 }
 
-bool Game::canBuildTower(TowerType type, Tile c){
+bool Game::canBuildTower(TowerType type, Tile *c){
 
 }
 
@@ -204,11 +204,11 @@ void Game::checkTowers(Building *b){
 }
 
 void Game::checkBuildings(Tower *t){
-  
+
   for (Building* building : this->getVecBuilding()){
     int portee = building->getPortee();
     Tile bTile = building->getTile();
-    float distance = bTile->distance(t->getTile());
+    float distance = bTile.distance(t->getTile());
     if (distance <= portee){
       building->upgradeTower(t);
     }
@@ -257,21 +257,18 @@ void Game::gameOver(){
   } else {
     printf("YOU WIN !! ");
   }
-  // CLEAN //
-  SDL_DestroyWindow(window);
-  SDL_Quit();
 
   for (CatMonster* cat : this->getVecCat()){
-    // this->getVecCat().erase(cat);
-    cat->destroy();
+    this->getVecCat().erase(cat);
   }
   for (Tower* tower : this->getVecTower()){
     this->getVecTower().erase(tower);
-    tower->destroy();
   }
   for (Building* building : this->getVecBuilding()){
     this->getVecBuilding().erase(building);
-    building->destroy();
   }
+
+  // CLEAN //
+  SDL_Quit();
 
 }
