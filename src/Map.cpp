@@ -1,7 +1,9 @@
-#include <string>
-#include "../include/Map.hpp"
+#include "Map.hpp"
 
-using namespace std;
+#include <string>
+#include <glad/glad.h>
+
+#include "TextureController.hpp"
 
 Map::Map(){};
 Map::~Map(){};
@@ -20,15 +22,17 @@ Tile* Map::getTile(int position){
   return this->m_TileMap[position];
 }
 Tile* Map::getAllTiles(){
-  return this->m_TileMap;
+  // return this->m_TileMap;
+	return nullptr;
 }
 
 int Map::getSizeTiles(){
   return this->getHeight()*this->getWidth();
 }
 
-Node* Map::getlistNode(){
-  return this->m_listNodes;
+Node* Map::getListNodes() {
+  // return this->m_listNodes;
+	return nullptr;
 }
 /////////SETTERS//////////
 
@@ -41,17 +45,17 @@ void Map::setWidth(int newWidth){
 }
 
 void Map::setTileMap(int position, Tile *tile){
-  this->m_TileMap[position] = &tile;
+  this->m_TileMap[position] = tile;
 }
 
 void Map::setAllTiles(Tile *tab){
-  this->m_TileMap=tab;
+  // this->m_TileMap=tab;
 }
 
 void Map::setParams(int height, int width){
   this->m_height=height;
   this->m_width=width;
-  this->m_TileMap= new Tile[height*width];
+ //  this->m_TileMap= new Tile[height*width];
 }
 
 void Map::setListNodes(Node* list){
@@ -60,30 +64,31 @@ void Map::setListNodes(Node* list){
 
 //////////OTHER METHODS//////////
 
-int calculPosition(float x, float y){
+int  Map::calculPosition(float x, float y){
+int tileX = 0;
   if (x==0){
-    int tileX=0;
+    tileX=0;
   } else{
-    int tileX = (int)(x/3);
+    tileX = (int)(x/3);
   }
   return (int)tileX+(int)(3*y);
 }
 
-void Map::Scale(int heightPPM, int widthPPM){
-  if (HeightPPM!=0 && widthPPM!=0){
-    setheight(this->heightPPM*100); //donne hauteur de notre image de ref fois 100
-    setWidth(this->widthPPM*100); //donne largeur de notre image de ref fois 100
+void Map::Scale(int heightPPM, int widthPPM) {
+  if (heightPPM != 0 && widthPPM != 0) {
+    //setheight(heightPPM*100); //donne hauteur de notre image de ref fois 100
+    //setWidth(widthPPM*100); //donne largeur de notre image de ref fois 100
   } else {
-    printf("The picture does not have a proper size")
+	  printf("The picture does not have a proper size");
   }
 }
 
 
-ColorTile verifColor(int r, int v, int b){ // A compléter en fonction des couleurs
+ColorTile  Map::verifColor(int r, int v, int b){ // A compléter en fonction des couleurs
   if (r==200 && v==0 && b==0){
-    return OUT;
+    return EXIT;
   } else if (r==0 && v==200 && b==0){
-    return IN;
+    return ENTRY;
   } else if (r==255 && v==200 && b==200){
     return BUILD;
   } else if (r==255 && v==255 && b==255){
@@ -105,7 +110,6 @@ void Map::readPPM(char* filename){
 
   if(!file){
     printf("ERROR READING PPM \n");
-    return EXIT_FAILURE;
   }
 
 
@@ -124,7 +128,7 @@ void Map::readPPM(char* filename){
   printf("Height: %d\n", height);
 
   //int size = width * height;
-  int size = width*height;
+  size = width*height;
 
   this->setParams(height, width);
 
@@ -132,8 +136,9 @@ void Map::readPPM(char* filename){
   fscanf(file, "%s\n", chaine);
 
   // On met le reste dans un tableau de pixels
-  unsigned char* data = new unsigned char[size]
+  unsigned char* data = new unsigned char[size];
   // unformatted read of binary pixel data
+
   while (fread(data, sizeof(int), width*height*3, file)) {
     printf("%s", data);
   } // end of for loop
@@ -144,8 +149,8 @@ void Map::readPPM(char* filename){
       int r = data[pixel];
       int v = data[pixel+1];
       int b = data[pixel+2];
-      Tile = new Tile((x*100)+50,(y*100)+50,verifColor(r,v,b));
-      this->m_TileMap(calculPosition(x,y)) = Tile;
+      Tile* tile = new Tile((x*100)+50,(y*100)+50,verifColor(r,v,b));
+      this->m_TileMap[calculPosition(x,y)] = tile;
     }
   }
   fclose(file);
@@ -165,7 +170,8 @@ Node* Map::readITD(char* filename){
 
   char chaine[250];
   int nbNode;
-  Node* tabNode = new Node[nbNode] // Remplacer char par Node !
+  // Node* tabNode = new Node(0, 0, 0); // Remplacer char par Node !
+  Node* tabNode = nullptr;
 
   //vérifie qu'on a ou non atteint la fin du document
   if (fgets(chaine, 250, file) == NULL){
@@ -176,11 +182,13 @@ Node* Map::readITD(char* filename){
 
   // read header
   //////////// PREMIERE LIGNE : @ITD 1 ///////////////
+  /*
   if (fscanf(file,"%s\n", chaine) != "@ITD 1"){
     printf("ERROR, this file is not identified as an ITD \n");
     exit(EXIT_FAILURE);
     return NULL;
   }
+  */
 
   // ne pas prendre en compte les comments
   //////////// DEUXIEME LIGNE : COMMENTS ///////////////
@@ -210,15 +218,16 @@ Node* Map::readITD(char* filename){
     int y;
     int successors;
     sscanf(chaine, "%d\n %d\n %d\n %d\n %d\n", index, type,(float)(x*100.0+50.0), (float)(y*100.0+50.0), successors); // OU ajouter les & devant les variable
-    tabNode[i] = new Node(x, y, type, successors, index, &this);
+    // tabNode[i] = new Node(x, y, type, successors, index, &this);
     i++;
   }
 
   fclose(file);
-  return
+  return nullptr;
 }
 
 bool Map::verifGraph(Node *tabNode){
+	/*
   int size = tabNode.size();
 
   for (int i=0; i<size; i++){
@@ -227,21 +236,22 @@ bool Map::verifGraph(Node *tabNode){
     int position = calculPosition(x,y);
     Tile tile = this->getTile(position);
 
-    if (tile->getType() == NODE && tabNode[i]->getType()==TWIST || tile->getType() == NODE && tabNode[i]->getType()==INTER || tile->getType() == OUT && tabNode[i]->getType()== SORTIE || tile->getType() == IN && tabNode[i]->getType()==ENTREE){
+    if (tile->getType() == NODE && tabNode[i]->getType()==TWIST || tile->getType() == NODE && tabNode[i]->getType()==INTER || tile->getType() == EXIT && tabNode[i]->getType()== SORTIE || tile->getType() == ENTRY && tabNode[i]->getType()==ENTREE){
       tabNode[i]->setCase(case);
     } else {
       printf("Le node %d pour la position X=%d & Y=%d est faux", i, x, y);
       return false;
     }
   }
+  */
   return true;
 }
 
 
 void Map::initMap(){
 
-  this->readPPM("../images/map1.ppm");
-  Node* tabNode = this->readITD("../data/map1.itd");
+  this->readPPM("images/map1.ppm");
+  Node* tabNode = this->readITD("data/map1.itd");
 
   if (this->verifGraph(tabNode)){
 
@@ -253,12 +263,12 @@ void Map::initMap(){
     }
 
     GLuint mapTexture = 0;
-    string pathMap = "../images/map1.png";
-    mapTexture=loadTexture(pathMap);
+    std::string pathMap = "images/map1.png";
+    mapTexture = loadTexture(pathMap.c_str());
 
     glPushMatrix();
-    glTranslate(0,0,0); // 1500 x 1000;
-    drawPicture(mapTexture, this->getHeight(), this->getWidth());
+    glTranslatef(0,0,0); // 1500 x 1000;
+    // drawPicture(mapTexture, this->getHeight(), this->getWidth());
     glPopMatrix();
   }
 }

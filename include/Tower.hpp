@@ -1,12 +1,11 @@
-#ifndef DEF_TOWER
-#define DEF_TOWER
+#pragma once
 
 #include <string>
+
 #include "Entity.hpp"
 #include "CatMonster.hpp"
 
-class Game;
-
+class Game; // Forward declaration
 
 enum TowerType{
   RED_LASER,
@@ -38,9 +37,9 @@ public:
   int getPortee();
   int getCadence();
   int getPrice();
-  int getTowerType();
-  int getGame();
-  CatMonster getTarget();
+  TowerType getTowerType();
+  Game* getGame();
+  CatMonster* getTarget();
 
 
   /////SETTERS/////
@@ -61,5 +60,3 @@ public:
   void searchTarget();
 
 };
-
-#endif

@@ -1,36 +1,41 @@
+#include "TextureController.hpp"
+
 #include <string>
-#include "../include/TextureController.hpp"
-#include <SDL/SDL_image.h>
-#include <GL/gl.h>
+#include <stdio.h>
+// #include <SDL/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <glad/glad.h>
 #include <GL/glu.h>
 
-
-
-
 bool isLoaded (SDL_Surface* image){
-  if (image__NULL){
+  if (image == nullptr){
     printf("FAIL : Texture loading");
-    SQL_Quit();
-    return 0;
+    return false;
   }
-  return 1;
+  return true;
+}
+
+GLuint loadTexture(const char* filename) {
+	// TODO
+	return 0;
 }
 
 GLuint setTexture(const char* filename){
-  SDL_Surface *image = IMG_Load(filename);
+  // SDL_Surface *image = IMG_Load(filename);
+	SDL_Surface* image = nullptr;
   if (!isLoaded(image)){
     return 0;
   }
 
   GLuint textureId;
 
-  glGenTexture(1, &textureId);
-  glBindTexture(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glGenTextures(1, &textureId);
+  glBindTexture(GL_TEXTURE_2D, textureId);
 
 
-  glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image->w,image->h,0,GL_RGBA,GL_UNSIGNED_BYTE,image->pixels);
+  // glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,image->w,image->h,0,GL_RGBA,GL_UNSIGNED_BYTE,image->pixels);
 
-  glBinTexture(GL_TEXTURE_2D,0);
+  glBindTexture(GL_TEXTURE_2D, 0);
   SDL_FreeSurface(image);
 
   return textureId;

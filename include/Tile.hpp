@@ -1,20 +1,18 @@
-#ifndef DEF_TILE
-#define DEF_TILE
+#pragma once
 
 #include <string>
 #include <math.h>
 #include "Node.hpp"
 
-enum ColorTile{
-  OUT,
-  IN,
-  BUILD,
-  PATH,
-  NODE,
+enum ColorTile {
+	EXIT,
+	ENTRY,
+	BUILD,
+	PATH,
+	NODE,
 };
 
-
-class Tile{
+class Tile {
 private:
   // Attributs
   float m_x; //jusqu'à quelle tile peut tirer
@@ -51,5 +49,3 @@ public:
   // bool idBuildable();
 
 };
-
-#endif

@@ -1,18 +1,18 @@
-// MAIN //
+#ifdef _WIN32
+	#include <windows.h>
+#endif
+
 #include <string>
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL_mixer.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glut.h>
-#include "../include/Game.hpp"
-#include "../include/Window.hpp"
+#include <SDL2/SDL.h>
+// #include <SDL/SDL_image.h>
+// #include <SDL/SDL_mixer.h>
 
+#include "Game.hpp"
+#include "Window.hpp"
 
 int main(int argc, char **argv) {
 
@@ -22,9 +22,11 @@ int main(int argc, char **argv) {
 
   SDL_Window* window = initWindow(); // Init fenêtre
   if (window == nullptr) {
-    cout << "Error window init" << endl;
+	  printf("Error window init \n");
   }
-  Game myGame = new Game(monster, towers, buildings);
+  Game* myGame = new Game(monsters, towers, buildings);
+  // GAME LOOP
+  myGame->startGame(window);
 
   bool TChecked = false;
   bool BChecked = false;
@@ -47,14 +49,14 @@ int main(int argc, char **argv) {
 
       case SDL_QUIT:
       myGame->gameOver();
-      Mix_FreeMusic(musique); //Libération de la musique
-      Mix_CloseAudio();
+      /// Mix_FreeMusic(musique); //Libération de la musique
+      // Mix_CloseAudio();
       SDL_DestroyWindow(window);
       break;
 
       /* Redimensionnement fenetre */
-      case SDL_VIDEORESIZE:
-      reshape(&surface, e.resize.w, e.resize.h);
+      case SDL_WINDOWEVENT_RESIZED:
+		// reshape(&surface, e.resize.w, e.resize.h);
       break;
 
       /* Touche clavier */
@@ -65,7 +67,8 @@ int main(int argc, char **argv) {
         /*TOUCHE SPACE*/
         case SDLK_SPACE:
         if (myGame->getFinish()==true){
-          myGame->startGame();
+          // myGame->startGame(window);
+		  /*
           if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
           {
             printf("Erreur de son %s", Mix_GetError());
@@ -73,14 +76,15 @@ int main(int argc, char **argv) {
           Mix_Music *musique; //Création du pointeur de type Mix_Music
           musique = Mix_LoadMUS("./sound/NyanCat.mp3"); //Chargement de la musique
           Mix_PlayMusic(musique, -1); //Jouer infiniment la musique
+		  */
         }
         break;
 
         /* TOUCHE Q */
         case SDLK_q:
         myGame->gameOver();
-        Mix_FreeMusic(musique); //Libération de la musique
-        Mix_CloseAudio();
+        // Mix_FreeMusic(musique); //Libération de la musique
+        // Mix_CloseAudio();
         SDL_DestroyWindow(window);
 
         break;
@@ -88,8 +92,8 @@ int main(int argc, char **argv) {
         /* TOUCHE ESC */
         case SDLK_ESCAPE:
         myGame->gameOver();
-        Mix_FreeMusic(musique); //Libération de la musique
-        Mix_CloseAudio();
+        // Mix_FreeMusic(musique); //Libération de la musique
+        // Mix_CloseAudio();
         SDL_DestroyWindow(window);
         break;
 
@@ -99,15 +103,15 @@ int main(int argc, char **argv) {
           TChecked = true;
           Checked1 = true;
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/towerRed.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/towerRed.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
 
         } else if (TChecked ==false && BChecked == true){
           TChecked = true;
           BChecked = false;
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/towerRed.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/towerRed.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
 
         } else if (TChecked == true){
           TChecked = false;
@@ -122,16 +126,16 @@ int main(int argc, char **argv) {
           BChecked = true;
           Checked1 = true;
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/buildingRadar.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/buildingRadar.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
 
         } else if (BChecked ==false && TChecked == true){
           BChecked = true;
           TChecked = false;
 
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/buildingRadar.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/buildingRadar.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
 
         } else if (BChecked == true){
           BChecked = false;
@@ -156,12 +160,12 @@ int main(int argc, char **argv) {
 
         if (TChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/towerRed.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/towerRed.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         } else if (BChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/buildingRadar.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/buildingRadar.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         }
         break;
 
@@ -179,12 +183,12 @@ int main(int argc, char **argv) {
         }
         if (TChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/towerGreen.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/towerGreen.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         } else if (BChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/buildingWeapon.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/buildingWeapon.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         }
         break;
 
@@ -202,12 +206,12 @@ int main(int argc, char **argv) {
         }
         if (TChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/towerYellow.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/towerYellow.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         } else if (BChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/buildingStock.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/buildingStock.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         }
 
         break;
@@ -229,8 +233,8 @@ int main(int argc, char **argv) {
         }
         if (TChecked){
           SDL_ShowCursor( SDL_DISABLE );
-          image = SDL_LoadBMP("../images/towerBlue.bmp"); //Load my cursor
-          cursor = SDL_DisplayFormatAlpha(image);
+          image = SDL_LoadBMP("images/towerBlue.bmp"); //Load my cursor
+          // cursor = SDL_DisplayFormatAlpha(image);
         }
         break;
 
@@ -273,6 +277,8 @@ int main(int argc, char **argv) {
       break;
     }
   }
+
+  return EXIT_SUCCESS;
 }
 
 

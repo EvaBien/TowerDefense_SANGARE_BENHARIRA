@@ -1,23 +1,25 @@
-#include <string>
-#include "../include/Building.hpp"
-#include "../include/Game.hpp"
+#include "Building.hpp"
 
-using namespace std;
+#include <string>
+#include <glad/glad.h>
+
+#include "Game.hpp"
+#include "TextureController.hpp"
 
 Building::Building (BuildingType type, Tile *tile, Game *game){
   this->type=type;
   if (type==RADAR){
     this->m_portee=100;
     this->m_price=100;
-    this->m_affichage = "../images/buildingRadar.png";
+    this->m_affichage = "images/buildingRadar.png";
   } else if (type==WEAPON){
     this->m_portee=75;
     this->m_price=75;
-    this->m_affichage = "../images/buildingWeapon.png";
+    this->m_affichage = "images/buildingWeapon.png";
   } else{
     this->m_portee=50;
     this->m_price=50;
-    this->m_affichage = "../images/buildingStock.png";
+    this->m_affichage = "images/buildingStock.png";
   }
   this->m_tile=tile;
   this->m_x = tile->getX(); // Position de l'entrée de la map
@@ -78,7 +80,7 @@ void Building::setGame(Game *game){
 
 void Building::afficher(){
   GLuint buildingTexture = 0;
-  string pathBuilding = this->getAffichage();
+  std::string pathBuilding = this->getAffichage();
   buildingTexture=loadTexture(pathBuilding.c_str());
 
   glPushMatrix();

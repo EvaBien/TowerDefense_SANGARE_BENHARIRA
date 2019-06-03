@@ -1,8 +1,6 @@
+#include "Entity.hpp"
+
 #include <string>
-#include "../include/Entity.hpp"
-
-using namespace std;
-
 
 Entity::Entity(){}
 Entity::Entity(float x, float y) {

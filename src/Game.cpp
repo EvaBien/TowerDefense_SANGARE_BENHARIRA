@@ -1,10 +1,11 @@
+#include "Game.hpp"
+
 #include <string>
-#include "../include/Game.hpp"
-// #include "../include/CatMonster.hpp"
-// #include "../include/Tower.hpp"
-// #include "../include/Building.hpp"
+
+#include "Tile.hpp"
+
 /* Nombre minimal de millisecondes separant le rendu de deux images */
-static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
+static const int FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
 Game::Game(std::vector<CatMonster*>& monster, std::vector<Tower*>& towers, std::vector<Building*>& buildings){ //constructeur
@@ -15,7 +16,7 @@ Game::Game(std::vector<CatMonster*>& monster, std::vector<Tower*>& towers, std::
   this->m_time=0;
   // Initialiser 3 vecteurs
 
-  this->m_monsters =  monsters;
+  this->m_monsters = monster;
   this->m_towers = towers;
   this->m_buildings =  buildings;
 }
@@ -34,7 +35,7 @@ bool Game::getFinish(){
   return this->m_finished;
 }
 
-Map Game::getMap(){
+Map* Game::getMap(){
   return this->m_map;
 }
 
@@ -88,26 +89,32 @@ void Game::setAddVecBuilding(Building* building){
 }
 
 //////////OTHER METHODS//////////
-Tile *entry;
-Tile *out;
-Map myMap = new Map();
-void Game::startGame(){
 
-  myMap.initMap();
-  this->setMap(&myMap);
+void Game::startGame(SDL_Window* window){
+	/*
+	Tile* entry;
+	Tile* out;
+	*/
+	Map* myMap = new Map();
 
-  Node* list = myMap.getListNodes();
-  entry = list[0].getTile();
-  out = list[1].getTile();
+  myMap->initMap();
+  this->setMap(myMap);
+
+  Node* list = myMap->getListNodes();
+  //entry = list[0].getTile();
+  //out = list[1].getTile();
 
   this->setFinish(false);
   this->setTime(0);
   int nbWave = 0;
+
+  /* GAME LOOP */
+
   while (this->getFinish()==false){
 
 
-    /* Echange du front et du back buffer : mise a jour de la fenetre */
-    SDL_GL_SwapBuffers();
+	/* Echange du front et du back buffer : mise a jour de la fenetre */
+	SDL_GL_SwapWindow(window);
 
     this->setWave(nbWave++);
     if ((this->getTime()%(60*90)==0)){ // SI ca fait 1min30sec // OU UTILISER std::this_thread::sleep_for(std::chrono::milliseconds(60*90));
@@ -128,7 +135,7 @@ void Game::prepareWave(int numWave){
   int nbJustCat = 6; // A modifier --> Croissant " "
   int nbFatCat = 10-(nbKitten+nbJustCat); // Ce qui reste, mais doit être croissant aussi...
   // Avec un random ?
-
+  /*
   for (int i=0; i<nbKitten; i++){
     CatMonster* newKitten = new CatMonster(KITTEN,this, entry);
     this->setAddVecCat(newKitten);
@@ -147,6 +154,7 @@ void Game::prepareWave(int numWave){
     newFatCat->afficher();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
+  */
 }
 
 bool Game::canBuyTower(TowerType type){
@@ -209,15 +217,15 @@ void Game::checkBuildings(Tower *t){
 
 void Game::constructTower(TowerType type, float x, float y){
   Map* map = this->getMap();
-  int position = calculPosition(x,y);
+  int position = map->calculPosition(x,y);
   Tile* t = map->getTile(position);
   if(this->canBuyTower(type)){
     if (t->getBuildable()){
-      Tower tower = new Tower(type, t, this);
-      this->setAddVecTower(*tower);
-      this->checkBuildings(*tower);
-      tower.afficher();
-      tower.attack();
+      Tower* tower = new Tower(type, t, this);
+      this->setAddVecTower(tower);
+      this->checkBuildings(tower);
+      tower->afficher();
+      tower->attack();
     } else {
       printf("NOT BUILDABLE ZONE");
     }
@@ -228,14 +236,14 @@ void Game::constructTower(TowerType type, float x, float y){
 
 void Game::constructBuilding(BuildingType type, float x, float y){
   Map* map = this->getMap();
-  int position = calculPosition(x,y);
+  int position = map->calculPosition(x,y);
   Tile* t = map->getTile(position);
   if(this->canBuyBuilding(type)){
     if (t->getBuildable()){
-      Building building = new Building(type, t, this);
-      this->setAddVecBuilding(*building);
-      this->checkTowers(*building);
-      building.afficher();
+      Building* building = new Building(type, t, this);
+      this->setAddVecBuilding(building);
+      this->checkTowers(building);
+      building->afficher();
     } else {
       printf("NOT BUILDABLE ZONE");
     }

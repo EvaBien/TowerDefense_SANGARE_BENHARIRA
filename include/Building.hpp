@@ -1,12 +1,11 @@
-#ifndef DEF_BUILDING
-#define DEF_BUILDING
+#pragma once
 
 #include <string>
+
 #include "Entity.hpp"
 #include "Tower.hpp"
-//#include "Tile.hpp"
 
-class Game;
+class Game; // Forward declaration
 
 enum BuildingType{
   RADAR,
@@ -53,5 +52,3 @@ public:
   void checkTower();
 
 };
-
-#endif

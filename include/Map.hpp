@@ -1,5 +1,5 @@
-#ifndef DEF_MAP
-#define DEF_MAP
+#pragma once
+
 #include "Tile.hpp"
 #include "Node.hpp"
 
@@ -8,7 +8,7 @@ private:
   // Attributs
   int m_height;
   int m_width;
-  Tile m_TileMap[150];
+  Tile* m_TileMap[150];
   Node* m_listNodes;
 
 public:
@@ -22,11 +22,11 @@ public:
   Tile *getTile(int position);
   Tile *getAllTiles();
   int getSizeTiles();
-  Node *getListNodes();
+  Node* getListNodes();
 
   //////SETTERS/////
-  void setHeight();
-  void setWidth();
+  void setHeight(int newHeight);
+  void setWidth(int newWidth);
   void setTileMap(int Position, Tile *t);
   void setAllTiles(Tile *tab);
   void setParams(int height, int width);
@@ -44,4 +44,3 @@ public:
   void initMap();
 };
 
-#endif

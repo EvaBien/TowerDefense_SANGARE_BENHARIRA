@@ -1,7 +1,6 @@
-#include <string>
-#include "../include/Node.hpp"
+#include "Node.hpp"
 
-using namespace std;
+#include <string>
 
 Node::Node(int type, float x, float y, int index, int successor, Map *map){
   if (type==1){
@@ -51,7 +50,7 @@ Map* Node::getMap(){
   return this->map;
 }
 
-Node* getNext(){
+Node* Node::getNext(){
   return this->next;
 }
 
@@ -85,7 +84,7 @@ void Node::setMap(Map *map){
   this->map=map;
 }
 
-void setNext(Node *node){
+void Node::setNext(Node *node){
   this->next=node;
 }
 
@@ -99,6 +98,8 @@ void setNext(Node *node){
 
 
 //////GETTERS/////
+
+
 int PathNode::getLenght(){
   return this->m_lenght;
 }
@@ -122,5 +123,5 @@ void PathNode::setEnd(Node* node){
 
 //////OTHERS/////
 
-void PathNode::addNode(NodeType type, float x, float y, int *successors);
+void PathNode::addNode(TypeNode type, Tile c, int successors);
 void PathNode::deleteNode(Node *node);

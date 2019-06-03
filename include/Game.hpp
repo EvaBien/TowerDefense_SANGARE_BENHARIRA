@@ -1,20 +1,22 @@
-#ifndef DEF_GAME
-#define DEF_GAME
+#pragma once
 
 #include <vector>
-#include "Map.hpp"
 #include <chrono>
 #include <thread>
+#include <SDL2/SDL.h>
 
-#include "../include/CatMonster.hpp"
-#include "../include/Tower.hpp"
-#include "../include/Building.hpp"
-#include "../include/Map.hpp"
+#include "Map.hpp"
+#include "CatMonster.hpp"
+#include "Tower.hpp"
+#include "Building.hpp"
+#include "Map.hpp"
+
+
 // class CatMonster;
 // class Tower;
 // class Building;
 
-class Game{
+class Game {
   private:
   // Attributs
   int m_cagnotte;
@@ -37,7 +39,7 @@ class Game{
   int getCagnotte();
   int getWave();
   bool getFinish();
-  Map *getMap();
+  Map* getMap();
   int getTime();
   std::vector<CatMonster*> getVecCat();
   std::vector<Tower*> getVecTower();
@@ -55,7 +57,7 @@ class Game{
 
   //////OTHERS//////
 
-  void startGame();
+  void startGame(SDL_Window* window);
   void prepareWave(int numWave);
   bool canBuyTower(TowerType type);
   bool canBuyBuilding(BuildingType type);
@@ -67,4 +69,3 @@ class Game{
 
 };
 
-#endif

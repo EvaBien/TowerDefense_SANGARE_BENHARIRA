@@ -1,7 +1,4 @@
-#ifndef DEF_NODE
-#define DEF_NODE
-
-#include "Tile.hpp"
+#pragma once
 
 class Map;
 class Tile;
@@ -29,7 +26,7 @@ private:
 
 public:
 
-  Node(int type, float x, float y); //constructeur
+  Node(int type, float x, float y, int index, int successor, Map* map); //constructeur
   ~Node();
 
   //////GETTERS/////
@@ -54,7 +51,7 @@ public:
   //////OTHERS/////
 };
 
-class PathNode{
+class PathNode {
 
 private:
   int m_lenght;
@@ -62,8 +59,8 @@ private:
   Node *end;
 
   public :
-  PathNode();
-  ~PathNode();
+	  PathNode() {};
+	  ~PathNode() {};
 
   //////GETTERS/////
   int getLenght();
@@ -77,10 +74,7 @@ private:
 
   //////OTHERS/////
 
-  void addNode(TypeNode type, Tile c, int *successors);
+  void addNode(TypeNode type, Tile c, int successors);
   void deleteNode(Node *node);
 
 };
-
-
-#endif

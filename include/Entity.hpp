@@ -1,13 +1,13 @@
-#ifndef DEF_ENTITY
-#define DEF_ENTITY
+#pragma once
 
 #include <string>
 #include <cmath>
-#include <SDL/SDL.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <SDL2/SDL.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <glad/glad.h>
+#include <GL/glu.h>
+
 #include "Tile.hpp"
 #include "TextureController.hpp"
 
@@ -47,5 +47,3 @@ public:
   virtual void afficher();
 
 };
-
-#endif

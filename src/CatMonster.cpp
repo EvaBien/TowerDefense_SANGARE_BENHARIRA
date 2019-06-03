@@ -1,26 +1,30 @@
+#include "CatMonster.hpp"
+
 #include <string>
 #include <vector>
-#include "../include/CatMonster.hpp"
-#include"../include/Game.hpp"
-#include"../include/Tower.hpp"
-using namespace std;
+#include <glad/glad.h>
+
+#include "Game.hpp"
+#include "TextureController.hpp"
+#include "Tower.hpp"
+#include "Node.hpp"
 
 CatMonster::CatMonster(CatMonsterType type, Game *game, Tile *tile) {
   if (this->type == KITTEN){
     this->m_life = 60;
     this->m_speed = 150;
     this->m_gainDeath = 2;
-    this->m_affichage = "../images/kitten.png";
+    this->m_affichage = "images/kitten.png";
   } else if (this->type == FATCAT) {
     this->m_life = 140;
     this->m_speed = 60;
     this->m_gainDeath = 10;
-    this->m_affichage = "../images/fatcat.png";
+    this->m_affichage = "images/fatcat.png";
   } else {
     this->m_life = 100;
     this->m_speed = 100;
     this->m_gainDeath =5;
-    this->m_affichage = "../images/justcat.png";
+    this->m_affichage = "images/justcat.png";
   }
   this->m_tile= tile;
   this->game=game;
@@ -90,7 +94,7 @@ void CatMonster::drawCat(GLuint texture, float x, float y){
 
 void CatMonster::afficher(){
   GLuint catTexture = 0;
-  string pathCat = this->getAffichage();
+  std::string pathCat = this->getAffichage();
   catTexture=loadTexture(pathCat.c_str());
   this->setTexture(catTexture);
 
@@ -113,7 +117,8 @@ bool CatMonster::isAlive(){
   return this->m_life > 0;
 }
 
-Tile* CatMonster::chooseDestination(Map *m){
+Tile* CatMonster::chooseDestination(Map *m) {
+	/*
   // Retourne la Tile suivante dans le graph
   Tile *current = this->getTile();
   Node* list = m->getListNodes();
@@ -127,19 +132,19 @@ Tile* CatMonster::chooseDestination(Map *m){
     }
     i++;
   }
-  current = NULL;
-  return current;
+  */
+  return nullptr;
 }
 
 void CatMonster::move(Map *m){
   while (this->isAlive()){
     Tile *current = this->getTile();
-    if (current->getType()==OUT){
+    if (current->getType()==EXIT){
       Game *game = this->getGame();
       game->gameOver();
       exit(0);
     } else {
-      if (current->getType()==NODE || current->getType()==IN){
+      if (current->getType()==NODE || current->getType()==ENTRY){
         Tile *destination = this->chooseDestination(m);
         while (current != destination){
 

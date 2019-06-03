@@ -1,8 +1,12 @@
+#include "Tower.hpp"
+
 #include <string>
-#include "../include/Tower.hpp"
+#include <glad/glad.h>
+
+#include "Game.hpp"
 
 /* Nombre minimal de millisecondes separant le rendu de deux images */
-static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
+static const int FRAMERATE_MILLISECONDS = 1000 / 60;
 using namespace std;
 
 Tower::Tower (TowerType type, Tile *tile, Game *game){ //on considère 100 comme valeur neutre
@@ -11,27 +15,27 @@ Tower::Tower (TowerType type, Tile *tile, Game *game){ //on considère 100 comme
     this->m_portee = 100;
     this->m_cadence = 50; //cadence faible
     this->m_price = 100;
-    this->m_affichage = "../images/towerRed.png";
+    this->m_affichage = "images/towerRed.png";
   } else if (this->type == GREEN_GRASS) {
     this->m_damages = 100; // dégâts moyens
     this->m_portee = 50; //faible portée
     this->m_cadence = 150; //tirent très rapidement
     this->m_price = 100;
-    this->m_affichage = "../images/towerGreen.png";
+    this->m_affichage = "images/towerGreen.png";
 
   } else if (type == YELLOW_GAMMELLE) { //tirents sur tous les ennemis à leur portée
     this->m_damages = 50; //peu de dégâts
     this->m_portee = 50; //portée très limitée
     this->m_cadence = 125; //bonne cadence de tir
     this->m_price = 100;
-    this->m_affichage = "../images/towerYellow.png";
+    this->m_affichage = "images/towerYellow.png";
 
   } else { // ie BLUE_MILK
     this->m_damages = 50; //peu de dégâts
     this->m_portee =150 ; //bonne portée
     this->m_cadence = 150; //bonne cadence de tir
     this->m_price = 100;
-    this->m_affichage = "../images/towerBlue.png";
+    this->m_affichage = "images/towerBlue.png";
   }
   this->m_tile= tile;
   this->m_x = tile->getX(); // Position de l'entrée de la map
@@ -52,7 +56,7 @@ int Tower::getDamages(){
 }
 
 int Tower::getPortee(){
-  return this->m_gportee;
+  return this->m_portee;
 }
 
 int Tower::getCadence(){
@@ -67,11 +71,11 @@ TowerType Tower::getTowerType(){
   return this->type;
 }
 
-CatMonster Tower::getTarget(){
+CatMonster* Tower::getTarget(){
   return this->target;
 }
 
-Game Tower::getGame(){
+Game* Tower::getGame(){
   return this->game;
 }
 /////////SETTERS//////////
@@ -98,7 +102,7 @@ void Tower::setPrice(int price){
   this->m_price =  price;
 }
 
-void Tower::setTowerType(towerType type){
+void Tower::setTowerType(TowerType type){
   this->type = type;
 }
 
@@ -114,11 +118,11 @@ void Tower::setGame(Game *game){
 
 void Tower::afficher(){
   GLuint towerTexture = 0;
-  string pathTower = this->getAffichage();
-  towerTexture=loadTexture(pathTower);
+  std::string pathTower = this->getAffichage();
+  towerTexture=loadTexture(pathTower.c_str());
 
   glPushMatrix();
-  glTranslate(this->getPosition()->getX(),this->getPosition()->getY(),0);
+  // glTranslated(this->getPosition()->getX(),this->getPosition()->getY(),0);
   drawPicture(towerTexture, 60, 60); // Taille tower
   glPopMatrix();
 }
@@ -140,24 +144,25 @@ void Tower::attack(){
         this->searchTarget();
       }
       printf("TIIIIR !! ");
-      this->getTarget()->beDamaged(this->getDamages(), &this);
+      this->getTarget()->beDamaged(this->getDamages(), this);
       startTime = SDL_GetTicks();
     }
   }
 }
 
-void Tower::searchTarget(){
-  int portee = this->getPortee();
-  float distanceMin = portee;
-  CatMonster catClosest = nullptr;
-  Game game=this->getGame();
+void Tower::searchTarget() {
+	int portee = this->getPortee();
+	float distanceMin = portee;
+	CatMonster* catClosest = nullptr;
+	Game* game = this->getGame();
 
-  for (CatMonster* cat : game->getVecCat()){
-    Tile cTile = cat->getTile();
-    float distanceCurrent = cTile->distance(this->getTile());
-    if (distanceCurrent < distanceMin){
-      distanceMin= distanceCurrent;
-      catClosest = cat;
-    }
-    this->setTarget(catClosest);
-  }
+	for (CatMonster* cat : game->getVecCat()) {
+		Tile* cTile = cat->getTile();
+		float distanceCurrent = cTile->distance(this->getTile());
+		if (distanceCurrent < distanceMin) {
+			distanceMin = distanceCurrent;
+			catClosest = cat;
+		}
+		this->setTarget(catClosest);
+	}
+}

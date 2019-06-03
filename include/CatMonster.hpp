@@ -1,7 +1,7 @@
-#ifndef DEF_CATMONSTER
-#define DEF_CATMONSTER
+#pragma once
 
 #include <string>
+
 #include "Entity.hpp"
 #include "Map.hpp"
 
@@ -61,5 +61,3 @@ public:
   // int Dijsktra(int current, int destination);
 
 };
-
-#endif
