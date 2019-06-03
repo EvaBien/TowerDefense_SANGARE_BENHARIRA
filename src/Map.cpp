@@ -143,14 +143,19 @@ void Map::readPPM(char* filename){
     printf("%s", data);
   } // end of for loop
 
+
   for (int y=0; y<height; y++){
     for (int x=0; x<width; x++){
+
+      printf(" je suis dans ma boucle \n");
+
       int pixel = (y*width*3)+x*3; // (Garder le x3 ? )
       int r = data[pixel];
       int v = data[pixel+1];
       int b = data[pixel+2];
-      Tile* tile = new Tile((x*100)+50,(y*100)+50,verifColor(r,v,b));
+      Tile* tile = new Tile((x*100)+50,(y*100)+50,verifColor(r,v,b)); // Tile tile au lieu de Tile* --> Probleme ici
       this->m_TileMap[calculPosition(x,y)] = tile;
+
     }
   }
   fclose(file);
@@ -175,7 +180,7 @@ Node* Map::readITD(char* filename){
 
   //vérifie qu'on a ou non atteint la fin du document
   if (fgets(chaine, 250, file) == NULL){
-    printf("ERROR : UNREADABLE FILE");
+    printf("ERROR : UNREADABLE FILE ITD");
     exit(EXIT_FAILURE);
     return NULL;
   }
