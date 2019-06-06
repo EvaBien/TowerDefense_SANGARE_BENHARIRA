@@ -25,7 +25,7 @@ add_library(GLAD STATIC "lib/glad/src/glad.c")
 # ----------------------------------------- INCLUDE DIRECTORIES
 # récupère toutes les librairies
 # Search directories for .h files
-include_directories( 
+include_directories(
     ${OPENGL_INCLUDE_DIR}
     ${SDL2_INCLUDE_DIRS}
 	lib/glad/include
@@ -33,6 +33,7 @@ include_directories(
 )
 
 # ------------------------------------------- BUILD PROJECT
+set(EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE})
 add_executable(${PROJECT_NAME} ${MY_SOURCES})
 target_link_libraries(
     ${PROJECT_NAME}
