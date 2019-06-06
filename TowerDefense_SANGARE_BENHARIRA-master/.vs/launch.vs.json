@@ -1,0 +1,13 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "itd_eva.exe (bin\\Debug\\itd_eva.exe)",
+      "name": "itd_eva.exe (bin\\Debug\\itd_eva.exe)",
+      "currentDir": "${workspaceRoot}"
+    }
+  ]
+}

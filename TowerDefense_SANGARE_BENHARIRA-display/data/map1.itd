@@ -1,0 +1,18 @@
+ITD 1
+#Lecture de l'ITD
+carte ./images/map1.ppm
+chemin 0 0 0
+noeud 255 255 255
+construct 254 200 82
+in 60 182 74
+out 49 67 156
+9
+0 1 1 2 2
+1 2 12 10
+2 3 6 2 3
+3 3 6 5 4
+4 3 7 5 5
+5 3 7 7 6
+6 3 10 7 7
+7 3 10 4 8
+8 3 12 4 1
