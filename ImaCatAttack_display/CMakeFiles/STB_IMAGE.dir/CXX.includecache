@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/lib/stb_image/stb_image.cpp
+stb_image.h
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/lib/stb_image/stb_image.h
+
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/lib/stb_image/stb_image.h
+stb_image.h
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/lib/stb_image/stb_image.h
+stdio.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
+-
+

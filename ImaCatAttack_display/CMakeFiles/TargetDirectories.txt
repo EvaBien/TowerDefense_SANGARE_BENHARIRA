@@ -1,0 +1,5 @@
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/CMakeFiles/rebuild_cache.dir
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/CMakeFiles/STB_IMAGE.dir
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/CMakeFiles/edit_cache.dir
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/CMakeFiles/GLAD.dir
+/home/6im1/ebenhari/Documents/TowerDefense_SANGARE_BENHARIRA_debug/TowerDefense_SANGARE_BENHARIRA-display/CMakeFiles/catAttack.dir
