@@ -309,14 +309,12 @@ int main(int argc, char **argv) {
             winPos += center;
 
             if (TChecked && Checked1 == true){
-              printf("Tu veux une tour laser ! \n");
               TowerType typeT = RED_LASER;
               Tower* tower = new Tower(typeT, winPos.x, winPos.y);
               towers.push_back(tower);
               tower->update(tower_red_path);
               myMap.setTile(gridPos.x, gridPos.y, MapTile::locked);
             } else if (TChecked && Checked2 == true){
-              printf("Tu veux une tour plante ! \n");
               TowerType typeT = GREEN_GRASS;
               Tower* tower = new Tower(typeT, winPos.x, winPos.y);
               towers.push_back(tower);
