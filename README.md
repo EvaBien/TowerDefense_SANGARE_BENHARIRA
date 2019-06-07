@@ -1,3 +1,5 @@
+Here are two folders. The master one corresponds to our firsta ttempt that can't be executed. The display one corresponds to our second attempt that allow us to use textures.
+
 How to play to ImaCatAttack ?
 
 You need to enter one of the repo.
